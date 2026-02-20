@@ -1,7 +1,7 @@
 # \itshape Agent architectures / robotics / regulated discovery
 
 **Version:** v0  
-**PDF:** [open PDF](./v0%20-%20Regulated%20Agent%20Replay%20Suite%20-%20A%20Minimal%20CI%20Gate%20for%20Verifier-Free%20Discovery.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

@@ -1,7 +1,7 @@
 # Audit — Baseline Regulation and Global Constraint Signals in Embodied Control Systems (v1.0)
 
 - Mirror: ./mirror.md
-- PDF: ./v1.0 - Baseline Regulation and Global Constraint Signals in Embodied Control Systems.pdf
+- PDF: ./latest.pdf
 
 This audit lists items that may render differently on GitHub vs the PDF.
 

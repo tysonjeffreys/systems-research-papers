@@ -1,7 +1,7 @@
 # Why Intelligent Systems Waste Energy
 
 **Version:** v1.0  
-**PDF:** [open PDF](./v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

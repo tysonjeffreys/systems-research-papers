@@ -1,7 +1,7 @@
 # Audit — Critics-as-Sensors \large Abstention-Gated Selection for Verifier-Free Discovery (v0.1)
 
 - Mirror: ./mirror.md
-- PDF: ./main.pdf
+- PDF: ./latest.pdf
 
 This audit lists items that may render differently on GitHub vs the PDF.
 

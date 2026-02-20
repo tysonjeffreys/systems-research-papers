@@ -1,7 +1,7 @@
 # Critics-as-Sensors \large Abstention-Gated Selection for Verifier-Free Discovery
 
 **Version:** v0.1  
-**PDF:** [open PDF](./main.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

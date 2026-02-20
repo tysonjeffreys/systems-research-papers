@@ -1,7 +1,7 @@
 # Audit — Phase Discipline for Regulated Agents (v0.1)
 
 - Mirror: ./mirror.md
-- PDF: ./v0.1 - Phase Discipline for Regulated Agents _ Transition Windows and State--Action Alignment.pdf
+- PDF: ./latest.pdf
 
 This audit lists items that may render differently on GitHub vs the PDF.
 

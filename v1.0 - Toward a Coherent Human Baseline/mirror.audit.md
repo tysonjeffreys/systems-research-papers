@@ -1,7 +1,7 @@
 # Audit — Toward a Coherent Human Baseline (v1.0)
 
 - Mirror: ./mirror.md
-- PDF: ./source.pdf
+- PDF: ./latest.pdf
 
 This audit lists items that may render differently on GitHub vs the PDF.
 

@@ -1,7 +1,7 @@
 # The Verifier Gap
 
 **Version:** v0.1  
-**PDF:** [open PDF](./v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

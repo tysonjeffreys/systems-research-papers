@@ -1,7 +1,7 @@
 # Toward a Lower Human Metabolic Baseline
 
 **Version:** v1.0  
-**PDF:** [open PDF](./v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

@@ -1,7 +1,7 @@
 # Phase Discipline for Regulated Agents
 
 **Version:** v0.1  
-**PDF:** [open PDF](./v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

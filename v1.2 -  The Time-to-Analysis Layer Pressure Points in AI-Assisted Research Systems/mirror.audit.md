@@ -1,7 +1,7 @@
 # Audit — The Time-to-Analysis Layer \large Pressure Points in AI-Assisted Research Systems (v1.2)
 
 - Mirror: ./mirror.md
-- PDF: ./v1.2 -  The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems.pdf
+- PDF: ./latest.pdf
 
 This audit lists items that may render differently on GitHub vs the PDF.
 

@@ -1,7 +1,7 @@
 # Concept Containers as Representation-Level Regulation in Artificial Agents
 
 **Version:** v1.3  
-**PDF:** [open PDF](./v1.3%20-%20Concept%20Containers%20as%20Representation-Level%20Regulation%20in%20Artificial%20Agents.pdf) *(latest.pdf missing)*  
+**PDF:** [open PDF](./latest.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
