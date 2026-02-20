@@ -1,7 +1,7 @@
 # The Verifier Gap
 
 **Version:** v0.1  
-**PDF:** [open PDF](./v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning.pdf) *(latest.pdf missing)*  
+**PDF:** [v0.1 - The Verifier Gap | Regulation for Non-Verifiable Reasoning.pdf](./v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
@@ -32,9 +32,9 @@ A practical reason is simple: most high-value tasks do not come with verifiers. 
 
 This paper separates two concepts:
 
-- **Verifier:** a task-specific procedure $V(x,y)$ that returns reliable correctness for candidate output $y$ on input $x$.
+- **Verifier:** a task-specific procedure $`V(x,y)`$ that returns reliable correctness for candidate output $`y`$ on input $`x`$.
 
-- **Selection signal:** any criterion used to rank candidates when $V$ is absent (learned judges, rubrics, pairwise preferences, tournaments, proxy metrics).
+- **Selection signal:** any criterion used to rank candidates when $`V`$ is absent (learned judges, rubrics, pairwise preferences, tournaments, proxy metrics).
 
 The **verifier gap** is the regime where *selection exists but verification does not*. The core claim is architectural: in this regime, selection signals must be treated as telemetry and wrapped in band-limited governance.
 
@@ -74,7 +74,7 @@ In verifier-free regimes, the primary safety question becomes: *when is a commit
 
 In the verifier gap, behavior is governed by a coupled loop:
 
-> Generator (policy) $\rightarrow$ candidates $\rightarrow$ Judge $\rightarrow$ preference signal $\rightarrow$ optimization/selection $\rightarrow$ updated generator
+> Generator (policy) $`\rightarrow`$ candidates $`\rightarrow`$ Judge $`\rightarrow`$ preference signal $`\rightarrow`$ optimization/selection $`\rightarrow`$ updated generator
 
 Treating the judge as an authority yields predictable failure modes.
 
@@ -118,17 +118,17 @@ Operationally, treat **no-evidence reversion** as a hard risk signal: if stance 
 
 The safest judge outputs in the verifier gap are not “scores” but **state signals** that can drive posture:
 
-- **Abstain/tie mass** $A$: fraction of comparisons resulting in tie/abstain.
+- **Abstain/tie mass** $`A`$: fraction of comparisons resulting in tie/abstain.
 
-- **Disagreement entropy** $D$: entropy of preferences across candidates/judges.
+- **Disagreement entropy** $`D`$: entropy of preferences across candidates/judges.
 
-- **Stability** $S$: consistency under paraphrase and evidence-order perturbations.
+- **Stability** $`S`$: consistency under paraphrase and evidence-order perturbations.
 
-- **Margin** $M$: how decisive comparisons are (if available).
+- **Margin** $`M`$: how decisive comparisons are (if available).
 
-- **Drift indicators** $J$: judge version signatures and measured preference shift.
+- **Drift indicators** $`J`$: judge version signatures and measured preference shift.
 
-- **Commitment-integrity risk** $K$: no-evidence reversions and self-disowning events across turns.
+- **Commitment-integrity risk** $`K`$: no-evidence reversions and self-disowning events across turns.
 
 These map naturally to runtime regulation: tighten budgets, reduce commit rights, and demand discriminating evidence when uncertainty rises.
 
@@ -174,7 +174,7 @@ A **commit** is any irreversible or persistent change:
 
 - changing a policy/rule that affects future selection.
 
-Commit permissions must tighten as $A$ and $D$ rise.
+Commit permissions must tighten as $`A`$ and $`D`$ rise.
 
 # 6. The Verifier Gap Layer
 
@@ -182,13 +182,13 @@ This section specifies a minimal layer that can be inserted into a regulated age
 
 ## 6.1 Components
 
-1.  **Candidate generator**: produces $N$ candidates $y_1,\dots,y_N$ under a compute budget.
+1.  **Candidate generator**: produces $`N`$ candidates $`y_1,\dots,y_N`$ under a compute budget.
 
 2.  **Judge(s)**: one or more learned judges/critics, treated as sensors.
 
-3.  **Telemetry extractor**: computes $(A,D,M,S,J)$ from judge outputs.
+3.  **Telemetry extractor**: computes $`(A,D,M,S,J)`$ from judge outputs.
 
-4.  **Posture controller** $g(t)$: maps telemetry into operating posture (budgets, allowed action types, sampling depth).
+4.  **Posture controller** $`g(t)`$: maps telemetry into operating posture (budgets, allowed action types, sampling depth).
 
 5.  **Commit gate**: blocks commits under high uncertainty and requests discriminating evidence.
 
@@ -196,13 +196,13 @@ This section specifies a minimal layer that can be inserted into a regulated age
 
 ## 6.2 Minimal operating policy
 
-- If $A$ exceeds a threshold: downgrade posture, block commits, request discriminating evidence (falsifiers/tests).
+- If $`A`$ exceeds a threshold: downgrade posture, block commits, request discriminating evidence (falsifiers/tests).
 
-- If $D$ rises: treat as epistemic conflict; maintain competing models rather than forcing consensus.
+- If $`D`$ rises: treat as epistemic conflict; maintain competing models rather than forcing consensus.
 
-- If $S$ fails under paraphrase/order changes: label judge telemetry unreliable; revert to safer modes or require review.
+- If $`S`$ fails under paraphrase/order changes: label judge telemetry unreliable; revert to safer modes or require review.
 
-- If $K$ rises (silent reversion / self-disowning): fail commit-integrity checks, withhold commits, and require explicit change-basis logging.
+- If $`K`$ rises (silent reversion / self-disowning): fail commit-integrity checks, withhold commits, and require explicit change-basis logging.
 
 # 7. Metrics
 
@@ -210,13 +210,13 @@ Verifier-free systems require measurements that do not assume oracle correctness
 
 ## 7.1 Selection uncertainty metrics
 
-- Tie/abstain mass $A$
+- Tie/abstain mass $`A`$
 
-- Disagreement entropy $D$
+- Disagreement entropy $`D`$
 
-- Margin statistics $M$
+- Margin statistics $`M`$
 
-- Stability score $S$
+- Stability score $`S`$
 
 ## 7.2 Thrash / cycling metrics
 
@@ -258,7 +258,7 @@ Measure: time-to-analysis proxies, reversal count under new evidence, compute-to
 
 Inject conflicting sources, misleading claims, and prompt-injection instructions mid-task.
 
-**Prediction:** the Verifier Gap Layer increases $A$ and $D$, tightens posture, and blocks commits rather than confidently proceeding.
+**Prediction:** the Verifier Gap Layer increases $`A`$ and $`D`$, tightens posture, and blocks commits rather than confidently proceeding.
 
 ## 8.3 Experiment C: stability under paraphrase and ordering
 
@@ -306,9 +306,9 @@ The proposed response is architectural: introduce a Verifier Gap Layer that trea
 
 1.  **Verifier vs. selection.** Two columns: (a) verifiable tasks with oracle verifier, (b) verifier-gap tasks with judge telemetry and commit gating.
 
-2.  **Coupled loop failure.** Generator $\rightarrow$ Judge $\rightarrow$ optimization loop with annotated failure modes (cycling, drift, tie collapse).
+2.  **Coupled loop failure.** Generator $`\rightarrow`$ Judge $`\rightarrow`$ optimization loop with annotated failure modes (cycling, drift, tie collapse).
 
-3.  **Verifier Gap Layer block diagram.** Candidates, bounded selection, telemetry extraction $(A,D,S)$, posture $g(t)$, commit gate, audit trace.
+3.  **Verifier Gap Layer block diagram.** Candidates, bounded selection, telemetry extraction $`(A,D,S)`$, posture $`g(t)`$, commit gate, audit trace.
 
 # Appendix B: Minimal Verifier Gap Layer checklist
 
@@ -322,19 +322,19 @@ The proposed response is architectural: introduce a Verifier Gap Layer that trea
 
 - What remains unknown (not merely uncertain)?
 
-- What is the current abstain/tie mass $A$ and disagreement $D$?
+- What is the current abstain/tie mass $`A`$ and disagreement $`D`$?
 
 - Is a commit requested? If yes, what rollback/provenance/falsifiers are attached?
 
 # Appendix C: Minimal pseudocode (conceptual)
 
-1.  Generate $N$ candidates under a compute budget.
+1.  Generate $`N`$ candidates under a compute budget.
 
 2.  Run bounded tournament/pairwise selection.
 
-3.  Compute telemetry $(A,D,M,S,J)$.
+3.  Compute telemetry $`(A,D,M,S,J)`$.
 
-4.  Map telemetry to posture $g(t)$ (budgets, allowed actions).
+4.  Map telemetry to posture $`g(t)`$ (budgets, allowed actions).
 
 5.  If posture is tight: block commits; request discriminating evidence.
 

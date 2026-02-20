@@ -1,7 +1,7 @@
 # Critics-as-Sensors \large Abstention-Gated Selection for Verifier-Free Discovery
 
 **Version:** v0.1  
-**PDF:** [open PDF](./main.pdf) *(latest.pdf missing)*  
+**PDF:** [main.pdf](./main.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
@@ -90,7 +90,7 @@ We define a selection primitive suitable for verifier-free domains.
 ### 4.1 Bounded candidate generation
 
 
-Generate a small set of candidates ($K$) where each candidate is an **analysis artifact**: it must include levers, predictions, falsifiers, and uncertainty boundaries. The goal is not “more text,” but a small set of competing, testable causal stories.
+Generate a small set of candidates ($`K`$) where each candidate is an **analysis artifact**: it must include levers, predictions, falsifiers, and uncertainty boundaries. The goal is not “more text,” but a small set of competing, testable causal stories.
 
 
 ### 4.2 Bounded pairwise selection
@@ -160,7 +160,7 @@ This is the same spirit as regulated tool use: selection itself is a high-levera
 
 Add verifier-free selection metrics to the series’ evaluation family:
 
-- **Selection budget:** candidates $K$, number of comparisons, number of cycles.
+- **Selection budget:** candidates $`K`$, number of comparisons, number of cycles.
 
 - **Abstention mass:** tie/abstain rate; preference entropy; win margin.
 
@@ -184,7 +184,7 @@ Compare:
 
 - baseline: retrieve + summarize + single synthesis
 
-- regulated: $K$ candidates + tournament selection + abstention gating + evidence escalation
+- regulated: $`K`$ candidates + tournament selection + abstention gating + evidence escalation
 
 Measure time-to-analysis, compute-to-analysis, reversals, and post-hoc expert grading.
 

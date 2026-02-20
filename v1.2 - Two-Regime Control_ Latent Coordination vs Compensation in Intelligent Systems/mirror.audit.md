@@ -1,13 +1,8 @@
-# Audit: Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems
+# Audit — Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems (v1.2)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v1.2 - Two-Regime Control_ Latent Coordination vs Compensation in Intelligent Systems.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

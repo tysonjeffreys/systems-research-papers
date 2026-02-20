@@ -1,13 +1,8 @@
-# Audit: The Verifier Gap
+# Audit — The Verifier Gap (v0.1)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v0.1 - The Verifier Gap | Regulation for Non-Verifiable Reasoning.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

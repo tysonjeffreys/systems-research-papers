@@ -1,7 +1,7 @@
 # Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems
 
 **Version:** v1.2  
-**PDF:** [open PDF](./v1.2%20-%20Two-Regime%20Control_%20Latent%20Coordination%20vs%20Compensation%20in%20Intelligent%20Systems.pdf) *(latest.pdf missing)*  
+**PDF:** [v1.2 - Two-Regime Control_ Latent Coordination vs Compensation in Intelligent Systems.pdf](./v1.2%20-%20Two-Regime%20Control_%20Latent%20Coordination%20vs%20Compensation%20in%20Intelligent%20Systems.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
@@ -100,17 +100,17 @@ Intuitively: the system is “holding together” by spending energy on correcti
 ## 3. Formal framing
 
 
-Let the embodied system have physical state $s(t)$ (e.g., joint positions/velocities, base pose, contact state) and control $u(t)$ (e.g., torques, target accelerations, motor commands). Let $\pi$ denote the task policy (learned or engineered) and $\mathcal{C}$ denote constraints (stability, safety, contacts, limits).
+Let the embodied system have physical state $`s(t)`$ (e.g., joint positions/velocities, base pose, contact state) and control $`u(t)`$ (e.g., torques, target accelerations, motor commands). Let $`\pi`$ denote the task policy (learned or engineered) and $`\mathcal{C}`$ denote constraints (stability, safety, contacts, limits).
 
 We separate control into a low-cost coordination component and a higher-cost override component:
 
-$$
+``` math
 u(t) = u_0(s(t), \pi) + \Delta u(t)
-$$
+```
 
-- $u_0$ is the nominal low-level controller / primitive stack.
+- $`u_0`$ is the nominal low-level controller / primitive stack.
 
-- $\Delta u$ represents corrective overrides from arbitration, replanning, gain escalation, and emergency stabilization.
+- $`\Delta u`$ represents corrective overrides from arbitration, replanning, gain escalation, and emergency stabilization.
 
 We hypothesize that regime membership is best characterized not by task success alone, but by **internal regulatory cost**: how much corrective contention is required to maintain behavior.
 
@@ -118,9 +118,9 @@ We hypothesize that regime membership is best characterized not by task success 
 ## 4. A measurable compensation index
 
 
-We define a scalar **compensation index** $C(t)$ as a weighted combination of measurable proxies:
+We define a scalar **compensation index** $`C(t)`$ as a weighted combination of measurable proxies:
 
-$$
+``` math
 C(t) = w_\tau\,\|\tau(t)\|^2
 + w_{\dot u}\,\|\dot u(t)\|^2
 + w_{\Sigma}\,\operatorname{tr}(\Sigma(t))
@@ -128,25 +128,25 @@ C(t) = w_\tau\,\|\tau(t)\|^2
 + w_{\text{slip}}\,r_{\text{slip}}(t)
 + w_{\text{sat}}\,r_{\text{sat}}(t)
 + w_{J}\,u_{J}(t)
-$$
+```
 
 We treat learned **critics / judges** as *telemetry sources*, not authorities. In many deployments there is no ground-truth verifier for “is this action actually safe/efficient?” in the moment. A useful posture is therefore: let critics contribute uncertainty signals, and let **abstention / tie mass** tighten posture rather than forcing a brittle choice.
 
 where, depending on platform:
 
-- $\tau(t)$: joint torque vector (or motor current proxy)
+- $`\tau(t)`$: joint torque vector (or motor current proxy)
 
-- $\dot u(t)$: control derivative (or jerk proxy via commanded acceleration derivatives)
+- $`\dot u(t)`$: control derivative (or jerk proxy via commanded acceleration derivatives)
 
-- $\Sigma(t)$: estimator covariance (or prediction error proxy)
+- $`\Sigma(t)`$: estimator covariance (or prediction error proxy)
 
-- $r_{\text{plan}}(t)$: replanning / override rate (events per second)
+- $`r_{\text{plan}}(t)`$: replanning / override rate (events per second)
 
-- $r_{\text{slip}}(t)$: slip rate / contact instability metric
+- $`r_{\text{slip}}(t)`$: slip rate / contact instability metric
 
-- $r_{\text{sat}}(t)$: actuator saturation / limit hits
+- $`r_{\text{sat}}(t)`$: actuator saturation / limit hits
 
-- $u_{J}(t)$: abstention / tie mass from learned critics (e.g., probability that one or more monitors cannot confidently rank an action or classify a contact state); treat high $u_{J}$ as epistemic uncertainty that should tighten posture.
+- $`u_{J}(t)`$: abstention / tie mass from learned critics (e.g., probability that one or more monitors cannot confidently rank an action or classify a contact state); treat high $`u_{J}`$ as epistemic uncertainty that should tighten posture.
 
 
 ### 4.1 Normalization
@@ -154,11 +154,11 @@ where, depending on platform:
 
 Raw units differ across terms. In practice, normalize each term by a baseline scale measured under stable operation:
 
-$$
+``` math
 \tilde z(t) = \frac{z(t)}{\mathbb{E}[z\mid\text{stable}] + \epsilon}
-$$
+```
 
-and compute $C(t)$ using $\tilde z$ to make weights interpretable.
+and compute $`C(t)`$ using $`\tilde z`$ to make weights interpretable.
 
 
 ### 4.2 Persistence matters: filtered index and duty cycle
@@ -166,30 +166,30 @@ and compute $C(t)$ using $\tilde z$ to make weights interpretable.
 
 Compensation is not an instantaneous value; the pathological mode is sustained residence.
 
-Define a low-pass filtered index $\bar C(t)$:
+Define a low-pass filtered index $`\bar C(t)`$:
 
-$$
+``` math
 \dot{\bar C}(t) = \frac{1}{\tau_c}(C(t) - \bar C(t))
-$$
+```
 
-with $\tau_c$ chosen to match “regime timescale” (e.g., 0.5–3 s).
+with $`\tau_c`$ chosen to match “regime timescale” (e.g., 0.5–3 s).
 
 Define a binary compensation indicator with hysteresis:
 
-$$
+``` math
 H(t) = \begin{cases}
 1 & \bar C(t) > \theta_{\uparrow} \\
 0 & \bar C(t) < \theta_{\downarrow}
 \end{cases}
-$$
+```
 
-and the compensation duty cycle over a window $[t_0, t_1]$:
+and the compensation duty cycle over a window $`[t_0, t_1]`$:
 
-$$
+``` math
 \operatorname{DC}(t_0,t_1) = \frac{1}{t_1-t_0}\int_{t_0}^{t_1} H(t)\,dt
-$$
+```
 
-Interpretation: - $H(t)=1$ indicates the system is in compensation. - $\operatorname{DC}$ measures how long it stays there.
+Interpretation: - $`H(t)=1`$ indicates the system is in compensation. - $`\operatorname{DC}`$ measures how long it stays there.
 
 
 ## 5. The baseline regulator layer
@@ -201,23 +201,23 @@ We propose a slow regulator layer that shapes the system’s operating posture w
 ### 5.1 Regulator objective
 
 
-Let $L_{\text{task}}(s,u)$ represent task loss or tracking error. The regulator introduces an internal cost that penalizes sustained compensation:
+Let $`L_{\text{task}}(s,u)`$ represent task loss or tracking error. The regulator introduces an internal cost that penalizes sustained compensation:
 
-$$
+``` math
 J = \int_0^T \Big( L_{\text{task}}(s(t),u(t))
 + \lambda\,\phi(\bar C(t))
 + \gamma\,\|\dot{\bar C}(t)\|^2 \Big)\,dt
-$$
+```
 
-- $\phi$ is convex above a threshold (so high compensation is increasingly expensive).
+- $`\phi`$ is convex above a threshold (so high compensation is increasingly expensive).
 
-- $\|\dot{\bar C}\|^2$ discourages thrash/oscillation.
+- $`\|\dot{\bar C}\|^2`$ discourages thrash/oscillation.
 
 
 ### 5.2 What the regulator controls
 
 
-The regulator acts on **meta-parameters** $p(t)$ that modulate how the stack behaves:
+The regulator acts on **meta-parameters** $`p(t)`$ that modulate how the stack behaves:
 
 - impedance / stiffness / damping gains
 
@@ -229,7 +229,7 @@ The regulator acts on **meta-parameters** $p(t)$ that modulate how the stack beh
 
 - “reset / recenter” routines (short stabilization protocols)
 
-Critically: the regulator does not replace $u_0$ or the planner; it biases them.
+Critically: the regulator does not replace $`u_0`$ or the planner; it biases them.
 
 
 ### 5.3 A simple control law
@@ -237,9 +237,9 @@ Critically: the regulator does not replace $u_0$ or the planner; it biases them.
 
 A practical regulator can be rule-based, learned, or hybrid. A minimal deterministic version:
 
-1.  Maintain a target band $[C^-, C^+]$ for $\bar C$.
+1.  Maintain a target band $`[C^-, C^+]`$ for $`\bar C`$.
 
-2.  When $\bar C$ rises persistently, invoke an **anti-compensation action** appropriate to the domain:
+2.  When $`\bar C`$ rises persistently, invoke an **anti-compensation action** appropriate to the domain:
 
     - reduce unnecessary stiffness (when safe)
 
@@ -249,7 +249,7 @@ A practical regulator can be rule-based, learned, or hybrid. A minimal determini
 
     - adjust gait/stance parameters toward stable manifold
 
-3.  When $\bar C$ returns to band, gradually relax posture back toward efficient settings.
+3.  When $`\bar C`$ returns to band, gradually relax posture back toward efficient settings.
 
 Pseudocode sketch:
 
@@ -261,7 +261,7 @@ Pseudocode sketch:
 
     apply_params(p)
 
-The exact $\delta$ operators are platform-specific; what matters is the architecture: slow regulation of posture using a measured internal-cost signal.
+The exact $`\delta`$ operators are platform-specific; what matters is the architecture: slow regulation of posture using a measured internal-cost signal.
 
 
 ### 5.4 Why 1–5 Hz
@@ -283,14 +283,14 @@ A slow regulator prevents the system from “fighting itself” by reacting on t
 
 In many real deployments there is no online “verifier” that can certify whether a novel contact, terrain interaction, or recovery maneuver is truly safe and efficient. When we add learned critics (from demonstrations, simulation, or logged rollouts), the correct stance is not to treat them as authorities, but as additional sensors.
 
-Operationally, use **abstention / tie mass** as a first-class uncertainty signal. Let $\bar u_{J}(t)$ be a low-pass filtered version of $u_{J}(t)$ on the same regime timescale as $\bar C(t)$. When $\bar u_{J}(t)$ rises, the regulator should *tighten posture* (reduce speed/force envelopes, widen safety margins, shorten horizons) and preferentially invoke low-impact routines (recenter, re-estimate, re-localize) until confidence returns. Persistent abstention should downgrade the system into a conservative controller or safe mode rather than forcing additional “clever” action.
+Operationally, use **abstention / tie mass** as a first-class uncertainty signal. Let $`\bar u_{J}(t)`$ be a low-pass filtered version of $`u_{J}(t)`$ on the same regime timescale as $`\bar C(t)`$. When $`\bar u_{J}(t)`$ rises, the regulator should *tighten posture* (reduce speed/force envelopes, widen safety margins, shorten horizons) and preferentially invoke low-impact routines (recenter, re-estimate, re-localize) until confidence returns. Persistent abstention should downgrade the system into a conservative controller or safe mode rather than forcing additional “clever” action.
 
 A minimal gating rule (illustrative):
 
-> if $\bar C(t)$ is high *or* $\bar u_{J}(t)$ is high: tighten posture; prefer recenter/sense actions; add hysteresis.\
+> if $`\bar C(t)`$ is high *or* $`\bar u_{J}(t)`$ is high: tighten posture; prefer recenter/sense actions; add hysteresis.\
 > if either persists past a time limit: switch to conservative safety controller / stop.
 
-Governance clause: learned critics can drift and can be gamed. They should be **versioned, monitored, and replay-tested** (a small fixed scenario suite) in the same way the telemetry$\rightarrow$posture mapping is monitored. When critic health is unknown, degrade to conservative heuristics and envelopes (fail closed). **Phase-discipline reproducibility hook.** Treat irreversible writes/actuation as transition-window events: commit only in low-compensation windows, cap override duration, and require rollbackable recovery when windows are missed. This “write when stable” discipline reduces irreproducible flailing and preserves auditability under perturbation. **Phase-discipline commitment-integrity hook.** If evidence is unchanged, posture must not silently revert. Any stance reversal in a commit window requires explicit change-basis logging (new evidence, discovered constraint, or explicit prior error), otherwise the regulator should withhold commit rights and route to gather/recenter. **Phase-discipline commit windows.** Commit windows require telemetry and should open only when strain and uncertainty signals are within bounded posture limits. The selection gate is the upstream posture controller: when telemetry degrades, it withholds commit rights and routes the system to evidence-gathering or recovery instead.
+Governance clause: learned critics can drift and can be gamed. They should be **versioned, monitored, and replay-tested** (a small fixed scenario suite) in the same way the telemetry$`\rightarrow`$posture mapping is monitored. When critic health is unknown, degrade to conservative heuristics and envelopes (fail closed). **Phase-discipline reproducibility hook.** Treat irreversible writes/actuation as transition-window events: commit only in low-compensation windows, cap override duration, and require rollbackable recovery when windows are missed. This “write when stable” discipline reduces irreproducible flailing and preserves auditability under perturbation. **Phase-discipline commitment-integrity hook.** If evidence is unchanged, posture must not silently revert. Any stance reversal in a commit window requires explicit change-basis logging (new evidence, discovered constraint, or explicit prior error), otherwise the regulator should withhold commit rights and route to gather/recenter. **Phase-discipline commit windows.** Commit windows require telemetry and should open only when strain and uncertainty signals are within bounded posture limits. The selection gate is the upstream posture controller: when telemetry degrades, it withholds commit rights and routes the system to evidence-gathering or recovery instead.
 
 
 ## 6. Why this improves energy and robustness
@@ -300,15 +300,15 @@ Governance clause: learned critics can drift and can be gamed. They should be **
 ### 6.1 Convex energy argument
 
 
-For many systems, energy/power increases nonlinearly with control effort (e.g., torque, current, switching losses). If power $P$ is convex in effective effort $e(t)$, then reducing time spent at high effort yields disproportionate energy savings.
+For many systems, energy/power increases nonlinearly with control effort (e.g., torque, current, switching losses). If power $`P`$ is convex in effective effort $`e(t)`$, then reducing time spent at high effort yields disproportionate energy savings.
 
-Let $e(t)$ be an effort proxy correlated with $\bar C(t)$. Total energy:
+Let $`e(t)`$ be an effort proxy correlated with $`\bar C(t)`$. Total energy:
 
-$$
+``` math
 E = \int_0^T P(e(t))\,dt
-$$
+```
 
-If $P$ is convex, then flattening spikes and reducing duty cycle in the high-effort regime reduces $E$ more than proportional to mean effort reduction.
+If $`P`$ is convex, then flattening spikes and reducing duty cycle in the high-effort regime reduces $`E`$ more than proportional to mean effort reduction.
 
 
 ### 6.2 Robustness via internal cycling
@@ -360,9 +360,9 @@ At comparable task success, adding a baseline regulator that reduces compensatio
 
 **Conditions**: - A1: baseline controller/planner only - A2: same controller + compensation index + baseline regulator
 
-**Metrics**: - Joules/meter, peak current, temperature rise - slip/fall rate under perturbation - recovery time to stable gait - compensation duty cycle $\operatorname{DC}$
+**Metrics**: - Joules/meter, peak current, temperature rise - slip/fall rate under perturbation - recovery time to stable gait - compensation duty cycle $`\operatorname{DC}`$
 
-**Negative test**: if $\operatorname{DC}$ decreases but energy does not, the claimed link between regime regulation and efficiency is weakened.
+**Negative test**: if $`\operatorname{DC}`$ decreases but energy does not, the claimed link between regime regulation and efficiency is weakened.
 
 
 ### 7.3 Experiment B: manipulation with contact uncertainty
@@ -390,7 +390,7 @@ At comparable task success, adding a baseline regulator that reduces compensatio
 
 This paper does not claim novelty in hierarchical control or impedance control per se. The proposed contribution is the explicit **regime-level variable** and **slow regulatory layer**:
 
-Viewed through a more general regulation lens, $\bar C(t)$ (optionally augmented with $\bar u_{J}(t)$) is simply a scalar *restraint / strain telemetry* that drives posture. The meta-parameters $p(t)$ correspond to an operating band (tight vs loose envelopes), and the recenter/safe-mode routines correspond to explicit recovery transitions. In other words, this is an embodied instantiation of “regulation as a ground condition”: measure internal strain, gate risky actions under uncertainty, and bias the system back toward low-compensation basins.
+Viewed through a more general regulation lens, $`\bar C(t)`$ (optionally augmented with $`\bar u_{J}(t)`$) is simply a scalar *restraint / strain telemetry* that drives posture. The meta-parameters $`p(t)`$ correspond to an operating band (tight vs loose envelopes), and the recenter/safe-mode routines correspond to explicit recovery transitions. In other words, this is an embodied instantiation of “regulation as a ground condition”: measure internal strain, gate risky actions under uncertainty, and bias the system back toward low-compensation basins.
 
 - Hierarchical stacks exist, but often lack an explicit “time in compensation” signal.
 
@@ -402,7 +402,7 @@ Viewed through a more general regulation lens, $\bar C(t)$ (optionally augmented
 ## 9. Limitations and scope
 
 
-- **Domain specificity**: the best $C(t)$ terms differ by platform; a single universal index is unlikely.
+- **Domain specificity**: the best $`C(t)`$ terms differ by platform; a single universal index is unlikely.
 
 - **Safety tradeoffs**: reducing stiffness is not always appropriate; the regulator must be constraint-aware.
 
@@ -431,16 +431,16 @@ By defining a measurable compensation index and adding a slow baseline regulator
 
 
 
-### A.1 Computing $C(t)$ from logs
+### A.1 Computing $`C(t)`$ from logs
 
 
 Minimal viable index for many robots:
 
-$$
+``` math
 C(t) = w_\tau\,\|\tau(t)\|^2 + w_{\dot u}\,\|\dot u(t)\|^2 + w_{\text{sat}}\,r_{\text{sat}}(t)
-$$
+```
 
-Add terms as available: - covariance/prediction error - slip/contact instability - replanning/override counters - critic abstention/tie mass $u_{J}(t)$ (if using learned monitors)
+Add terms as available: - covariance/prediction error - slip/contact instability - replanning/override counters - critic abstention/tie mass $`u_{J}(t)`$ (if using learned monitors)
 
 
 ### A.2 A simple “recenter” routine (platform-agnostic)
@@ -460,7 +460,7 @@ A recenter routine is a brief protocol to restore coupling:
 ### A.3 Mapping to a general internal-load variable
 
 
-If you already track an internal load $x(t)$ (activation/effort), treat $\bar C(t)$ as a robotics-specific estimator of $x(t)$.
+If you already track an internal load $`x(t)`$ (activation/effort), treat $`\bar C(t)`$ as a robotics-specific estimator of $`x(t)`$.
 
 
 ------------------------------------------------------------------------
@@ -472,9 +472,9 @@ If you already track an internal load $x(t)$ (activation/effort), treat $\bar C(
 
 1.  **State-space sketch**: latent coordination basin vs compensation basin, with arrows showing regulator bias back toward coordination.
 
-2.  **Time-series plot**: $\bar C(t)$, $H(t)$, and energy proxy over a perturbation event (with/without regulator).
+2.  **Time-series plot**: $`\bar C(t)`$, $`H(t)`$, and energy proxy over a perturbation event (with/without regulator).
 
-3.  **Energy vs duty-cycle**: energy per task vs $\operatorname{DC}$ across trials.
+3.  **Energy vs duty-cycle**: energy per task vs $`\operatorname{DC}`$ across trials.
 
 **Note on authorship and tools:**\
 This work was developed through iterative reasoning, modeling, and synthesis. Large language models were used as a collaborative tool to assist with drafting, clarification, and cross-domain translation. All conceptual framing, structure, and final judgments remain the responsibility of the author.

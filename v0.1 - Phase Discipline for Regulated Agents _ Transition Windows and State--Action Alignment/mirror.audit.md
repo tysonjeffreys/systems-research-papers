@@ -1,13 +1,8 @@
-# Audit: Phase Discipline for Regulated Agents
+# Audit — Phase Discipline for Regulated Agents (v0.1)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v0.1 - Phase Discipline for Regulated Agents _ Transition Windows and State--Action Alignment.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

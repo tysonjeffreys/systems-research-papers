@@ -1,7 +1,7 @@
 # Regulatory Ground for Agentic AI
 
 **Version:** v1.4.1  
-**PDF:** [open PDF](./v1.4.1_Regulatory%20Ground%20for%20Agentic%20AI%20%7C%20Why%20Trustworthy%20Discovery%20Requires%20Band-Limited%20Optimization.pdf) *(latest.pdf missing)*  
+**PDF:** [v1.4.1_Regulatory Ground for Agentic AI | Why Trustworthy Discovery Requires Band-Limited Optimization.pdf](./v1.4.1_Regulatory%20Ground%20for%20Agentic%20AI%20%7C%20Why%20Trustworthy%20Discovery%20Requires%20Band-Limited%20Optimization.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
@@ -50,7 +50,7 @@ This paper does not require claims about machine consciousness. It focuses on op
 
 - auditability and reproducibility
 
-**Operational reproducibility profile.** In this framework, reproducibility means replayability + traceability by default, and strict determinism only where task semantics require it. Replayability means rerunning the same input under a fixed system version and reproducing the candidate set, the selection outcome (or outcome distribution with tie/abstain mass), and the posture trajectory $g(t)$ that governed action rights. Traceability means we can audit retrieved evidence, active constraints, and why an output was committed vs withheld. Determinism is required for safety labels/flags and other contract fields; for synthesis artifacts, bounded variation is acceptable when commit gating and abstention discipline are preserved.
+**Operational reproducibility profile.** In this framework, reproducibility means replayability + traceability by default, and strict determinism only where task semantics require it. Replayability means rerunning the same input under a fixed system version and reproducing the candidate set, the selection outcome (or outcome distribution with tie/abstain mass), and the posture trajectory $`g(t)`$ that governed action rights. Traceability means we can audit retrieved evidence, active constraints, and why an output was committed vs withheld. Determinism is required for safety labels/flags and other contract fields; for synthesis artifacts, bounded variation is acceptable when commit gating and abstention discipline are preserved.
 
 ## Positioning
 
@@ -181,12 +181,12 @@ The regulator maintains an operating band B ∈ Green,Yellow,Orange,Red.
 
 ## Risk scoring
 
-For each candidate action $a$, compute a risk score:
-$$
+For each candidate action $`a`$, compute a risk score:
+``` math
 \begin{equation}
 R(a) = w_I I + w_U U + w_V V + w_A A + w_S S \in [0,1]
 \end{equation}
-$$
+```
 where:
 
 - I = Impact magnitude (external change / physical hazard)
@@ -279,13 +279,13 @@ We separate policy-level parameters (owned, versioned, auditable) from runtime m
 
 ## Global restraint signal as a shared boundary condition
 
-In embodied control, biological regulation uses global constraint signals—variables that affect all subsystems and therefore synchronize distributed control without issuing explicit commands. These signals function as boundary conditions within which local controllers operate . The same pattern can be instantiated in agent stacks as a global restraint signal (GRS): a slow, shared scalar (or low-dimensional vector) that every component respects as a set of shared budgets . Let $g(t)\in[0,1]$ denote the global restraint state, where higher values imply tighter operating posture. A minimal deterministic definition is:
-$$
+In embodied control, biological regulation uses global constraint signals—variables that affect all subsystems and therefore synchronize distributed control without issuing explicit commands. These signals function as boundary conditions within which local controllers operate . The same pattern can be instantiated in agent stacks as a global restraint signal (GRS): a slow, shared scalar (or low-dimensional vector) that every component respects as a set of shared budgets . Let $`g(t)\in[0,1]`$ denote the global restraint state, where higher values imply tighter operating posture. A minimal deterministic definition is:
+``` math
 \begin{equation}
 g(t)=\mathrm{clip}\left(\alpha_1\,\rho_{\text{near-miss}}(t)+\alpha_2\,\rho_{\text{rollback}}(t)+\alpha_3\,U(t)+\alpha_4\,\rho_{\text{anomaly}}(t),\ 0,\ 1\right)
 \end{equation}
-$$
-where $\rho_{\text{near-miss}}$ and $\rho_{\text{rollback}}$ are event rates over a trailing window, $U(t)$ is an uncertainty proxy (e.g., predictive entropy, self-consistency, or disagreement), and $\rho_{\text{anomaly}}$ captures unexpected outcomes (timeouts, non-determinism, constraint pressure). In non-verifiable domains, $U(t)$ can also include *judge/critic abstention or tie mass* $u_{\text{tie}}(t)$: the rolling probability mass that learned critics assign to `tie`/`abstain` on recent evaluations .
+```
+where $`\rho_{\text{near-miss}}`$ and $`\rho_{\text{rollback}}`$ are event rates over a trailing window, $`U(t)`$ is an uncertainty proxy (e.g., predictive entropy, self-consistency, or disagreement), and $`\rho_{\text{anomaly}}`$ captures unexpected outcomes (timeouts, non-determinism, constraint pressure). In non-verifiable domains, $`U(t)`$ can also include *judge/critic abstention or tie mass* $`u_{\text{tie}}(t)`$: the rolling probability mass that learned critics assign to `tie`/`abstain` on recent evaluations .
 
 #### Judge-as-sensor telemetry.
 
@@ -293,22 +293,22 @@ Learned critics (reward models, LLM-as-judge evaluators, relativistic critics) a
 
 - **Treat critic outputs as telemetry features, not decisions.** Log scores, rationales, disagreement, and failure patterns.
 
-- **Promote abstention/tie mass to a first-class uncertainty signal.** Rising $u_{\text{tie}}(t)$ should increase $g(t)$ and trigger conservative behaviors (more sensing, replication, shorter horizons).
+- **Promote abstention/tie mass to a first-class uncertainty signal.** Rising $`u_{\text{tie}}(t)`$ should increase $`g(t)`$ and trigger conservative behaviors (more sensing, replication, shorter horizons).
 
-- **Promote commitment-integrity failures to posture signals.** If the system shows no-evidence reversion or self-disowning reasoning across turns, increase $g(t)$ and withhold commit rights until explicit change-basis evidence is logged.
+- **Promote commitment-integrity failures to posture signals.** If the system shows no-evidence reversion or self-disowning reasoning across turns, increase $`g(t)`$ and withhold commit rights until explicit change-basis evidence is logged.
 
 - **Treat incentive-conflict markers as risk telemetry.** When the task directly targets the platform/sponsor incentive surface, tighten posture by default (stronger provenance, bounded claims, and abstain/gather preference) rather than assuming neutral selection pressure.
 
 - **Govern the critic like the mapping.** Critics drift and can be gamed; version the judge model/prompt and monitor calibration and tie-rate drift, with explicit rollback criteria .
 
-The regulator computes effective budgets and thresholds as functions of $g(t)$, for example:
-$$
+The regulator computes effective budgets and thresholds as functions of $`g(t)`$, for example:
+``` math
 \begin{align}
 b_{\mathrm{eff}}(t) &= b_{\min} + (1-g(t))(b_0-b_{\min})\\
 \tau_{\mathrm{Yellow}}(t) &= \tau_{\mathrm{Yellow},0} - k\,g(t)
 \end{align}
-$$
-Thus, the system tightens exploration automatically when telemetry indicates rising constraint pressure. Importantly, $g(t)$ does not directly select actions; it biases the permissible operating region, keeping planner, router, and executor synchronized rather than letting each subsystem compensate locally (a common source of thrash).
+```
+Thus, the system tightens exploration automatically when telemetry indicates rising constraint pressure. Importantly, $`g(t)`$ does not directly select actions; it biases the permissible operating region, keeping planner, router, and executor synchronized rather than letting each subsystem compensate locally (a common source of thrash).
 
 ## Governance: ownership, legitimacy, and change control
 
@@ -330,11 +330,11 @@ A key implication is that contradiction-driven revision should be evaluated long
 
 - Reversal count: how often does the agent re-encounter and re-resolve the same contradiction (a proxy for thrash)? These measures distinguish “patching the last answer” from model or policy revision that shapes future behavior.
 
-## Validating and change-controlling the telemetry$\rightarrow$posture mapping
+## Validating and change-controlling the telemetry$`\rightarrow`$posture mapping
 
-A key risk is that the telemetry$\rightarrow$posture mapping for $g(t)$ quietly becomes a new “implicit knob”. To prevent this, treat the mapping as a governed artifact with explicit tests, staged rollout, and rollback.
+A key risk is that the telemetry$`\rightarrow`$posture mapping for $`g(t)`$ quietly becomes a new “implicit knob”. To prevent this, treat the mapping as a governed artifact with explicit tests, staged rollout, and rollback.
 
-**1) Freeze the mapping as a versioned policy artifact.** Represent the mapping as a small, auditable object: feature definitions, window sizes, weights/thresholds, saturation bounds, and rate limits (e.g., $\lvert \dot{g}(t)\rvert \le \gamma$). Changes to this artifact require the same change-control path as other policy commitments (invariants and budget ranges). **1a) If judges/critics feed posture, treat them as governed sensors.** If $g(t)$ depends on learned judges (reward models, LLM-as-judge prompts, relativistic critics), then the judge specification is part of the mapping: model/version identifiers, prompts/rubrics, sampling settings, and the definition of `tie`/`abstain` outputs. These components drift and can be exploited (cycling dynamics, degenerate “always tie” behavior), so they must be monitored and rolled back like any other telemetry feature .
+**1) Freeze the mapping as a versioned policy artifact.** Represent the mapping as a small, auditable object: feature definitions, window sizes, weights/thresholds, saturation bounds, and rate limits (e.g., $`\lvert \dot{g}(t)\rvert \le \gamma`$). Changes to this artifact require the same change-control path as other policy commitments (invariants and budget ranges). **1a) If judges/critics feed posture, treat them as governed sensors.** If $`g(t)`$ depends on learned judges (reward models, LLM-as-judge prompts, relativistic critics), then the judge specification is part of the mapping: model/version identifiers, prompts/rubrics, sampling settings, and the definition of `tie`/`abstain` outputs. These components drift and can be exploited (cycling dynamics, degenerate “always tie” behavior), so they must be monitored and rolled back like any other telemetry feature .
 
 **2) Validate with offline replay and counterfactual evaluation.** Use audit logs (telemetry, band transitions, near-misses, rollbacks, outcomes) to replay episodes under candidate mappings:
 
@@ -344,15 +344,15 @@ A key risk is that the telemetry$\rightarrow$posture mapping for $g(t)$ quietly 
 
 - *Stability:* does it avoid oscillation (hysteresis) and reduce thrash (rapid band flipping, repeated retries)?
 
-This can be run in “shadow mode” first: compute $g(t)$ and recommended bands without enforcing them, then compare predicted interventions to realized outcomes.
+This can be run in “shadow mode” first: compute $`g(t)`$ and recommended bands without enforcing them, then compare predicted interventions to realized outcomes.
 
 **3) Stress tests and adversarial telemetry.** Introduce controlled perturbations (sensor noise spikes, tool timeouts, contradictory evidence bursts, partial observability) to ensure the mapping responds monotonically to genuine risk signals while remaining robust to benign variance.
 
-**4) Drift detection and monitoring.** Instrument monitors for (i) feature distribution shift, (ii) intervention-rate drift (time spent in Yellow/Orange/Red), and (iii) outcome drift (near-miss rate, rollback success rate, postmortem frequency). Drift triggers can force review, clamp $g(t)$ to a conservative ceiling, or switch to a “safe default” mapping.
+**4) Drift detection and monitoring.** Instrument monitors for (i) feature distribution shift, (ii) intervention-rate drift (time spent in Yellow/Orange/Red), and (iii) outcome drift (near-miss rate, rollback success rate, postmortem frequency). Drift triggers can force review, clamp $`g(t)`$ to a conservative ceiling, or switch to a “safe default” mapping.
 
 **5) Staged rollout with rollback criteria.** Deploy mapping updates via canary cohorts with explicit acceptance criteria (reduced near-misses at constant or improved task success, bounded increases in recovery time, no increase in severe violations). If criteria fail, revert the mapping version immediately.
 
-**6) Keep the mapping subordinate to policy commitments.** Even when $g(t)$ is adaptive, it should not override invariants; it only modulates budgets and thresholds within approved ranges. This preserves accountability: policy sets the permissible operating envelope; telemetry selects posture within that envelope.
+**6) Keep the mapping subordinate to policy commitments.** Even when $`g(t)`$ is adaptive, it should not override invariants; it only modulates budgets and thresholds within approved ranges. This preserves accountability: policy sets the permissible operating envelope; telemetry selects posture within that envelope.
 
 # State, disclosure, and coherence: operating discipline for discovery agents
 
@@ -366,13 +366,13 @@ Regulation should explicitly guard against lock-in to high-risk regimes. In the 
 
 - require a recovery period (quiescence window) after sustained high restraint,
 
-- and downgrade capabilities (e.g., disable external WRITE/EXEC) until stabilization signals recover. Operationalization. Let $g(t)$ be the global restraint signal (Section 7). Define an activation/load proxy $L(t)$ (e.g., anomaly rate, rollback count, near-miss frequency, uncertainty spikes). Enforce duty-cycle bounds such as:
-  $$
-\begin{align}
-\sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Orange}] &\le T_{\mathrm{orange}} \\
-\sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Red}] &\le T_{\mathrm{red}}
-\end{align}
-  $$
+- and downgrade capabilities (e.g., disable external WRITE/EXEC) until stabilization signals recover. Operationalization. Let $`g(t)`$ be the global restraint signal (Section 7). Define an activation/load proxy $`L(t)`$ (e.g., anomaly rate, rollback count, near-miss frequency, uncertainty spikes). Enforce duty-cycle bounds such as:
+  ``` math
+  \begin{align}
+  \sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Orange}] &\le T_{\mathrm{orange}} \\
+  \sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Red}] &\le T_{\mathrm{red}}
+  \end{align}
+  ```
   and require a recovery procedure when exceeded.
 
 ## State-dependent disclosure as a runtime invariant
@@ -453,11 +453,11 @@ Defaults (tune per project):
 
 Define calibrated triggers (example):
 
-- If claim confidence \< 0.6 and claim would be cited as fact $\Rightarrow$ require retrieval evidence (READ) and cite source.
+- If claim confidence \< 0.6 and claim would be cited as fact $`\Rightarrow`$ require retrieval evidence (READ) and cite source.
 
-- If source is untrusted/low-signal (forums, anonymous posts) $\Rightarrow$ mark as weak evidence or exclude.
+- If source is untrusted/low-signal (forums, anonymous posts) $`\Rightarrow`$ mark as weak evidence or exclude.
 
-- If tool output is non-deterministic or environment-dependent $\Rightarrow$ require rerun or replication step.
+- If tool output is non-deterministic or environment-dependent $`\Rightarrow`$ require rerun or replication step.
 
 ## Spec A plan structure (forced checkpoints)
 
@@ -539,13 +539,13 @@ Example parameterization (tune per platform): Band Base speed cap Arm speed cap 
 
 Compute a “distance-to-violation” margin m (minimum over all monitored constraints). Examples:
 
-- $m = d - d_{\min}$ (obstacle margin)
+- $`m = d - d_{\min}`$ (obstacle margin)
 
-- $m = \tau_{\max} - \lvert\tau\rvert$ (torque margin)
+- $`m = \tau_{\max} - \lvert\tau\rvert`$ (torque margin)
 
-- $m = q_{\max} - q$ (joint limit margin)
+- $`m = q_{\max} - q`$ (joint limit margin)
 
-- If $\min(m) < \epsilon$, then:
+- If $`\min(m) < \epsilon`$, then:
 
   - switch to safety controller
 

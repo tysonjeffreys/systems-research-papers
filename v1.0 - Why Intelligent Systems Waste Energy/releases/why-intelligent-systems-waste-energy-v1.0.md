@@ -1,7 +1,7 @@
 # Why Intelligent Systems Waste Energy
 
 **Version:** v1.0  
-**PDF:** [open PDF](./v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy.pdf) *(latest.pdf missing)*  
+**PDF:** [v1.0 - Why Intelligent Systems Waste Energy.pdf](./v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
@@ -50,22 +50,22 @@ This creates a posture analogous to operating biological systems under constant 
 
 ## Baseline-aware energy model
 
-Let an inference system be characterized by an internal activity state $x(t)$, representing aggregate computational load (e.g., active tokens/sec, attention bandwidth, routing complexity).
+Let an inference system be characterized by an internal activity state $`x(t)`$, representing aggregate computational load (e.g., active tokens/sec, attention bandwidth, routing complexity).
 
 Total power draw:
-$$
+``` math
 \mathcal{P}(t)=P_{\mathrm{idle}} + k\,x(t)^{\alpha}
 \qquad \text{with } \alpha \ge 1
-$$
+```
 
-Energy over time horizon $T$:
-$$
+Energy over time horizon $`T`$:
+``` math
 E=\int_{0}^{T}\mathcal{P}(t)\,dt
-$$
+```
 
 In current deployments:
 
-- $x(t)$ remains persistently elevated
+- $`x(t)`$ remains persistently elevated
 
 - variability is managed reactively
 
@@ -73,23 +73,23 @@ In current deployments:
 
 ## Introducing a regulated baseline
 
-We define a baseline operating point $x_0$, representing the lowest internally stable load consistent with readiness.
+We define a baseline operating point $`x_0`$, representing the lowest internally stable load consistent with readiness.
 
 Rather than minimizing task loss alone, the system optimizes:
-$$
+``` math
 J=\mathbb{E}\!\left[
 \int_{0}^{T}
 \Big(
 C_{\mathrm{task}}(t) + \lambda\,(x(t)-x_{0})^{2} + \mu\,\ddot{x}(t)^{2}
 \Big)\,dt
 \right]
-$$
+```
 
 Where:
 
-$(x-x_0)^2$ penalizes sustained deviation from baseline
+$`(x-x_0)^2`$ penalizes sustained deviation from baseline
 
-$\ddot{x}^{2}$ penalizes internal thrashing and micro-spikes
+$`\ddot{x}^{2}`$ penalizes internal thrashing and micro-spikes
 
 This reframes inference as:
 
@@ -101,7 +101,7 @@ From this model, several infrastructure-level effects follow mechanically:
 
 **Reduced average utilization**
 
-Systems spend the majority of time near $x_0$, lowering mean power draw.
+Systems spend the majority of time near $`x_0`$, lowering mean power draw.
 
 **Lower peak-to-average ratio (PAR)**
 
@@ -109,7 +109,7 @@ Shorter, rarer compute spikes reduce provisioning and cooling requirements.
 
 **Suppressed instability**
 
-Penalizing $\ddot{x}^{2}$ reduces high-frequency load oscillations that amplify energy waste.
+Penalizing $`\ddot{x}^{2}`$ reduces high-frequency load oscillations that amplify energy waste.
 
 **Economic implication**
 
@@ -123,24 +123,24 @@ These gains arise without reducing model capability—only its operating posture
 
 The baseline-aware energy posture described above cannot be implemented purely at the infrastructure layer. It must emerge from agent-level regulation.
 
-We model an agent’s internal activity state $x(t)$ as governed by:
-$$
+We model an agent’s internal activity state $`x(t)`$ as governed by:
+``` math
 \dot{x}(t)=-\beta\,(x(t)-x_{0}) + u(t) + w(t)
-$$
+```
 
 Where:
 
-$-\beta\,(x(t)-x_0)$: intrinsic return-to-baseline
+$`-\beta\,(x(t)-x_0)`$: intrinsic return-to-baseline
 
-$u(t)$: policy-driven activation (reasoning, planning, retrieval)
+$`u(t)`$: policy-driven activation (reasoning, planning, retrieval)
 
-$w(t)$: environmental or task perturbations
+$`w(t)`$: environmental or task perturbations
 
 This introduces an explicit **regulatory pull** toward baseline.
 
 ## Interpretation in LLM-based agents
 
-For language or tool-using agents, $x(t)$ may correspond to:
+For language or tool-using agents, $`x(t)`$ may correspond to:
 
 - reasoning depth
 
@@ -262,17 +262,17 @@ For comparable task success, a regulated system should demonstrate:
 
 **Lower integrated energy proxy**
 
-$E=\int_{0}^{T}\mathcal{P}(t)\,dt$ decreases, primarily by reducing time spent at high $x(t)$ (convex region of the power curve).
+$`E=\int_{0}^{T}\mathcal{P}(t)\,dt`$ decreases, primarily by reducing time spent at high $`x(t)`$ (convex region of the power curve).
 
 - **Reduced internal volatility**
 
-  Lower $\int_{0}^{T}\lVert\ddot{x}(t)\rVert^{2}\,dt$, fewer spikes, fewer oscillatory “thrash” patterns.
+  Lower $`\int_{0}^{T}\lVert\ddot{x}(t)\rVert^{2}\,dt`$, fewer spikes, fewer oscillatory “thrash” patterns.
 
 - **Graceful degradation under constraint**
 
   When capped (compute, battery, thermal, latency), performance should degrade smoothly rather than catastrophically.
 
-These predictions can be evaluated whether $\mathcal{P}(t)$ is measured directly (hardware power draw) or approximated via a proxy (tokens/sec, GPU utilization, CPU package power, actuator current, duty cycle).
+These predictions can be evaluated whether $`\mathcal{P}(t)`$ is measured directly (hardware power draw) or approximated via a proxy (tokens/sec, GPU utilization, CPU package power, actuator current, duty cycle).
 
 ## Experiment A: LLM inference as a regulated dynamical system
 
@@ -282,13 +282,13 @@ Setup:
 
 - Choose a fixed model + fixed hardware.
 
-- Define internal load $x(t)$ as a measurable proxy:
+- Define internal load $`x(t)`$ as a measurable proxy:
 
   - GPU utilization, GPU power draw, or tokens/sec (or a weighted combination).
 
 - Implement a simple regulator:
 
-  - Add a controller that enforces a “baseline band” for $x(t)$ outside explicit high-demand spans.
+  - Add a controller that enforces a “baseline band” for $`x(t)`$ outside explicit high-demand spans.
 
   <!-- -->
 
@@ -310,7 +310,7 @@ Metrics:
 
 - Output quality proxy (human eval or rubric score)
 
-- Variance/peaks of $x(t)$, and $\int_{0}^{T}\lVert\ddot{x}(t)\rVert^{2}\,dt$ (as a thrash proxy)
+- Variance/peaks of $`x(t)`$, and $`\int_{0}^{T}\lVert\ddot{x}(t)\rVert^{2}\,dt`$ (as a thrash proxy)
 
 Prediction: A regulated inference pipeline will reduce energy and thermal spikes, and reduce tail-latency variance, especially under mixed workloads.
 
@@ -320,7 +320,7 @@ Goal: Test whether internal load regularization improves long-horizon efficiency
 
 - Choose an agent benchmark (tool use / multi-step tasks / environment navigation).
 
-- Define $x(t)$ as:
+- Define $`x(t)`$ as:
 
   - number of concurrent tool calls
 
@@ -331,9 +331,9 @@ Goal: Test whether internal load regularization improves long-horizon efficiency
   - frequency of replanning events
 
 - Add a penalty term:
-  $$
-\lambda \,\lVert x(t)-x_{0}\rVert^{2}+\mu\,\lVert \dot{x}(t)\rVert^{2}
-  $$
+  ``` math
+  \lambda \,\lVert x(t)-x_{0}\rVert^{2}+\mu\,\lVert \dot{x}(t)\rVert^{2}
+  ```
 
 Metrics:
 
@@ -353,9 +353,9 @@ Goal: Test whether a baseline regulator reduces actuator energy and improves rob
 
 - A standard locomotion or manipulation controller (MPC/RL/policy).
 
-- Define internal load $x(t)$ as a proxy for “control strain,” e.g.:
+- Define internal load $`x(t)`$ as a proxy for “control strain,” e.g.:
 
-  - total torque squared $\sum_i \tau_i^2$
+  - total torque squared $`\sum_i \tau_i^2`$
 
   - jerk / acceleration penalties
 
@@ -365,9 +365,9 @@ Goal: Test whether a baseline regulator reduces actuator energy and improves rob
 
 - Add a slow baseline regulator (1–5 Hz) that:
 
-  - detects persistent elevation of $x(t)$
+  - detects persistent elevation of $`x(t)`$
 
-  - adjusts gait parameters / controller gains / planning horizon to return toward $\mathcal{X}_0$
+  - adjusts gait parameters / controller gains / planning horizon to return toward $`\mathcal{X}_0`$
 
 baseline.
 
@@ -387,7 +387,7 @@ Prediction: The regulated system will show reduced energy usage and fewer catast
 
 This hypothesis would be weakened if:
 
-- energy use does not decrease despite reduced time at high $x(t)$
+- energy use does not decrease despite reduced time at high $`x(t)`$
 
 - regulation improves energy but consistently causes unacceptable task degradation
 
@@ -438,49 +438,49 @@ This appendix expands the formal treatment of baseline regulation introduced in 
 ## Expanded Dynamics
 
 Let the internal state of an intelligent system be represented by:
-$$
+``` math
 x(t)\in\mathbb{R}^{n}
-$$
-where $x(t)$ includes latent variables such as internal activation, attentional intensity, inference depth, or metabolic/compute load.
+```
+where $`x(t)`$ includes latent variables such as internal activation, attentional intensity, inference depth, or metabolic/compute load.
 
 We define a baseline state:
-$$
+``` math
 x_0
-$$
+```
 representing a low-energy, regulated internal configuration.
 
 System dynamics are modeled as:
-$$
+``` math
 \dot{x}(t)=f(x(t),u(t),e(t)) - g(x(t),x_0)
-$$
+```
 
 Where:
 
-$u(t)$: task-driven inputs
+$`u(t)`$: task-driven inputs
 
-$e(t)$: environmental perturbations
+$`e(t)`$: environmental perturbations
 
-$g(x(t),x_0)$: a restoring (regulatory) term pulling the system toward baseline
+$`g(x(t),x_0)`$: a restoring (regulatory) term pulling the system toward baseline
 
-The key distinction from standard dynamical systems is that $g(x(t),x_0)$ the regulatory term is always active, not only during explicit recovery phases.
+The key distinction from standard dynamical systems is that $`g(x(t),x_0)`$ the regulatory term is always active, not only during explicit recovery phases.
 
 ## Internal Cost Function
 
 We define internal load as deviation from baseline:
-$$
+``` math
 L(t):=\|x(t)-x_0\|^{2}
-$$
+```
 
 Total system cost over time becomes:
-$$
+``` math
 J=\mathbb{E}\!\left[\int_{0}^{T}\big(C_{\mathrm{task}}(t)+\lambda\,P(t)\big)\,dt\right]
-$$
+```
 
 Where:
 
-$C_{\mathrm{task}}(t)$ captures task performance or error
+$`C_{\mathrm{task}}(t)`$ captures task performance or error
 
-$\lambda$ controls sensitivity to internal load
+$`\lambda`$ controls sensitivity to internal load
 
 This formulation explicitly penalizes sustained internal activation, even when task error is low.
 
@@ -489,33 +489,33 @@ This formulation explicitly penalizes sustained internal activation, even when t
 Other formulations may be appropriate depending on system design:
 
 - Energy-weighted load:
-  $$
-L(x)=(x-x_0)^{\top}W(x-x_0)
-  $$
+  ``` math
+  L(x)=(x-x_0)^{\top}W(x-x_0)
+  ```
 
 - Temporal load (duty cycle penalty):
-  $$
-L(t_0,t_1):=\int_{t_0}^{t_1}\mathbf{1}\{\|x(t)-x_0\|>\theta\}\,dt
-  $$
+  ``` math
+  L(t_0,t_1):=\int_{t_0}^{t_1}\mathbf{1}\{\|x(t)-x_0\|>\theta\}\,dt
+  ```
 
 - Rate-of-change penalty:
-  $$
-L_{\dot{x}}:=\|\dot{x}(t)\|^{2}
-  $$
+  ``` math
+  L_{\dot{x}}:=\|\dot{x}(t)\|^{2}
+  ```
 
-These are alternative definitions of internal load; in all cases, the overall objective remains $J=\mathbb{E}\!\left[\int_{0}^{T}\big(C_{\mathrm{task}}(t)+\lambda\,P(t)\big)\,dt\right]$ the same, with $P$ chosen per system. These variants emphasize that baseline regulation is not a single equation, but a design constraint.
+These are alternative definitions of internal load; in all cases, the overall objective remains $`J=\mathbb{E}\!\left[\int_{0}^{T}\big(C_{\mathrm{task}}(t)+\lambda\,P(t)\big)\,dt\right]`$ the same, with $`P`$ chosen per system. These variants emphasize that baseline regulation is not a single equation, but a design constraint.
 
 ## Stability Considerations
 
 A regulated baseline introduces a Lyapunov-like structure:
-$$
+``` math
 V(x)=\|x-x_0\|^{2}
-$$
+```
 
 If:
-$$
+``` math
 \dot{V}(x)\le 0 \quad \text{when } u(t)=0,\; w(t)=0,
-$$
+```
 then the system is provably stable around its baseline state.
 
 Importantly, stability here does not imply inactivity—it implies bounded, recoverable activation.
@@ -526,7 +526,7 @@ This appendix grounds the abstract formulation in existing intelligent systems.
 
 ## Large Language Model Inference
 
-For LLMs, $x(t)$ may represent:
+For LLMs, $`x(t)`$ may represent:
 
 - attention activation magnitude
 
@@ -550,7 +550,7 @@ This reframes “idle” inference as a regulated state, not a passive one.
 
 In agent-based systems:
 
-- $x(t)$ may include planning horizon
+- $`x(t)`$ may include planning horizon
 
 - memory retrieval intensity
 
@@ -572,7 +572,7 @@ This directly addresses runaway deliberation and tool overuse.
 
 For robots:
 
-- $x(t)$ maps to actuator readiness
+- $`x(t)`$ maps to actuator readiness
 
 - sensor polling rate
 
@@ -592,22 +592,22 @@ This aligns closely with biological motor regulation and offers clear energy sav
 
 ## Mapping internal state and baseline to real systems
 
-This table is intentionally practical: each row names an internal state $x(t)$, proposes a baseline $\mathcal{X}_0$, and points to a measurement path for $\mathcal{P}(t)$.
+This table is intentionally practical: each row names an internal state $`x(t)`$, proposes a baseline $`\mathcal{X}_0`$, and points to a measurement path for $`\mathcal{P}(t)`$.
 
-**Table: Concept $\to$ implementation mapping**
+**Table: Concept $`\to`$ implementation mapping**
 
-| **System** | **What is $x(t)$ (internal state)** | **What is $\mathcal{X}_0$ (baseline manifold / setpoint)** | **How to measure $\mathcal{P}(t)$ (power / cost)** |
+| **System** | **What is $`x(t)`$ (internal state)** | **What is $`\mathcal{X}_0`$ (baseline manifold / setpoint)** | **How to measure $`\mathcal{P}(t)`$ (power / cost)** |
 |:---|:---|:---|:---|
 | **LLM inference (single request)** | KV-cache size + activation statistics; token rate; entropy/uncertainty proxy; “compute intensity” counters | Low-token-rate / low-activation “idle” mode between bursts; target entropy band; target token/sec budget | GPU power (NVML), GPU utilization, SM occupancy; joules/token |
 | **LLM serving (production)** | Queue depth, batch size, token throughput, cache hit rate, context length distribution | Stable low-queue regime; target batch size band; target context window policy | Cluster power draw; energy per request; P95 latency vs joules |
 | **Agent loop (tool-using)** | Tool-call rate, action frequency, planner depth, memory writes, context | Low-action “monitoring” baseline with bounded deliberation; target duty cycle | CPU/GPU power + tool-call cost + wall-clock |
-| **Robotics control** | Joint states + $\dot{x}$; control effort $u(t)$; slip/error metrics | Stable gait/stance manifold; minimal corrective torque regime | Electrical power to motors; $\int \tau^{2}$; thermal load |
+| **Robotics control** | Joint states + $`\dot{x}`$; control effort $`u(t)`$; slip/error metrics | Stable gait/stance manifold; minimal corrective torque regime | Electrical power to motors; $`\int \tau^{2}`$; thermal load |
 | **Online learning / RL** | Policy update magnitude; exploration rate; gradient norms; variance | “Quiescent” consolidation windows; bounded update norm; scheduled rest | GPU/TPU power during training; joules per improvement |
 | **Distributed systems (general)** | CPU load, IO contention, retry rate, backpressure, latency variance | Low-retry, low-contention steady-state | Power + cloud cost + failure/retry energy |
 
 Baseline regulation is implementable whenever (a) internal load can be sensed and (b) quiescence/throttling can be enforced…
 
-Measure $\mathcal{P}(t)$ with NVML / motor current / cluster meters. Choose an internal state proxy $x(t)$. Define a baseline $\mathcal{X}_0$ as a low-load setpoint band. Add a regulator term to penalize deviation + thrash. Enforce duty-cycle limits.
+Measure $`\mathcal{P}(t)`$ with NVML / motor current / cluster meters. Choose an internal state proxy $`x(t)`$. Define a baseline $`\mathcal{X}_0`$ as a low-load setpoint band. Add a regulator term to penalize deviation + thrash. Enforce duty-cycle limits.
 
 # Appendix C — Glossary
 

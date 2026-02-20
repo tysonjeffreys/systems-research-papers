@@ -1,7 +1,7 @@
 # The Time-to-Analysis Layer \large Pressure Points in AI-Assisted Research Systems
 
 **Version:** v1.2  
-**PDF:** [open PDF](./v1.2%20-%20%20The%20Time-to-Analysis%20Layer%20Pressure%20Points%20in%20AI-Assisted%20Research%20Systems.pdf) *(latest.pdf missing)*  
+**PDF:** [v1.2 -  The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems.pdf](./v1.2%20-%20%20The%20Time-to-Analysis%20Layer%20Pressure%20Points%20in%20AI-Assisted%20Research%20Systems.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

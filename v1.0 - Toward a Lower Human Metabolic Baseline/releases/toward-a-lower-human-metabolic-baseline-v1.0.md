@@ -1,14 +1,14 @@
 # Toward a Lower Human Metabolic Baseline
 
 **Version:** v1.0  
-**PDF:** [open PDF](./v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline.pdf) *(latest.pdf missing)*  
+**PDF:** [v1.0 - Toward a Lower Human Metabolic Baseline.pdf](./v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort GitHub rendering. Canonical artifact is the PDF.
 # Abstract
 
-Modern humans routinely ventilate far above immediate metabolic demand, a pattern associated with chronic sympathetic activation, elevated stress physiology, and metabolic inefficiency. While respiration is commonly modeled as a volumetric response to oxygen need, respiratory physiology demonstrates that ventilation is governed primarily by carbon dioxide (CO$_2$), airway resistance, and autonomic feedback loops.
+Modern humans routinely ventilate far above immediate metabolic demand, a pattern associated with chronic sympathetic activation, elevated stress physiology, and metabolic inefficiency. While respiration is commonly modeled as a volumetric response to oxygen need, respiratory physiology demonstrates that ventilation is governed primarily by carbon dioxide (CO$`_2`$), airway resistance, and autonomic feedback loops.
 
 This paper proposes that humans possess an underexplored lower metabolic baseline characterized by ultra-low, mechanically constrained ventilation (“micro-ventilation”) that more closely matches cellular gas-exchange requirements. Such a baseline may be established and stabilized through diaphragm-led breathing and mechanically constrained airflow. During early training, minimizing stress-driven overbreathing may aid stabilization; however, once established, this baseline can persist automatically through normal cognition and activity.
 
@@ -18,11 +18,11 @@ Ancient hatha yoga practices may encode practical, mechanical methods for retrai
 
 At rest, modern adults typically breathe with:
 
-- tidal volume $\approx$ 500 mL
+- tidal volume $`\approx`$ 500 mL
 
-- respiratory rate $\approx$ 12–20 breaths per minute
+- respiratory rate $`\approx`$ 12–20 breaths per minute
 
-However, resting metabolic oxygen demand is substantially lower than what this pattern supplies. Respiratory drive is governed primarily by CO$_2$ concentration detected by central and peripheral chemoreceptors, not by oxygen availability. Chronic over-ventilation reduces arterial CO$_2$ (hypocapnia), altering blood pH, increasing neural excitability, and biasing autonomic tone toward sympathetic dominance.
+However, resting metabolic oxygen demand is substantially lower than what this pattern supplies. Respiratory drive is governed primarily by CO$`_2`$ concentration detected by central and peripheral chemoreceptors, not by oxygen availability. Chronic over-ventilation reduces arterial CO$`_2`$ (hypocapnia), altering blood pH, increasing neural excitability, and biasing autonomic tone toward sympathetic dominance.
 
 Modern environments—characterized by sustained cognitive engagement, psychosocial stress, posture-induced thoracic restriction, and continuous stimulation—encourage elevated ventilation even at rest. This suggests a widespread mismatch between ventilation and true metabolic demand, potentially contributing to chronic stress physiology and metabolic inefficiency.
 
@@ -56,7 +56,7 @@ Mechanically increasing upper-airway resistance:
 
 - prevents compensatory deep inhalation
 
-- increases CO$_2$ tolerance
+- increases CO$`_2`$ tolerance
 
 - suppresses excessive respiratory motor output
 
@@ -114,11 +114,11 @@ This framework explicitly recognizes biological boundaries:
 
 - Humans cannot enter true hibernation.
 
-- Oxygen and CO$_2$ exchange remain mandatory.
+- Oxygen and CO$`_2`$ exchange remain mandatory.
 
 - Core temperature regulation must be maintained.
 
-- CO$_2$ accumulation imposes strict survival limits.
+- CO$`_2`$ accumulation imposes strict survival limits.
 
 - Metabolic activity cannot be suspended indefinitely.
 
@@ -154,7 +154,7 @@ These implications arise from improved regulation rather than altered biological
 
 # Proposed Research Directions
 
-1.  Continuous CO$_2$ and ventilation monitoring in trained subjects
+1.  Continuous CO$`_2`$ and ventilation monitoring in trained subjects
 
 2.  Autonomic markers during mechanically constrained ventilation
 

@@ -20,15 +20,21 @@ baseline-papers/
       VERSION
       figures/ (optional)
       refs.bib (optional)
-      latest.pdf                # committed convenience artifact
-  md/
-    <paper-slug>.md             # GitHub-readable mirror (best-effort)
+      latest.pdf                # stable convenience artifact (committed)
+      mirror.md                 # stable GitHub-readable mirror (best-effort)
+      mirror.audit.md           # mirror rendering audit (best-effort)
+      releases/
+        <paper-slug>-vX.Y.Z.pdf # immutable versioned artifact (copy of latest.pdf)
+        <paper-slug>-vX.Y.Z.md  # immutable versioned artifact (copy of mirror.md)
+        README.md               # optional index for releases/
   release-notes/
     <tag>.md                    # e.g. why-energy-v1.1.0.md
   CHANGELOG.md                  # repo-level, links to per-paper entries
   PUBLISHING.md
   README.md
   .gitignore
+  tools/
+    generate-paper-mirrors.mjs
 
 ---
 
@@ -84,7 +90,7 @@ If any ignored files are currently tracked:
 - Goal: after this, `git status` should not show build artifacts as tracked.
 
 ### 3) Create new stable folder layout
-- Create folders: `papers/`, `md/`, `release-notes/` if missing.
+- Create folders: `papers/`, `release-notes/`, `tools/` if missing.
 
 ### 4) Rename/move each paper folder into papers/<paper-slug>/
 Current folders are named like:
@@ -128,14 +134,15 @@ Inside each `papers/<slug>/`:
 - Do not keep multiple PDFs tracked in git. Only commit `latest.pdf`.
   (Older version PDFs should live in GitHub Releases, not the repo.)
 
-### 7) Build Markdown mirrors in /md
+### 7) Build Markdown mirrors inside each paper folder
 For each paper:
-- Create `md/<paper-slug>.md`
-- This is a best-effort mirror. Preserve headings, lists, citations, and math where feasible.
-- Add a short header:
-  - Title
-  - Version
-  - Link to `papers/<slug>/latest.pdf`
+- Create `papers/<paper-slug>/mirror.md` (best-effort, preserves math as LaTeX)
+- Create `papers/<paper-slug>/mirror.audit.md` (flags macro/command risks for GitHub rendering)
+- Create `papers/<paper-slug>/releases/` and place immutable, versioned copies:
+  - `<paper-slug>-vX.Y.Z.md`
+  - `<paper-slug>-vX.Y.Z.pdf` (requires latest.pdf to exist)
+Preferred method:
+- Run `node tools/generate-paper-mirrors.mjs`
 
 ### 8) Repo-level README index + CHANGELOG
 - `README.md` should list each paper:
@@ -144,7 +151,7 @@ For each paper:
   - Links:
     - Prism source folder
     - latest.pdf
-    - md mirror
+    - mirror.md
     - per-paper CHANGELOG.md
 
 - `CHANGELOG.md` (repo-level) should include:
@@ -192,9 +199,15 @@ In repo-level `CHANGELOG.md`:
 - Do not remove sections or functionality unless explicitly instructed.
 - Keep formatting consistent with existing paper style.
 
-### 4) Update Markdown mirror
-- Update `md/<paper-slug>.md` to reflect the new content (best-effort for math).
-- Ensure header reflects new version and links to latest.pdf.
+### 4) Generate/update mirror.md + audit + versioned release artifacts
+Run:
+- `node tools/generate-paper-mirrors.mjs`
+
+This will:
+- write `papers/<slug>/mirror.md`
+- write `papers/<slug>/mirror.audit.md`
+- create immutable `papers/<slug>/releases/<slug>-vX.Y.Z.md` if missing
+- create immutable `papers/<slug>/releases/<slug>-vX.Y.Z.pdf` if `latest.pdf` exists and versioned PDF is missing
 
 ### 5) Human-in-the-loop: export PDF from Prism
 STOP and ask the user to:
@@ -204,10 +217,11 @@ STOP and ask the user to:
 
 After the user exports:
 - Verify `latest.pdf` file timestamp changed (or file hash changed).
+- Re-run `node tools/generate-paper-mirrors.mjs` so the versioned PDF copy is created in `papers/<slug>/releases/`.
 
 ### 6) Cleanliness check
 - `git status` should show only meaningful changes:
-  - main.tex, VERSION, CHANGELOG.md, md mirror, latest.pdf
+  - main.tex, VERSION, CHANGELOG.md, mirror.md, mirror.audit.md, latest.pdf, and new `releases/<slug>-vX.Y.Z.*` files
 - There should be no build junk tracked. If present, add ignore rules or remove from tracking.
 
 ### 7) Commit
@@ -235,8 +249,16 @@ Create a GitHub Release for the tag with:
 - Release notes copied from:
   - `release-notes/<tag>.md` (create/update this file)
 - Assets:
-  - `papers/<paper-slug>/latest.pdf`
-  - `md/<paper-slug>.md` (optional as asset; also exists in repo)
+  - `papers/<paper-slug>/releases/<paper-slug>-vX.Y.Z.pdf`
+  - `papers/<paper-slug>/releases/<paper-slug>-vX.Y.Z.md`
+  - (optional) `papers/<paper-slug>/latest.pdf`
+
+---
+
+## Mirror policy
+- PDF is canonical; `mirror.md` is best-effort for GitHub readability.
+- `mirror.audit.md` lists math commands and rendering-risk signals that may differ from PDF output.
+- Never overwrite existing files in `papers/<slug>/releases/` unless explicitly instructed.
 
 ---
 
@@ -256,10 +278,13 @@ If batch branch is used:
   - updated sources
   - updated VERSION
   - updated per-paper CHANGELOG
-  - updated md mirror
+  - updated mirror.md
+  - updated mirror.audit.md
+  - versioned artifacts exist in `releases/` for the bumped version:
+    - `<slug>-vX.Y.Z.pdf`
+    - `<slug>-vX.Y.Z.md`
   - updated latest.pdf
   - updated repo CHANGELOG
 - Tag exists and points at `main`.
 - GitHub Release exists with PDF attached and release notes.
-
-
+- Never overwrite existing files in `papers/<slug>/releases/` unless explicitly instructed.

@@ -1,13 +1,8 @@
-# Audit: The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems
+# Audit — The Time-to-Analysis Layer \large Pressure Points in AI-Assisted Research Systems (v1.2)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v1.2 -  The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

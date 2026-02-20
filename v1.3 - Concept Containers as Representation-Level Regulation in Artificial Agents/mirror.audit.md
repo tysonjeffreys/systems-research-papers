@@ -1,13 +1,8 @@
-# Audit: Concept Containers as Representation-Level Regulation in Artificial Agents
+# Audit — Concept Containers as Representation-Level Regulation in Artificial Agents (v1.3)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v1.3 - Concept Containers as Representation-Level Regulation in Artificial Agents.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

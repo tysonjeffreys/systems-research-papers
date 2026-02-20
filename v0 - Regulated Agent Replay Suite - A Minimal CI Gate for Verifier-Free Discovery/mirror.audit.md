@@ -1,13 +1,8 @@
-# Audit: Regulated Agent Replay Suite v0
+# Audit — \itshape Agent architectures / robotics / regulated discovery (v0)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v0 - Regulated Agent Replay Suite - A Minimal CI Gate for Verifier-Free Discovery.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

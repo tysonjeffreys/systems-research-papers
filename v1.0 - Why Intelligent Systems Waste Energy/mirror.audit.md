@@ -1,13 +1,8 @@
-# Audit: Why Intelligent Systems Waste Energy
+# Audit — Why Intelligent Systems Waste Energy (v1.0)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./v1.0 - Why Intelligent Systems Waste Energy.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.

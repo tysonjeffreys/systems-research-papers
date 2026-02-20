@@ -1,20 +1,20 @@
 # Phase Discipline for Regulated Agents
 
 **Version:** v0.1  
-**PDF:** [open PDF](./v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment.pdf) *(latest.pdf missing)*  
+**PDF:** [v0.1 - Phase Discipline for Regulated Agents _ Transition Windows and State--Action Alignment.pdf](./v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort GitHub rendering. Canonical artifact is the PDF.
-**Series note.** This paper extends the Baseline regulation series by naming a missing runtime layer: *phase discipline*. Prior papers specify (i) a regulator layer with bands, budgets, rollback, and a telemetry-driven global restraint signal $g(t)$ for trustworthy discovery ; (ii) representation-level commits via concept containers ; (iii) a research-systems objective centered on reusable analysis artifacts and bursty synthesis ; and (iv) verifier-gap governance where learned critics are treated as sensors, with abstention as uncertainty telemetry and commits gated under non-verifiable selection . Here we add a second runtime control variable alongside posture: a phase state $p(t)$ that schedules work types and reserves transition windows for consolidation and commits.
+**Series note.** This paper extends the Baseline regulation series by naming a missing runtime layer: *phase discipline*. Prior papers specify (i) a regulator layer with bands, budgets, rollback, and a telemetry-driven global restraint signal $`g(t)`$ for trustworthy discovery ; (ii) representation-level commits via concept containers ; (iii) a research-systems objective centered on reusable analysis artifacts and bursty synthesis ; and (iv) verifier-gap governance where learned critics are treated as sensors, with abstention as uncertainty telemetry and commits gated under non-verifiable selection . Here we add a second runtime control variable alongside posture: a phase state $`p(t)`$ that schedules work types and reserves transition windows for consolidation and commits.
 
 # Abstract
 
 Band-limited regulation constrains *how risky* an agent may operate (budgets, allowed actions, rollback), but it does not specify *when* different classes of cognitive work should occur. In practice, many failures are not outright constraint violations; they are **state–action mismatches**: deep planning during periods of high internal contention, commitment under unstable selection signals, or exploration when the system is already compensating.
 
-We propose **phase discipline**: a runtime layer that tracks a small phase state $p(t)$ (restore, transition, act) and enforces **state–action alignment** by gating action classes, planning depth, and commit rights based on phase. The key primitive is the **transition window**: a stable interval reserved for consolidation (analysis artifacts), representation commits (concept containers), and policy updates, with **bounded override** as a priced, recoverable mechanism for deliberate phase-breaking.
+We propose **phase discipline**: a runtime layer that tracks a small phase state $`p(t)`$ (restore, transition, act) and enforces **state–action alignment** by gating action classes, planning depth, and commit rights based on phase. The key primitive is the **transition window**: a stable interval reserved for consolidation (analysis artifacts), representation commits (concept containers), and policy updates, with **bounded override** as a priced, recoverable mechanism for deliberate phase-breaking.
 
-We specify a minimal phase controller, relate it to Two-Regime Control (latent coordination vs. compensation), show how it composes with the global restraint signal $g(t)$ and verifier-gap selection telemetry, and propose measurable metrics and A/B experiments in tool-using and robotics settings.
+We specify a minimal phase controller, relate it to Two-Regime Control (latent coordination vs. compensation), show how it composes with the global restraint signal $`g(t)`$ and verifier-gap selection telemetry, and propose measurable metrics and A/B experiments in tool-using and robotics settings.
 
 
 ------------------------------------------------------------------------
@@ -24,9 +24,9 @@ We specify a minimal phase controller, relate it to Two-Regime Control (latent c
 
 ## 1.1 The missing failure mode
 
-In *Regulatory Ground*, trustworthy discovery is framed as a band-limited optimization problem: as capability and actuation increase, failures shift from isolated errors to cascades, and the agent requires an explicit regulator layer (bands, budgets, uncertainty gating, checkpoint/rollback, and safe mode) . That layer controls *risk posture* via a telemetry-driven global restraint signal $g(t)$.
+In *Regulatory Ground*, trustworthy discovery is framed as a band-limited optimization problem: as capability and actuation increase, failures shift from isolated errors to cascades, and the agent requires an explicit regulator layer (bands, budgets, uncertainty gating, checkpoint/rollback, and safe mode) . That layer controls *risk posture* via a telemetry-driven global restraint signal $`g(t)`$.
 
-However, many real failures arise even when $g(t)$ is conservative:
+However, many real failures arise even when $`g(t)`$ is conservative:
 
 - **Thrash**: repeated recomputation and reversals (plan churn) without violating a hard constraint.
 
@@ -40,9 +40,9 @@ These are not primarily “unsafe actions”; they are *operating discipline* fa
 
 We propose adding a second low-dimensional runtime controller:
 
-- **Posture** $g(t)$: how tightly constrained the system should be (budgets, allowed actions, escalation).
+- **Posture** $`g(t)`$: how tightly constrained the system should be (budgets, allowed actions, escalation).
 
-- **Phase** $p(t)$: what operating mode the system should be in (act, restore, transition), which determines what *classes of work* are permitted now.
+- **Phase** $`p(t)`$: what operating mode the system should be in (act, restore, transition), which determines what *classes of work* are permitted now.
 
 The core thesis:
 
@@ -52,7 +52,7 @@ The core thesis:
 
 ## 2.1 Phase variable
 
-Let $p(t)$ be a discrete phase state. A minimal taxonomy:
+Let $`p(t)`$ be a discrete phase state. A minimal taxonomy:
 
 - **Act**: high throughput execution (tool use, exploration, task completion).
 
@@ -114,13 +114,13 @@ In the Baseline series, “baseline” means operating near a stable attractor w
 
 # 4. Composition with runtime regulation
 
-## 4.1 Orthogonality: $g(t)$ vs $p(t)$
+## 4.1 Orthogonality: $`g(t)`$ vs $`p(t)`$
 
 A simple way to compose them:
 
-- $g(t)$ sets *tightness*: budgets, allowed tools, maximum plan depth.
+- $`g(t)`$ sets *tightness*: budgets, allowed tools, maximum plan depth.
 
-- $p(t)$ sets *work type*: what classes of work are allowed now (execute vs consolidate vs recover).
+- $`p(t)`$ sets *work type*: what classes of work are allowed now (execute vs consolidate vs recover).
 
 Example: the system can be in phase **Act** but with high restraint (tight posture)—allowing only short-horizon execution and forbidding irreversible writes. Conversely, the system can be in phase **Transition** with low restraint, enabling deeper consolidation and broader commit rights.
 
@@ -128,9 +128,9 @@ Example: the system can be in phase **Act** but with high restraint (tight postu
 
 Phase and posture should be driven by similar telemetry, but interpreted differently.
 
-**Posture** $g(t)$ uses telemetry to answer: *How risky is it to act?*
+**Posture** $`g(t)`$ uses telemetry to answer: *How risky is it to act?*
 
-**Phase** $p(t)$ uses telemetry to answer: *Is the system stable enough to consolidate/commit, or should it restore, or act?*
+**Phase** $`p(t)`$ uses telemetry to answer: *Is the system stable enough to consolidate/commit, or should it restore, or act?*
 
 Candidate telemetry (existing and new):
 
@@ -157,10 +157,10 @@ This mirrors Regulatory Ground’s emphasis on stability and avoiding oscillatio
 ## 5.1 Phase scheduler
 
 Define a phase scheduler:
-$$
+``` math
 p(t) = \pi(\text{telemetry},\; g(t),\; \text{task context})
-$$
-where $\pi$ is a small state machine (or hybrid controller) with conservative transitions.
+```
+where $`\pi`$ is a small state machine (or hybrid controller) with conservative transitions.
 
 A minimal policy:
 
@@ -184,12 +184,12 @@ A simple action-permission matrix:
 | Action class | Restore | Transition | Act |
 |:---|:--:|:--:|:--:|
 | Monitor / low-cost checks |  |  |  |
-| Evidence gathering (bounded) | $\sim$ |  |  |
-| Deep planning / broad search | $\times$ | $\sim$ |  |
-| Consolidation (analysis artifacts) | $\sim$ |  | $\sim$ |
-| Durable commits (writes/containers/policy) | $\times$ | $^\dagger$ | $\times$ |
+| Evidence gathering (bounded) | $`\sim`$ |  |  |
+| Deep planning / broad search | $`\times`$ | $`\sim`$ |  |
+| Consolidation (analysis artifacts) | $`\sim`$ |  | $`\sim`$ |
+| Durable commits (writes/containers/policy) | $`\times`$ | $`^\dagger`$ | $`\times`$ |
 
-$^\dagger$Commit is gated by uncertainty telemetry and posture: if abstention/tie mass is high, commits are blocked and evidence is required.
+$`^\dagger`$Commit is gated by uncertainty telemetry and posture: if abstention/tie mass is high, commits are blocked and evidence is required.
 
 
 # 6. Bounded override
@@ -204,7 +204,7 @@ Override is an explicit mode with:
 
 - a declared objective and time budget,
 
-- tightened posture $g(t)$ (reduced tool rights, capped depth),
+- tightened posture $`g(t)`$ (reduced tool rights, capped depth),
 
 - and a mandatory recovery path (return to Restore, then Transition).
 
@@ -358,7 +358,7 @@ The correct claim is narrower and testable: *phase discipline reduces internal c
 
 # 11. Conclusion and next steps
 
-We introduced phase discipline as a missing runtime layer in regulated agents: a discrete phase variable $p(t)$ that schedules work types and reserves transition windows for consolidation and commits. It composes naturally with the global restraint signal $g(t)$ (risk posture) and with verifier-gap governance (judge-as-sensor uncertainty telemetry).
+We introduced phase discipline as a missing runtime layer in regulated agents: a discrete phase variable $`p(t)`$ that schedules work types and reserves transition windows for consolidation and commits. It composes naturally with the global restraint signal $`g(t)`$ (risk posture) and with verifier-gap governance (judge-as-sensor uncertainty telemetry).
 
 Immediate next steps:
 

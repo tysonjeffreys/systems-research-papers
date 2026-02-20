@@ -1,7 +1,7 @@
 # Concept Containers as Representation-Level Regulation in Artificial Agents
 
 **Version:** v1.3  
-**PDF:** [open PDF](./v1.3%20-%20Concept%20Containers%20as%20Representation-Level%20Regulation%20in%20Artificial%20Agents.pdf) *(latest.pdf missing)*  
+**PDF:** [v1.3 - Concept Containers as Representation-Level Regulation in Artificial Agents.pdf](./v1.3%20-%20Concept%20Containers%20as%20Representation-Level%20Regulation%20in%20Artificial%20Agents.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 
@@ -12,7 +12,7 @@
 
 We introduce **concept containers**: reusable compressed representations that preserve causal structure while minimizing cognitive or computational cost. We argue that concept containers function as a form of **representation-level regulation** in intelligent agents: they reduce repeated recomputation, lower internal contention, and stabilize decision trajectories while maintaining (or improving) transfer. This framing unifies ideas from temporal abstraction, world modeling, retrieval, and energy-aware AI under a single design objective: **minimize time-to-usable-causal-structure per unit compute**.
 
-We formalize concept containers as learned or constructed abstractions $z$ that support intervention-relevant predictions while enabling compute savings. We propose measurable quality criteria (causal fidelity, transfer, and compute reduction at equal performance), outline architectural patterns for LLM agents and learned controllers, and offer falsifiable experiments. We also describe failure modes—especially over-compression—and practical guardrails (provenance, falsifiers, and confidence).
+We formalize concept containers as learned or constructed abstractions $`z`$ that support intervention-relevant predictions while enabling compute savings. We propose measurable quality criteria (causal fidelity, transfer, and compute reduction at equal performance), outline architectural patterns for LLM agents and learned controllers, and offer falsifiable experiments. We also describe failure modes—especially over-compression—and practical guardrails (provenance, falsifiers, and confidence).
 
 In the companion runtime-regulation framing (*Regulatory Ground for Agentic AI*), containers act as representation-level boundary conditions: they reduce internal thrash so exogenous budgets and uncertainty gating can operate with fewer interventions.
 
@@ -48,17 +48,17 @@ A **concept container** is:
 
 It is not merely a summary, label, or topic tag. A container must support *correct action selection* under relevant interventions.
 
-Formally, let $x$ denote observations (text, sensory streams, states), $a$ denote an intervention/action, and $y$ denote outcomes of interest (success, safety, reward, constraint satisfaction). A container is a mapping $f$:
+Formally, let $`x`$ denote observations (text, sensory streams, states), $`a`$ denote an intervention/action, and $`y`$ denote outcomes of interest (success, safety, reward, constraint satisfaction). A container is a mapping $`f`$:
 
-$$
+``` math
 z = f(x_{1:t})
-$$
+```
 
-such that for a target intervention set $\mathcal{A}$, the representation $z$ is sufficient to predict the effect of interventions:
+such that for a target intervention set $`\mathcal{A}`$, the representation $`z`$ is sufficient to predict the effect of interventions:
 
-$$
+``` math
 \forall a \in \mathcal{A}:\quad p(y \mid do(a), x_{1:t}) \approx p(y \mid do(a), z)
-$$
+```
 
 This captures “preserves causal structure” as intervention-relevant sufficiency.
 
@@ -96,7 +96,7 @@ A summary compresses content. A container compresses **structure**.
 
 ## 3.1 Repeated recomputation and internal contention
 
-Consider an agent producing a sequence of internal states $h_t$ while solving a task. Define a proxy for internal activation/effort $x(t)$ (tokens generated, tool calls, planner expansions, or compute time).
+Consider an agent producing a sequence of internal states $`h_t`$ while solving a task. Define a proxy for internal activation/effort $`x(t)`$ (tokens generated, tool calls, planner expansions, or compute time).
 
 Many agents repeatedly reconstruct similar intermediate models:
 
@@ -110,19 +110,19 @@ This is **internal contention**: the system uses capacity to manage instability 
 
 ## 3.2 Containers reduce activation duty cycle
 
-Let $\bar x(t)$ be a filtered internal-load signal. Define a high-activation indicator:
+Let $`\bar x(t)`$ be a filtered internal-load signal. Define a high-activation indicator:
 
-$$
+``` math
 H(t) = \mathbb{1}[\bar x(t) > \theta]
-$$
+```
 
 and an activation duty cycle:
 
-$$
+``` math
 DC(t_0,t_1) = \frac{1}{t_1-t_0}\int_{t_0}^{t_1} H(t)\,dt
-$$
+```
 
-**Hypothesis:** If an agent uses good containers, it achieves comparable task success while reducing $DC$ and peak $x(t)$ by reusing causal structure rather than recomputing it.
+**Hypothesis:** If an agent uses good containers, it achieves comparable task success while reducing $`DC`$ and peak $`x(t)`$ by reusing causal structure rather than recomputing it.
 
 ## 3.3 Regulation framing
 
@@ -150,13 +150,13 @@ Two practical integration points:
 
 Large-scale systems pay a direct cost for repeated recomputation: tokens, tool calls, and model forward passes translate into compute time and energy.
 
-Let $k$ be a compute proxy (tokens, tool invocations, FLOPs). Total compute over a task:
+Let $`k`$ be a compute proxy (tokens, tool invocations, FLOPs). Total compute over a task:
 
-$$
+``` math
 K = \int_0^T k(t)\,dt
-$$
+```
 
-If containers reduce long tails of deliberation and repeated stabilization, then $K$ decreases at equal task success.
+If containers reduce long tails of deliberation and repeated stabilization, then $`K`$ decreases at equal task success.
 
 A second-order benefit is variance reduction: fewer thrash cycles means more stable trajectories in internal state space, which reduces the need for corrective computation.
 
@@ -226,7 +226,7 @@ A practical agent architecture:
 
 - **Detector:** identifies when a task is entering repeated recomputation (thrash signals)
 
-- **Synthesizer:** constructs a container $z$ from evidence and reasoning traces
+- **Synthesizer:** constructs a container $`z`$ from evidence and reasoning traces
 
 - **Bank:** stores containers with provenance and scope
 
@@ -358,7 +358,7 @@ Seen through the runtime-regulation lens, concept containers reduce the probabil
 
 # 9. Limitations
 
-- Defining $\mathcal{A}$ (the relevant intervention set) is domain-dependent.
+- Defining $`\mathcal{A}`$ (the relevant intervention set) is domain-dependent.
 
 - Containers can drift if not grounded in provenance.
 
@@ -380,9 +380,9 @@ The broader implication is that efficient intelligence depends not only on the a
 
 A pragmatic container score can combine:
 
-$$
+``` math
 Q(z) = \alpha\,\text{Fidelity}(z) + \beta\,\text{Transfer}(z) - \gamma\,\text{Compute}(z)
-$$
+```
 
 where Compute(z) is measured as additional tokens/tool calls required to solve a fixed task set with vs. without container reuse.
 

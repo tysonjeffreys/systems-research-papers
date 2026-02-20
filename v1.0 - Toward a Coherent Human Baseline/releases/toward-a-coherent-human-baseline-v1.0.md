@@ -1,7 +1,7 @@
 # Toward a Coherent Human Baseline
 
 **Version:** v1.0  
-**PDF:** [open PDF](./source.pdf) *(latest.pdf missing)*  
+**PDF:** [source.pdf](./source.pdf)  
 **Source:** [./](./)  
 **Changelog:** (not found)
 

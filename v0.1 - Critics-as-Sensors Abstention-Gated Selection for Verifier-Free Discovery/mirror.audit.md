@@ -1,13 +1,8 @@
-# Audit: Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery
+# Audit — Critics-as-Sensors \large Abstention-Gated Selection for Verifier-Free Discovery (v0.1)
 
-- Source: main.tex
 - Mirror: ./mirror.md
+- PDF: ./main.pdf
 
-## Remaining macro definitions in mirror
-- None
+This audit lists items that may render differently on GitHub vs the PDF.
 
-## Commands still present in math (check GitHub rendering)
-- None
-
-## Broken image links
-- None
+✅ No obvious macro leaks, unknown commands, or missing images detected.
