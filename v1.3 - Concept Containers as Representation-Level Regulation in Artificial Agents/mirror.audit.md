@@ -1,7 +1,7 @@
 # Audit: Concept Containers as Representation-Level Regulation in Artificial Agents
 
-- Source: ../v1.3%20-%20Concept%20Containers%20as%20Representation-Level%20Regulation%20in%20Artificial%20Agents/main.tex
-- Mirror: ./concept-containers-as-representation-level-regulation-in-artificial-agents.md
+- Source: main.tex
+- Mirror: ./mirror.md
 
 ## Remaining macro definitions in mirror
 - None

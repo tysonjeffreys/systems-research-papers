@@ -1,8 +1,8 @@
 # Toward a Coherent Human Baseline
 
 **Version:** v1.0  
-**PDF:** ../v1.0%20-%20Toward%20a%20Coherent%20Human%20Baseline/source.pdf  
-**Source:** ../v1.0%20-%20Toward%20a%20Coherent%20Human%20Baseline/  
+**PDF:** source.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

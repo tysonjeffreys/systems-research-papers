@@ -1,8 +1,8 @@
 # Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery
 
 **Version:** v0.1  
-**PDF:** ../v0.1%20-%20Critics-as-Sensors%20Abstention-Gated%20Selection%20for%20Verifier-Free%20Discovery/main.pdf  
-**Source:** ../v0.1%20-%20Critics-as-Sensors%20Abstention-Gated%20Selection%20for%20Verifier-Free%20Discovery/  
+**PDF:** main.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

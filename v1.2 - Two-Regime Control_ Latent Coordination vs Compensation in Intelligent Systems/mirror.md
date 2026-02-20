@@ -1,8 +1,8 @@
 # Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems
 
 **Version:** v1.2  
-**PDF:** ../v1.2%20-%20Two-Regime%20Control_%20Latent%20Coordination%20vs%20Compensation%20in%20Intelligent%20Systems/v1.2%20-%20Two-Regime%20Control_%20Latent%20Coordination%20vs%20Compensation%20in%20Intelligent%20Systems.pdf  
-**Source:** ../v1.2%20-%20Two-Regime%20Control_%20Latent%20Coordination%20vs%20Compensation%20in%20Intelligent%20Systems/  
+**PDF:** v1.2%20-%20Two-Regime%20Control_%20Latent%20Coordination%20vs%20Compensation%20in%20Intelligent%20Systems.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

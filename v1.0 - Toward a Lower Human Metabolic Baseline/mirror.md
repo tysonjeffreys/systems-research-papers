@@ -1,8 +1,8 @@
 # Toward a Lower Human Metabolic Baseline
 
 **Version:** v1.0  
-**PDF:** ../v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline/v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline.pdf  
-**Source:** ../v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline/  
+**PDF:** v1.0%20-%20Toward%20a%20Lower%20Human%20Metabolic%20Baseline.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

@@ -1,8 +1,8 @@
 # The Verifier Gap
 
 **Version:** v0.1  
-**PDF:** ../v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning/v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning.pdf  
-**Source:** ../v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning/  
+**PDF:** v0.1%20-%20The%20Verifier%20Gap%20%7C%20Regulation%20for%20Non-Verifiable%20Reasoning.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

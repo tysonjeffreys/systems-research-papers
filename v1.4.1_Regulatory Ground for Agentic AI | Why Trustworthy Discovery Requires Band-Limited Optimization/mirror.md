@@ -1,8 +1,8 @@
 # Regulatory Ground for Agentic AI
 
 **Version:** v1.4.1  
-**PDF:** ../v1.4.1_Regulatory%20Ground%20for%20Agentic%20AI%20%7C%20Why%20Trustworthy%20Discovery%20Requires%20Band-Limited%20Optimization/v1.4.1_Regulatory%20Ground%20for%20Agentic%20AI%20%7C%20Why%20Trustworthy%20Discovery%20Requires%20Band-Limited%20Optimization.pdf  
-**Source:** ../v1.4.1_Regulatory%20Ground%20for%20Agentic%20AI%20%7C%20Why%20Trustworthy%20Discovery%20Requires%20Band-Limited%20Optimization/  
+**PDF:** v1.4.1_Regulatory%20Ground%20for%20Agentic%20AI%20%7C%20Why%20Trustworthy%20Discovery%20Requires%20Band-Limited%20Optimization.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

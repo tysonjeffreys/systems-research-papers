@@ -1,8 +1,8 @@
 # Why Intelligent Systems Waste Energy
 
 **Version:** v1.0  
-**PDF:** ../v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy/v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy.pdf  
-**Source:** ../v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy/  
+**PDF:** v1.0%20-%20Why%20Intelligent%20Systems%20Waste%20Energy.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

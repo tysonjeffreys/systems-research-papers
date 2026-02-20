@@ -1,8 +1,8 @@
 # The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems
 
 **Version:** v1.2  
-**PDF:** ../v1.2%20-%20%20The%20Time-to-Analysis%20Layer%20Pressure%20Points%20in%20AI-Assisted%20Research%20Systems/v1.2%20-%20%20The%20Time-to-Analysis%20Layer%20Pressure%20Points%20in%20AI-Assisted%20Research%20Systems.pdf  
-**Source:** ../v1.2%20-%20%20The%20Time-to-Analysis%20Layer%20Pressure%20Points%20in%20AI-Assisted%20Research%20Systems/  
+**PDF:** v1.2%20-%20%20The%20Time-to-Analysis%20Layer%20Pressure%20Points%20in%20AI-Assisted%20Research%20Systems.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

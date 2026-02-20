@@ -1,8 +1,8 @@
 # Regulated Agent Replay Suite v0
 
 **Version:** v0  
-**PDF:** ../v0%20-%20Regulated%20Agent%20Replay%20Suite%20-%20A%20Minimal%20CI%20Gate%20for%20Verifier-Free%20Discovery/v0%20-%20Regulated%20Agent%20Replay%20Suite%20-%20A%20Minimal%20CI%20Gate%20for%20Verifier-Free%20Discovery.pdf  
-**Source:** ../v0%20-%20Regulated%20Agent%20Replay%20Suite%20-%20A%20Minimal%20CI%20Gate%20for%20Verifier-Free%20Discovery/  
+**PDF:** v0%20-%20Regulated%20Agent%20Replay%20Suite%20-%20A%20Minimal%20CI%20Gate%20for%20Verifier-Free%20Discovery.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

@@ -1,8 +1,8 @@
 # Phase Discipline for Regulated Agents
 
 **Version:** v0.1  
-**PDF:** ../v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment/v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment.pdf  
-**Source:** ../v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment/  
+**PDF:** v0.1%20-%20Phase%20Discipline%20for%20Regulated%20Agents%20_%20Transition%20Windows%20and%20State--Action%20Alignment.pdf  
+**Source:** ./  
 **Changelog:** (not found)
 
 > Markdown mirror: best-effort rendering for GitHub. Canonical artifact is the PDF.

@@ -641,12 +641,15 @@ def ensure_unique_slug(base: str, used: set[str]) -> str:
     return unique
 
 
-def generate(repo_root: Path, out_dir: Path) -> List[PaperResult]:
+def generate(
+    repo_root: Path,
+    mirror_filename: str,
+    audit_filename: str,
+) -> List[PaperResult]:
     papers = discover_papers(repo_root)
     if not papers:
         raise RuntimeError("No paper directories containing main.tex were found.")
 
-    out_dir.mkdir(parents=True, exist_ok=True)
     used_slugs: set[str] = set()
     results: List[PaperResult] = []
 
@@ -667,16 +670,16 @@ def generate(repo_root: Path, out_dir: Path) -> List[PaperResult]:
         cleaned = apply_macros_to_math(cleaned, macros)
         cleaned = strip_macro_definition_lines(cleaned)
 
-        source_rel = PurePosixPath("..", *paper_dir.relative_to(repo_root).parts)
+        source_rel = PurePosixPath(".")
         cleaned = rewrite_image_links(cleaned, source_rel)
 
         slug = ensure_unique_slug(slugify(paper_dir.name), used_slugs)
-        md_path = out_dir / f"{slug}.md"
-        audit_path = out_dir / f"{slug}.audit.md"
+        md_path = paper_dir / mirror_filename
+        audit_path = paper_dir / audit_filename
 
         changelog_path = paper_dir / "CHANGELOG.md"
-        pdf_rel = source_rel / pdf_name if pdf_name else None
-        changelog_rel = source_rel / "CHANGELOG.md" if changelog_path.exists() else None
+        pdf_rel = PurePosixPath(pdf_name) if pdf_name else None
+        changelog_rel = PurePosixPath("CHANGELOG.md") if changelog_path.exists() else None
 
         header = build_header(title, version, source_rel, pdf_rel, changelog_rel)
         full_md = header + cleaned
@@ -703,40 +706,12 @@ def generate(repo_root: Path, out_dir: Path) -> List[PaperResult]:
                 slug=slug,
                 title=title,
                 version=version,
-                source_rel=source_rel,
+                source_rel=PurePosixPath(*paper_dir.relative_to(repo_root).parts),
                 pdf_rel=pdf_rel,
             )
         )
 
     return results
-
-
-def write_index(out_dir: Path, results: Sequence[PaperResult]) -> None:
-    lines = [
-        "# Markdown Mirrors",
-        "",
-        "Best-effort GitHub-readable mirrors generated from `main.tex` sources.",
-        "Canonical artifact remains each paper PDF.",
-        "",
-        "| Paper | Version | Mirror | PDF | Source | Audit |",
-        "| --- | --- | --- | --- | --- | --- |",
-    ]
-
-    for result in sorted(results, key=lambda item: item.title.lower()):
-        mirror = f"[{result.slug}.md](./{result.slug}.md)"
-        audit = f"[{result.slug}.audit.md](./{result.slug}.audit.md)"
-        source = f"[source]({to_url_path(result.source_rel)}/)"
-        pdf = (
-            f"[pdf]({to_url_path(result.pdf_rel)})"
-            if result.pdf_rel is not None
-            else "(not found)"
-        )
-        lines.append(
-            f"| {result.title} | {result.version} | {mirror} | {pdf} | {source} | {audit} |"
-        )
-
-    lines.append("")
-    (out_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def parse_args() -> argparse.Namespace:
@@ -747,9 +722,14 @@ def parse_args() -> argparse.Namespace:
         help="Path to repository root (default: current directory).",
     )
     parser.add_argument(
-        "--out-dir",
-        default="md",
-        help="Output folder for markdown mirrors (default: md).",
+        "--mirror-filename",
+        default="mirror.md",
+        help="Filename for colocated markdown mirrors (default: mirror.md).",
+    )
+    parser.add_argument(
+        "--audit-filename",
+        default="mirror.audit.md",
+        help="Filename for colocated audit reports (default: mirror.audit.md).",
     )
     return parser.parse_args()
 
@@ -757,11 +737,13 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     repo_root = Path(args.repo_root).resolve()
-    out_dir = (repo_root / args.out_dir).resolve()
 
     try:
-        results = generate(repo_root, out_dir)
-        write_index(out_dir, results)
+        results = generate(
+            repo_root,
+            mirror_filename=args.mirror_filename,
+            audit_filename=args.audit_filename,
+        )
     except subprocess.CalledProcessError as error:
         print(error.stderr or str(error), file=sys.stderr)
         return 1
@@ -769,7 +751,10 @@ def main() -> int:
         print(str(error), file=sys.stderr)
         return 1
 
-    print(f"Generated {len(results)} markdown mirrors in {out_dir}")
+    print(
+        f"Generated {len(results)} colocated markdown mirrors as "
+        f"{args.mirror_filename} and {args.audit_filename}"
+    )
     return 0
 
 
