@@ -165,7 +165,7 @@ function normalizePandocMathFormatting(md) {
     }
 
     if (/^\s*```+\s*$/.test(line)) {
-      converted.push(`${fenceIndent}$$`);
+      converted.push("$$");
       for (const bodyLine of fenceBody) {
         if (bodyLine.startsWith(fenceIndent)) {
           converted.push(bodyLine.slice(fenceIndent.length));
@@ -173,7 +173,7 @@ function normalizePandocMathFormatting(md) {
           converted.push(bodyLine);
         }
       }
-      converted.push(`${fenceIndent}$$`);
+      converted.push("$$");
       inFence = false;
       fenceIndent = "";
       fenceBody = [];
@@ -189,6 +189,66 @@ function normalizePandocMathFormatting(md) {
   }
 
   return converted.join("\n");
+}
+
+function normalizeDisplayMathDelimiterIndent(md) {
+  const lines = md.split("\n");
+  const out = [];
+  let inFence = false;
+
+  for (const line of lines) {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      out.push(line);
+      continue;
+    }
+
+    if (!inFence && /^\s*\$\$\s*$/.test(line)) {
+      out.push("$$");
+      continue;
+    }
+
+    out.push(line);
+  }
+
+  return out.join("\n");
+}
+
+function normalizeInlineDisplayMath(md) {
+  const lines = md.split("\n");
+  const out = [];
+  let inFence = false;
+
+  for (const line of lines) {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      out.push(line);
+      continue;
+    }
+
+    if (inFence) {
+      out.push(line);
+      continue;
+    }
+
+    const m = line.match(/^(\s*.*?\S)?\s*\$\$([\s\S]+?)\$\$\s*(\S.*)?$/);
+    if (!m) {
+      out.push(line);
+      continue;
+    }
+
+    const before = (m[1] || "").trimEnd();
+    const inner = (m[2] || "").trim();
+    const after = (m[3] || "").trim();
+
+    if (before) out.push(before);
+    out.push("$$");
+    out.push(inner);
+    out.push("$$");
+    if (after) out.push(after);
+  }
+
+  return out.join("\n");
 }
 
 function stripPandocWrappers(md) {
@@ -399,6 +459,8 @@ async function generateMirrorForPaper(paperDir) {
   md = stripPandocWrappers(md);
   md = normalizeMathDelimiters(md);
   md = normalizePandocMathFormatting(md);
+  md = normalizeInlineDisplayMath(md);
+  md = normalizeDisplayMathDelimiterIndent(md);
   md = stripLatexMacroDefs(md);
   md = applyMacroExpansionInMath(md, macroMap);
   md = dropLeadingTitleBlock(md);

@@ -330,9 +330,9 @@ Goal: Test whether internal load regularization improves long-horizon efficiency
   - frequency of replanning events
 
 - Add a penalty term:
-  $$
+$$
 \lambda \,\lVert x(t)-x_{0}\rVert^{2}+\mu\,\lVert \dot{x}(t)\rVert^{2}
-  $$
+$$
 
 Metrics:
 
@@ -488,19 +488,19 @@ This formulation explicitly penalizes sustained internal activation, even when t
 Other formulations may be appropriate depending on system design:
 
 - Energy-weighted load:
-  $$
+$$
 L(x)=(x-x_0)^{\top}W(x-x_0)
-  $$
+$$
 
 - Temporal load (duty cycle penalty):
-  $$
+$$
 L(t_0,t_1):=\int_{t_0}^{t_1}\mathbf{1}\{\|x(t)-x_0\|>\theta\}\,dt
-  $$
+$$
 
 - Rate-of-change penalty:
-  $$
+$$
 L_{\dot{x}}:=\|\dot{x}(t)\|^{2}
-  $$
+$$
 
 These are alternative definitions of internal load; in all cases, the overall objective remains $J=\mathbb{E}\!\left[\int_{0}^{T}\big(C_{\mathrm{task}}(t)+\lambda\,P(t)\big)\,dt\right]$ the same, with $P$ chosen per system. These variants emphasize that baseline regulation is not a single equation, but a design constraint.
 

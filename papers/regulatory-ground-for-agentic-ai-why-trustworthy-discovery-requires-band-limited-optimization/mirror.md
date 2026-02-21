@@ -366,12 +366,12 @@ Regulation should explicitly guard against lock-in to high-risk regimes. In the 
 - require a recovery period (quiescence window) after sustained high restraint,
 
 - and downgrade capabilities (e.g., disable external WRITE/EXEC) until stabilization signals recover. Operationalization. Let $g(t)$ be the global restraint signal (Section 7). Define an activation/load proxy $L(t)$ (e.g., anomaly rate, rollback count, near-miss frequency, uncertainty spikes). Enforce duty-cycle bounds such as:
-  $$
+$$
 \begin{align}
 \sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Orange}] &\le T_{\mathrm{orange}} \\
 \sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Red}] &\le T_{\mathrm{red}}
 \end{align}
-  $$
+$$
   and require a recovery procedure when exceeded.
 
 ## State-dependent disclosure as a runtime invariant
