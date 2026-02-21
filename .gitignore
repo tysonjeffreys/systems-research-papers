@@ -1,0 +1,35 @@
+# LaTeX / Prism build artifacts
+.DS_Store
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# Common build dirs
+build/
+out/
+dist/
+
+# Ignore all PDFs by default, except canonical latest.pdf
+**/*.pdf
+!**/latest.pdf
+!papers/*/*.pdf
+papers/*/main.pdf
+papers/*/source.pdf
+papers/*/releases/*.pdf
+
+# Additional sync artifacts
+*.synctex
+*.synctex(busy)
