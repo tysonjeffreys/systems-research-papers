@@ -2,6 +2,13 @@
 
 All notable paper updates are documented here.
 
+## 2026-02-21 (Companion Docs Sync)
+
+- Updated companion notes for regulated-agent-replay-suite and regulated-retrieval-gates to reflect the v0.4.0 governance framing.
+- Documented replay-suite extended batteries in companion docs: long-doc stress (RG-08 to RG-10), commitment-integrity stress (RG-11 to RG-13), and optional cross-domain stress (RG-14 to RG-15).
+- Documented retrieval-gate commitment-integrity telemetry (noEvidenceReversionRate, selfDisowningRate, incentiveConflictMass) as posture-tightening signals.
+- Added release note: release-notes/companion-doc-sync-2026-02-21.md.
+
 ## 2026-02-17 (Backfill Release)
 
 This is a semantic backfill release for pre-git paper edits. History is summarized per paper in `release-notes/`.
