@@ -8,6 +8,7 @@ All notable paper updates are documented here.
 - Documented replay-suite extended batteries in companion docs: long-doc stress (RG-08 to RG-10), commitment-integrity stress (RG-11 to RG-13), and optional cross-domain stress (RG-14 to RG-15).
 - Documented retrieval-gate commitment-integrity telemetry (noEvidenceReversionRate, selfDisowningRate, incentiveConflictMass) as posture-tightening signals.
 - Added release note: release-notes/companion-doc-sync-2026-02-21.md.
+- Added replay-suite release note: release-notes/replay-suite-v0.4.0-2026-02-21.md.
 
 ## 2026-02-17 (Backfill Release)
 

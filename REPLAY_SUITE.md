@@ -1,27 +1,38 @@
 # Replay Suite (Reference Harness)
 
-This is a companion artifact to the papers: a runnable, deterministic CI gate that evaluates “regulated agent” candidate outputs.
+Companion artifact status: `regulated-agent-replay-suite v0.4.0`.
+
+This is a companion artifact to the papers: a runnable, deterministic CI harness that evaluates regulated-agent candidate outputs.
 
 ## What it is
-- A small scenario suite (v0) with must-pass gates (RG-01 / RG-04 / RG-07)
+- A stable must-pass CI gate (`RG-01`, `RG-02`, `RG-03`, `RG-04`, `RG-07`)
 - Deterministic fixtures + evaluator + runner
-- Produces PASS/FAIL plus a JSON report
+- Structured JSON reporting with reproducibility metadata
+- Replay stability measurement (`--replays N`)
 
-## Where it lives
-Copy the `requested-agent-replay-suite/` repo from the provided bundle into its own Git repo and run:
+## Extended batteries in v0.4.0
+- Long-doc retrieval stress (`RG-08` to `RG-10`)
+- Commitment-integrity stress (`RG-11` to `RG-13`)
+- Optional cross-domain integration stress (`RG-14` to `RG-15`)
 
+These extended suites are governance probes and do not replace the stop-the-world CI gate.
+
+## Trust-signal commands
 ```bash
-npm install
+npm ci
 npm run ci
+npm run ci:candidates
+npm run ci:replays
+npm run ci:longdoc
+npm run ci:integrity
+npm run ci:crossdomain
 ```
 
 ## Why this exists
-The papers argue for regulation (bands, budgets, checkpoint/rollback, abstention gating).  
-This harness makes those claims *testable*.
+The papers argue for regulation (bands, budgets, checkpoint/rollback, abstention gating, and replayability). This harness makes those claims operational and testable.
 
 Replay suite governs downstream outputs; retrieval gates govern upstream selection signals.
 
-## Next intended expansions
-- Candidate mode: run the gate on real outputs from an external agent run
-- Replay stability (`--replays N`) to quantify tie/abstain + winner volatility
-- Expand beyond v0 to the full suite
+## Cross-reference
+- Harness repo: [regulated-agent-replay-suite](https://github.com/tysonjeffreys/regulated-agent-replay-suite)
+- This repo's release note: `release-notes/replay-suite-v0.4.0-2026-02-21.md`
