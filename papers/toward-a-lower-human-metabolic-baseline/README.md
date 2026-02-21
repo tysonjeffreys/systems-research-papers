@@ -1,10 +1,18 @@
-# Prism project
+# Toward a Lower Human Metabolic Baseline (v1.0)
 
-This is a LaTeX project intended for import into Prism (or any LaTeX editor).
+This paper proposes that humans can stabilize a lower metabolic/ventilatory baseline through diaphragm-led, mechanically constrained breathing that better matches true gas-exchange demand.
 
-## Import into Prism
-1. Create a new project in Prism.
-2. Use the Import/Upload ZIP option.
-3. Select the ZIP file.
+Core focus:
+- Frames chronic over-ventilation as a metabolic mismatch.
+- Defines a lower metabolic baseline and micro-ventilation concept.
+- Reinterprets procedural breathing practices in physiological terms.
+- Sets boundaries, limitations, and experimental predictions.
 
-Entrypoint: `main.tex`.
+## Artifacts
+- Source: [main.tex](./main.tex)
+- Mirror: [mirror.md](./mirror.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Version: [VERSION](./VERSION)
+- PDF (stable): [latest.pdf](./latest.pdf)
+- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`

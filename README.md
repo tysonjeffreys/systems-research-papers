@@ -17,7 +17,9 @@ Prism-first papers repository with markdown mirrors for GitHub readability.
 | Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems | v1.2 | [dir](./papers/two-regime-control-latent-coordination-vs-compensation-in-intelligent-systems/) | [mirror](./papers/two-regime-control-latent-coordination-vs-compensation-in-intelligent-systems/mirror.md) | [audit](./papers/two-regime-control-latent-coordination-vs-compensation-in-intelligent-systems/mirror.audit.md) | [latest.pdf](./papers/two-regime-control-latent-coordination-vs-compensation-in-intelligent-systems/latest.pdf) | [CHANGELOG](./papers/two-regime-control-latent-coordination-vs-compensation-in-intelligent-systems/CHANGELOG.md) |
 | Why Intelligent Systems Waste Energy | v1.0 | [dir](./papers/why-intelligent-systems-waste-energy/) | [mirror](./papers/why-intelligent-systems-waste-energy/mirror.md) | [audit](./papers/why-intelligent-systems-waste-energy/mirror.audit.md) | [latest.pdf](./papers/why-intelligent-systems-waste-energy/latest.pdf) | [CHANGELOG](./papers/why-intelligent-systems-waste-energy/CHANGELOG.md) |
 
-- Implementation companion: [regulated-agent-replay-suite](./regulated-agent-replay-suite/regulated-agent-replay-suite-v0.md)
-- Implementation companion: [regulated-retrieval-gates](./regulated-retrieval-gates/regulated-retrieval-gates-v0.md)
+- Harness repo: [regulated-agent-replay-suite](https://github.com/tysonjeffreys/regulated-agent-replay-suite)
+- Retrieval gates repo: [regulated-retrieval-gates](https://github.com/tysonjeffreys/regulated-retrieval-gates)
+- Harness note (local): [regulated-agent-replay-suite-v0.md](./regulated-agent-replay-suite/regulated-agent-replay-suite-v0.md)
+- Retrieval note (local): [regulated-retrieval-gates-v0.md](./regulated-retrieval-gates/regulated-retrieval-gates-v0.md)
 - Versioning guide: [PUBLISHING.md](./PUBLISHING.md)
 - Release history: [CHANGELOG.md](./CHANGELOG.md)

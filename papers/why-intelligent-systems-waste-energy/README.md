@@ -1,10 +1,18 @@
-# Prism project
+# Why Intelligent Systems Waste Energy (v1.0)
 
-This is a LaTeX project intended for import into Prism (or any LaTeX editor).
+This paper argues that energy waste in intelligent systems is often architectural, not just implementation-level, and introduces baseline regulation as the missing control layer.
 
-## Import into Prism
-1. Create a new project in Prism.
-2. Use the Import/Upload ZIP option.
-3. Select the ZIP file.
+Core contributions:
+- Proposes baseline regulation as a first-class architectural primitive.
+- Formalizes a convex energy model with duty-cycle framing.
+- Connects regulated agent dynamics to infrastructure-level energy savings.
+- Defines falsifiable experiments for inference systems, agent loops, and robotics.
 
-Entrypoint: `main.tex`.
+## Artifacts
+- Source: [main.tex](./main.tex)
+- Mirror: [mirror.md](./mirror.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Version: [VERSION](./VERSION)
+- PDF (stable): [latest.pdf](./latest.pdf)
+- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`
