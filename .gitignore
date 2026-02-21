@@ -24,6 +24,10 @@ dist/
 # Ignore all PDFs by default, except canonical latest.pdf
 **/*.pdf
 !**/latest.pdf
+!papers/*/*.pdf
+papers/*/main.pdf
+papers/*/source.pdf
+papers/*/releases/*.pdf
 
 # Additional sync artifacts
 *.synctex
