@@ -172,7 +172,6 @@ A minimal policy:
 ## 5.2 State machine sketch
 
 
-‘#=12
 
 
 ## 5.3 Action gating table

@@ -300,6 +300,10 @@ function stripPandocWrappers(md) {
     if (/^:::\s*(\{[^}]*\}|[A-Za-z0-9_.-]+)?\s*$/.test(t)) continue;
     if (t.startsWith("<div ") && t.endsWith(">")) continue;
     if (t === "</div>") continue;
+    // Pandoc can leak TeX catcode sentinels from TikZ blocks as plain text.
+    if (/^[‘']?#=12$/.test(t)) continue;
+    if (t.includes("\\catcode`\\#=12")) continue;
+    if (t === "\\begingroup" || t === "\\endgroup") continue;
     kept.push(line.replace(/^(#{1,6}\s+.*)\s+\{#[^}]+\}\s*$/, "$1"));
   }
   return kept.join("\n");
