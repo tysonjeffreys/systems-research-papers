@@ -17,4 +17,4 @@ This paper is a short bridge in the Baseline / regulation series. It names the "
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (named): [The Verifier Gap | Regulation for Non-Verifiable Reasoning - v0.1.pdf](./The Verifier Gap | Regulation for Non-Verifiable Reasoning - v0.1.pdf)
+- PDF (named): [The Verifier Gap - Regulation for Non-Verifiable Reasoning - v0.1.pdf](./The Verifier Gap - Regulation for Non-Verifiable Reasoning - v0.1.pdf)

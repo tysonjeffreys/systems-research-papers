@@ -15,4 +15,4 @@ Minimal update from v1.2:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (named): [Regulatory Ground for Agentic AI | Why Trustworthy Discovery Requires Band-Limited Optimization - v1.4.1.pdf](./Regulatory Ground for Agentic AI | Why Trustworthy Discovery Requires Band-Limited Optimization - v1.4.1.pdf)
+- PDF (named): [Regulatory Ground for Agentic AI - Why Trustworthy Discovery Requires Band-Limited Optimization - v1.4.1.pdf](./Regulatory Ground for Agentic AI - Why Trustworthy Discovery Requires Band-Limited Optimization - v1.4.1.pdf)

@@ -15,4 +15,4 @@ Core focus:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (named): [Phase Discipline for Regulated Agents _ Transition Windows and State--Action Alignment - v0.1.pdf](./Phase Discipline for Regulated Agents _ Transition Windows and State--Action Alignment - v0.1.pdf)
+- PDF (named): [Phase Discipline for Regulated Agents - Transition Windows and State--Action Alignment - v0.1.pdf](./Phase Discipline for Regulated Agents - Transition Windows and State--Action Alignment - v0.1.pdf)
