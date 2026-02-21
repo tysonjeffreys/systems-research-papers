@@ -21,6 +21,7 @@ baseline-papers/
       figures/ (optional)
       refs.bib (optional)
       latest.pdf                # manual convenience artifact (user-managed)
+      <paper-title>.pdf         # optional manual download artifact (user-managed, no version prefix recommended)
       mirror.md                 # stable GitHub-readable mirror (best-effort)
       mirror.audit.md           # mirror rendering audit (best-effort)
   release-notes/
@@ -196,6 +197,7 @@ This will:
 ### 5) PDF handling is manual and out of scope for Codex
 - Codex does not copy, rename, verify, or version PDFs.
 - If the user updates `latest.pdf`, that is a manual action outside this workflow.
+- If the user wants a second downloadable PDF with a readable name, they can manually add `<paper-title>.pdf` in the same folder.
 
 ### 6) Cleanliness check
 - `git status` should show only meaningful changes:
@@ -235,6 +237,7 @@ Create a GitHub Release for the tag with:
 - `main.tex` is the source artifact; `mirror.md` is best-effort for GitHub readability.
 - `mirror.audit.md` lists math commands and rendering-risk signals that may differ from PDF output.
 - Codex does not copy, rename, verify, or version PDFs by default. PDF placement is user-managed.
+- Recommended manual PDF convention: keep `latest.pdf` plus an optional readable `<paper-title>.pdf` copy without version in the filename.
 
 ---
 
