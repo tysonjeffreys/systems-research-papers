@@ -7,3 +7,12 @@ Minimal update from v1.2:
 - Adds Section 7.x: validating/change-controlling the telemetry→posture mapping for g(t)
 - Adds Section 7.x: judge-as-sensor (treat learned critics/judges as telemetry; tie/abstain mass drives posture)
 - Fixes the g(t) and risk-scoring equations (previously corrupted by PDF text artifacts)
+
+## Artifacts
+- Source: [main.tex](./main.tex)
+- Mirror: [mirror.md](./mirror.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Version: [VERSION](./VERSION)
+- PDF (stable): [latest.pdf](./latest.pdf)
+- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`

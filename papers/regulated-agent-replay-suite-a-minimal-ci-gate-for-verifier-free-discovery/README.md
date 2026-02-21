@@ -1,8 +1,18 @@
-# Agent architectures / robotics / regulated discovery
+# Regulated Agent Replay Suite: A Minimal CI Gate for Verifier-Free Discovery (v0.1)
 
-- Version: v0.1
+This paper specifies a minimal CI-style governance gate for verifier-free discovery systems, where commits are controlled by telemetry and rollback discipline rather than perfect verifiers.
+
+Core focus:
+- Defines a practical replay/gating loop for non-verifiable discovery workflows.
+- Establishes bounded commit, rollback, and audit expectations.
+- Connects policy posture and telemetry to release decisions.
+- Keeps implementation coupling explicit through companion harness repositories.
+
+## Artifacts
 - Source: [main.tex](./main.tex)
 - Mirror: [mirror.md](./mirror.md)
-- Mirror Audit: [mirror.audit.md](./mirror.audit.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
-- PDF (manual): [latest.pdf](./latest.pdf)
+- Version: [VERSION](./VERSION)
+- PDF (stable): [latest.pdf](./latest.pdf)
+- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`

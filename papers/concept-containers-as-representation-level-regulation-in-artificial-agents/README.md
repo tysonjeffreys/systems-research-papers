@@ -1,9 +1,18 @@
-# Concept Containers (v1.1)
+# Concept Containers as Representation-Level Regulation in Artificial Agents (v1.3)
 
-Minimal update from v1.0 to align with the runtime regulation framing developed in *Regulatory Ground for Agentic AI*:
+This paper defines concept containers as reusable, intervention-relevant representations and frames them as a regulation layer that reduces internal contention and compute waste.
 
-- Adds a short bridge: containers as representation-level boundary conditions that reduce intervention load for runtime regulators.
-- Adds an interface subsection (posture-modulated reuse; regulated container writes).
-- Adds longitudinal revision persistence metrics (revision half-life, reversal count, constraint imprint).
-- Adds a short integration subsection for regulated agent stacks.
+Core focus:
+- Formalizes container sufficiency for intervention-aware prediction.
+- Connects container quality to duty-cycle and energy/compute stability.
+- Specifies posture-aware reuse and regulated commit/update behavior.
+- Proposes practical quality metrics and evaluation criteria.
 
+## Artifacts
+- Source: [main.tex](./main.tex)
+- Mirror: [mirror.md](./mirror.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Version: [VERSION](./VERSION)
+- PDF (stable): [latest.pdf](./latest.pdf)
+- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`

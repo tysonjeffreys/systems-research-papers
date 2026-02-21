@@ -1,4 +1,4 @@
-# Audit — The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems (v1.1)
+# Audit — The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems (v1.2)
 
 - Mirror: ./mirror.md
 

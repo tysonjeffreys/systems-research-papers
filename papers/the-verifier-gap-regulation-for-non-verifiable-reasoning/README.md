@@ -1,8 +1,6 @@
 # The Verifier Gap (v0.1)
 
-This Prism project contains the LaTeX source for:
-
-**The Verifier Gap — Regulation for Non-Verifiable Reasoning in Agents and Research Systems**
+This paper names the verifier gap regime and defines a minimal regulation layer for non-verifiable reasoning systems.
 
 This paper is a short bridge in the Baseline / regulation series. It names the "verifier gap" regime (selection without task-specific verifiers) and specifies a minimal **Verifier Gap Layer**:
 
@@ -12,13 +10,11 @@ This paper is a short bridge in the Baseline / regulation series. It names the "
 - commit gating for persistent writes (including representation/container updates)
 - judge versioning, drift monitoring, and rollback/recovery semantics
 
-## Build
-
-From this directory:
-
-```bash
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
-```
+## Artifacts
+- Source: [main.tex](./main.tex)
+- Mirror: [mirror.md](./mirror.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Version: [VERSION](./VERSION)
+- PDF (stable): [latest.pdf](./latest.pdf)
+- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`

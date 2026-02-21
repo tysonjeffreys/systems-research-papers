@@ -1,6 +1,6 @@
 # The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems
 
-**Version:** v1.1  
+**Version:** v1.2  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
