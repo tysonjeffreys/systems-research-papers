@@ -103,9 +103,9 @@ Let the embodied system have physical state $s(t)$ (e.g., joint positions/veloci
 
 We separate control into a low-cost coordination component and a higher-cost override component:
 
-$$
+```math
 u(t) = u_0(s(t), \pi) + \Delta u(t)
-$$
+```
 
 - $u_0$ is the nominal low-level controller / primitive stack.
 
@@ -119,7 +119,7 @@ We hypothesize that regime membership is best characterized not by task success 
 
 We define a scalar **compensation index** $C(t)$ as a weighted combination of measurable proxies:
 
-$$
+```math
 C(t) = w_\tau\,\|\tau(t)\|^2
 + w_{\dot u}\,\|\dot u(t)\|^2
 + w_{\Sigma}\,\operatorname{tr}(\Sigma(t))
@@ -127,7 +127,7 @@ C(t) = w_\tau\,\|\tau(t)\|^2
 + w_{\text{slip}}\,r_{\text{slip}}(t)
 + w_{\text{sat}}\,r_{\text{sat}}(t)
 + w_{J}\,u_{J}(t)
-$$
+```
 
 We treat learned **critics / judges** as *telemetry sources*, not authorities. In many deployments there is no ground-truth verifier for “is this action actually safe/efficient?” in the moment. A useful posture is therefore: let critics contribute uncertainty signals, and let **abstention / tie mass** tighten posture rather than forcing a brittle choice.
 
@@ -153,9 +153,9 @@ where, depending on platform:
 
 Raw units differ across terms. In practice, normalize each term by a baseline scale measured under stable operation:
 
-$$
+```math
 \tilde z(t) = \frac{z(t)}{\mathbb{E}[z\mid\text{stable}] + \epsilon}
-$$
+```
 
 and compute $C(t)$ using $\tilde z$ to make weights interpretable.
 
@@ -167,26 +167,26 @@ Compensation is not an instantaneous value; the pathological mode is sustained r
 
 Define a low-pass filtered index $\bar C(t)$:
 
-$$
+```math
 \dot{\bar C}(t) = \frac{1}{\tau_c}(C(t) - \bar C(t))
-$$
+```
 
 with $\tau_c$ chosen to match “regime timescale” (e.g., 0.5–3 s).
 
 Define a binary compensation indicator with hysteresis:
 
-$$
+```math
 H(t) = \begin{cases}
 1 & \bar C(t) > \theta_{\uparrow} \\
 0 & \bar C(t) < \theta_{\downarrow}
 \end{cases}
-$$
+```
 
 and the compensation duty cycle over a window $[t_0, t_1]$:
 
-$$
+```math
 \operatorname{DC}(t_0,t_1) = \frac{1}{t_1-t_0}\int_{t_0}^{t_1} H(t)\,dt
-$$
+```
 
 Interpretation: - $H(t)=1$ indicates the system is in compensation. - $\operatorname{DC}$ measures how long it stays there.
 
@@ -202,11 +202,11 @@ We propose a slow regulator layer that shapes the system’s operating posture w
 
 Let $L_{\text{task}}(s,u)$ represent task loss or tracking error. The regulator introduces an internal cost that penalizes sustained compensation:
 
-$$
+```math
 J = \int_0^T \Big( L_{\text{task}}(s(t),u(t))
 + \lambda\,\phi(\bar C(t))
 + \gamma\,\|\dot{\bar C}(t)\|^2 \Big)\,dt
-$$
+```
 
 - $\phi$ is convex above a threshold (so high compensation is increasingly expensive).
 
@@ -303,9 +303,9 @@ For many systems, energy/power increases nonlinearly with control effort (e.g., 
 
 Let $e(t)$ be an effort proxy correlated with $\bar C(t)$. Total energy:
 
-$$
+```math
 E = \int_0^T P(e(t))\,dt
-$$
+```
 
 If $P$ is convex, then flattening spikes and reducing duty cycle in the high-effort regime reduces $E$ more than proportional to mean effort reduction.
 
@@ -435,9 +435,9 @@ By defining a measurable compensation index and adding a slow baseline regulator
 
 Minimal viable index for many robots:
 
-$$
+```math
 C(t) = w_\tau\,\|\tau(t)\|^2 + w_{\dot u}\,\|\dot u(t)\|^2 + w_{\text{sat}}\,r_{\text{sat}}(t)
-$$
+```
 
 Add terms as available: - covariance/prediction error - slip/contact instability - replanning/override counters - critic abstention/tie mass $u_{J}(t)$ (if using learned monitors)
 

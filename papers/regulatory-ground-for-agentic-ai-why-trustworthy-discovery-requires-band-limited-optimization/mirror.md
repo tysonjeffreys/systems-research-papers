@@ -181,11 +181,11 @@ The regulator maintains an operating band B ∈ Green,Yellow,Orange,Red.
 ## Risk scoring
 
 For each candidate action $a$, compute a risk score:
-$$
+```math
 \begin{equation}
 R(a) = w_I I + w_U U + w_V V + w_A A + w_S S \in [0,1]
 \end{equation}
-$$
+```
 where:
 
 - I = Impact magnitude (external change / physical hazard)
@@ -279,11 +279,11 @@ We separate policy-level parameters (owned, versioned, auditable) from runtime m
 ## Global restraint signal as a shared boundary condition
 
 In embodied control, biological regulation uses global constraint signals—variables that affect all subsystems and therefore synchronize distributed control without issuing explicit commands. These signals function as boundary conditions within which local controllers operate . The same pattern can be instantiated in agent stacks as a global restraint signal (GRS): a slow, shared scalar (or low-dimensional vector) that every component respects as a set of shared budgets . Let $g(t)\in[0,1]$ denote the global restraint state, where higher values imply tighter operating posture. A minimal deterministic definition is:
-$$
+```math
 \begin{equation}
 g(t)=\mathrm{clip}\left(\alpha_1\,\rho_{\text{near-miss}}(t)+\alpha_2\,\rho_{\text{rollback}}(t)+\alpha_3\,U(t)+\alpha_4\,\rho_{\text{anomaly}}(t),\ 0,\ 1\right)
 \end{equation}
-$$
+```
 where $\rho_{\text{near-miss}}$ and $\rho_{\text{rollback}}$ are event rates over a trailing window, $U(t)$ is an uncertainty proxy (e.g., predictive entropy, self-consistency, or disagreement), and $\rho_{\text{anomaly}}$ captures unexpected outcomes (timeouts, non-determinism, constraint pressure). In non-verifiable domains, $U(t)$ can also include *judge/critic abstention or tie mass* $u_{\text{tie}}(t)$: the rolling probability mass that learned critics assign to `tie`/`abstain` on recent evaluations .
 
 #### Judge-as-sensor telemetry.
@@ -301,12 +301,12 @@ Learned critics (reward models, LLM-as-judge evaluators, relativistic critics) a
 - **Govern the critic like the mapping.** Critics drift and can be gamed; version the judge model/prompt and monitor calibration and tie-rate drift, with explicit rollback criteria .
 
 The regulator computes effective budgets and thresholds as functions of $g(t)$, for example:
-$$
+```math
 \begin{align}
 b_{\mathrm{eff}}(t) &= b_{\min} + (1-g(t))(b_0-b_{\min})\\
 \tau_{\mathrm{Yellow}}(t) &= \tau_{\mathrm{Yellow},0} - k\,g(t)
 \end{align}
-$$
+```
 Thus, the system tightens exploration automatically when telemetry indicates rising constraint pressure. Importantly, $g(t)$ does not directly select actions; it biases the permissible operating region, keeping planner, router, and executor synchronized rather than letting each subsystem compensate locally (a common source of thrash).
 
 ## Governance: ownership, legitimacy, and change control
@@ -366,12 +366,12 @@ Regulation should explicitly guard against lock-in to high-risk regimes. In the 
 - require a recovery period (quiescence window) after sustained high restraint,
 
 - and downgrade capabilities (e.g., disable external WRITE/EXEC) until stabilization signals recover. Operationalization. Let $g(t)$ be the global restraint signal (Section 7). Define an activation/load proxy $L(t)$ (e.g., anomaly rate, rollback count, near-miss frequency, uncertainty spikes). Enforce duty-cycle bounds such as:
-$$
+```math
 \begin{align}
 \sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Orange}] &\le T_{\mathrm{orange}} \\
 \sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Red}] &\le T_{\mathrm{red}}
 \end{align}
-$$
+```
   and require a recovery procedure when exceeded.
 
 ## State-dependent disclosure as a runtime invariant

@@ -251,6 +251,47 @@ function normalizeInlineDisplayMath(md) {
   return out.join("\n");
 }
 
+function convertDisplayMathToMathFences(md) {
+  const lines = md.split("\n");
+  const out = [];
+  let inFence = false;
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      out.push(line);
+      continue;
+    }
+
+    if (inFence || !/^\s*\$\$\s*$/.test(line)) {
+      out.push(line);
+      continue;
+    }
+
+    let j = i + 1;
+    const body = [];
+    while (j < lines.length && !/^\s*\$\$\s*$/.test(lines[j])) {
+      body.push(lines[j]);
+      j += 1;
+    }
+
+    if (j >= lines.length) {
+      // Unmatched opener: leave as-is and continue.
+      out.push(line);
+      continue;
+    }
+
+    out.push("```math");
+    out.push(...body);
+    out.push("```");
+    i = j;
+  }
+
+  return out.join("\n");
+}
+
 function stripPandocWrappers(md) {
   const lines = md.split("\n");
   const kept = [];
@@ -362,6 +403,7 @@ function extractCommandsInMath(md) {
   };
 
   for (const m of md.matchAll(/\$\$([\s\S]*?)\$\$/g)) collectFrom(m[1]);
+  for (const m of md.matchAll(/```+\s*math\s*\n([\s\S]*?)\n```+/g)) collectFrom(m[1]);
   const inlineScan = md.replace(/\$\$[\s\S]*?\$\$/g, " ");
   for (const m of inlineScan.matchAll(/\$([^$\n]+?)\$/g)) collectFrom(m[1]);
 
@@ -463,6 +505,7 @@ async function generateMirrorForPaper(paperDir) {
   md = normalizeDisplayMathDelimiterIndent(md);
   md = stripLatexMacroDefs(md);
   md = applyMacroExpansionInMath(md, macroMap);
+  md = convertDisplayMathToMathFences(md);
   md = dropLeadingTitleBlock(md);
   md = dropDuplicateTitleHeading(md, title);
 

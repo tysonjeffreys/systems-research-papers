@@ -49,15 +49,15 @@ It is not merely a summary, label, or topic tag. A container must support *corre
 
 Formally, let $x$ denote observations (text, sensory streams, states), $a$ denote an intervention/action, and $y$ denote outcomes of interest (success, safety, reward, constraint satisfaction). A container is a mapping $f$:
 
-$$
+```math
 z = f(x_{1:t})
-$$
+```
 
 such that for a target intervention set $\mathcal{A}$, the representation $z$ is sufficient to predict the effect of interventions:
 
-$$
+```math
 \forall a \in \mathcal{A}:\quad p(y \mid do(a), x_{1:t}) \approx p(y \mid do(a), z)
-$$
+```
 
 This captures “preserves causal structure” as intervention-relevant sufficiency.
 
@@ -111,15 +111,15 @@ This is **internal contention**: the system uses capacity to manage instability 
 
 Let $\bar x(t)$ be a filtered internal-load signal. Define a high-activation indicator:
 
-$$
+```math
 H(t) = \mathbb{1}[\bar x(t) > \theta]
-$$
+```
 
 and an activation duty cycle:
 
-$$
+```math
 DC(t_0,t_1) = \frac{1}{t_1-t_0}\int_{t_0}^{t_1} H(t)\,dt
-$$
+```
 
 **Hypothesis:** If an agent uses good containers, it achieves comparable task success while reducing $DC$ and peak $x(t)$ by reusing causal structure rather than recomputing it.
 
@@ -151,9 +151,9 @@ Large-scale systems pay a direct cost for repeated recomputation: tokens, tool c
 
 Let $k$ be a compute proxy (tokens, tool invocations, FLOPs). Total compute over a task:
 
-$$
+```math
 K = \int_0^T k(t)\,dt
-$$
+```
 
 If containers reduce long tails of deliberation and repeated stabilization, then $K$ decreases at equal task success.
 
@@ -379,9 +379,9 @@ The broader implication is that efficient intelligence depends not only on the a
 
 A pragmatic container score can combine:
 
-$$
+```math
 Q(z) = \alpha\,\text{Fidelity}(z) + \beta\,\text{Transfer}(z) - \gamma\,\text{Compute}(z)
-$$
+```
 
 where Compute(z) is measured as additional tokens/tool calls required to solve a fixed task set with vs. without container reuse.
 

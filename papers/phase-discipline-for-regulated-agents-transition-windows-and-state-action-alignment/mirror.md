@@ -156,9 +156,9 @@ This mirrors Regulatory Ground’s emphasis on stability and avoiding oscillatio
 ## 5.1 Phase scheduler
 
 Define a phase scheduler:
-$$
+```math
 p(t) = \pi(\text{telemetry},\; g(t),\; \text{task context})
-$$
+```
 where $\pi$ is a small state machine (or hybrid controller) with conservative transitions.
 
 A minimal policy:

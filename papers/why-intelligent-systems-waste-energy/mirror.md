@@ -52,15 +52,15 @@ This creates a posture analogous to operating biological systems under constant 
 Let an inference system be characterized by an internal activity state $x(t)$, representing aggregate computational load (e.g., active tokens/sec, attention bandwidth, routing complexity).
 
 Total power draw:
-$$
+```math
 \mathcal{P}(t)=P_{\mathrm{idle}} + k\,x(t)^{\alpha}
 \qquad \text{with } \alpha \ge 1
-$$
+```
 
 Energy over time horizon $T$:
-$$
+```math
 E=\int_{0}^{T}\mathcal{P}(t)\,dt
-$$
+```
 
 In current deployments:
 
@@ -75,14 +75,14 @@ In current deployments:
 We define a baseline operating point $x_0$, representing the lowest internally stable load consistent with readiness.
 
 Rather than minimizing task loss alone, the system optimizes:
-$$
+```math
 J=\mathbb{E}\!\left[
 \int_{0}^{T}
 \Big(
 C_{\mathrm{task}}(t) + \lambda\,(x(t)-x_{0})^{2} + \mu\,\ddot{x}(t)^{2}
 \Big)\,dt
 \right]
-$$
+```
 
 Where:
 
@@ -123,9 +123,9 @@ These gains arise without reducing model capability—only its operating posture
 The baseline-aware energy posture described above cannot be implemented purely at the infrastructure layer. It must emerge from agent-level regulation.
 
 We model an agent’s internal activity state $x(t)$ as governed by:
-$$
+```math
 \dot{x}(t)=-\beta\,(x(t)-x_{0}) + u(t) + w(t)
-$$
+```
 
 Where:
 
@@ -330,9 +330,9 @@ Goal: Test whether internal load regularization improves long-horizon efficiency
   - frequency of replanning events
 
 - Add a penalty term:
-$$
+```math
 \lambda \,\lVert x(t)-x_{0}\rVert^{2}+\mu\,\lVert \dot{x}(t)\rVert^{2}
-$$
+```
 
 Metrics:
 
@@ -437,21 +437,21 @@ This appendix expands the formal treatment of baseline regulation introduced in 
 ## Expanded Dynamics
 
 Let the internal state of an intelligent system be represented by:
-$$
+```math
 x(t)\in\mathbb{R}^{n}
-$$
+```
 where $x(t)$ includes latent variables such as internal activation, attentional intensity, inference depth, or metabolic/compute load.
 
 We define a baseline state:
-$$
+```math
 x_0
-$$
+```
 representing a low-energy, regulated internal configuration.
 
 System dynamics are modeled as:
-$$
+```math
 \dot{x}(t)=f(x(t),u(t),e(t)) - g(x(t),x_0)
-$$
+```
 
 Where:
 
@@ -466,14 +466,14 @@ The key distinction from standard dynamical systems is that $g(x(t),x_0)$ the re
 ## Internal Cost Function
 
 We define internal load as deviation from baseline:
-$$
+```math
 L(t):=\|x(t)-x_0\|^{2}
-$$
+```
 
 Total system cost over time becomes:
-$$
+```math
 J=\mathbb{E}\!\left[\int_{0}^{T}\big(C_{\mathrm{task}}(t)+\lambda\,P(t)\big)\,dt\right]
-$$
+```
 
 Where:
 
@@ -488,33 +488,33 @@ This formulation explicitly penalizes sustained internal activation, even when t
 Other formulations may be appropriate depending on system design:
 
 - Energy-weighted load:
-$$
+```math
 L(x)=(x-x_0)^{\top}W(x-x_0)
-$$
+```
 
 - Temporal load (duty cycle penalty):
-$$
+```math
 L(t_0,t_1):=\int_{t_0}^{t_1}\mathbf{1}\{\|x(t)-x_0\|>\theta\}\,dt
-$$
+```
 
 - Rate-of-change penalty:
-$$
+```math
 L_{\dot{x}}:=\|\dot{x}(t)\|^{2}
-$$
+```
 
 These are alternative definitions of internal load; in all cases, the overall objective remains $J=\mathbb{E}\!\left[\int_{0}^{T}\big(C_{\mathrm{task}}(t)+\lambda\,P(t)\big)\,dt\right]$ the same, with $P$ chosen per system. These variants emphasize that baseline regulation is not a single equation, but a design constraint.
 
 ## Stability Considerations
 
 A regulated baseline introduces a Lyapunov-like structure:
-$$
+```math
 V(x)=\|x-x_0\|^{2}
-$$
+```
 
 If:
-$$
+```math
 \dot{V}(x)\le 0 \quad \text{when } u(t)=0,\; w(t)=0,
-$$
+```
 then the system is provably stable around its baseline state.
 
 Importantly, stability here does not imply inactivity—it implies bounded, recoverable activation.
