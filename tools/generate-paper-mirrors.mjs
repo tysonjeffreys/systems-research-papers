@@ -1,7 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { spawn } from "child_process";
-import crypto from "crypto";
 
 const REPO_ROOT = process.cwd();
 
@@ -68,14 +67,6 @@ async function writeText(p, content) {
   await fs.writeFile(p, content, "utf8");
 }
 
-async function copyFileIfMissing(src, dst) {
-  if (!(await exists(src))) return { ok: false, reason: `missing source: ${src}` };
-  if (await exists(dst)) return { ok: true, skipped: true };
-  await fs.mkdir(path.dirname(dst), { recursive: true });
-  await fs.copyFile(src, dst);
-  return { ok: true, skipped: false };
-}
-
 function slugToTitle(slug) {
   return slug
     .split("-")
@@ -83,13 +74,21 @@ function slugToTitle(slug) {
     .join(" ");
 }
 
+function cleanupLatexInline(raw) {
+  let text = raw.replace(/\\\\/g, " ");
+  text = text.replace(/\\[A-Za-z]+\*?(?:\[[^\]]*\])?/g, " ");
+  text = text.replace(/[{}]/g, " ");
+  text = text.replace(/\s+/g, " ").trim();
+  return text;
+}
+
 function extractTitle(tex) {
   const explicit = tex.match(/\\title\s*\{([\s\S]*?)\}/m);
-  if (explicit) return explicit[1].replace(/\s+/g, " ").trim();
+  if (explicit) return cleanupLatexInline(explicit[1]);
 
   const large = tex.match(/\{\\(?:LARGE|Large|large|Huge|huge)(?:\\bfseries)?\s*([^{}]+?)\\par\}/m);
   if (!large) return null;
-  return large[1].replace(/\\\\/g, " ").replace(/\s+/g, " ").trim();
+  return cleanupLatexInline(large[1]);
 }
 
 function splitPreambleAndBody(tex) {
@@ -323,10 +322,6 @@ async function auditImageLinks(md, paperDir) {
   return [...new Set(missing)].sort();
 }
 
-function sha256(buf) {
-  return crypto.createHash("sha256").update(buf).digest("hex");
-}
-
 function normalizeVersion(raw, fallback = "0.0.0") {
   const m = raw.match(/(\d+(?:\.\d+){0,2})/);
   return m ? m[1] : fallback;
@@ -349,26 +344,6 @@ function encodeHref(relPath) {
 
 function mdLink(label, relPath) {
   return `[${label}](${encodeHref(relPath)})`;
-}
-
-async function pickBestPdf(paperDir) {
-  const preferred = ["latest.pdf", `${path.basename(paperDir)}.pdf`, "source.pdf", "main.pdf"];
-  for (const name of preferred) {
-    const full = path.join(paperDir, name);
-    if (await exists(full)) return name;
-  }
-
-  const entries = await fs.readdir(paperDir, { withFileTypes: true });
-  const pdfs = [];
-  for (const e of entries) {
-    if (!e.isFile()) continue;
-    if (!e.name.toLowerCase().endsWith(".pdf")) continue;
-    const full = path.join(paperDir, e.name);
-    const stat = await fs.stat(full);
-    pdfs.push({ name: e.name, mtimeMs: stat.mtimeMs });
-  }
-  pdfs.sort((a, b) => b.mtimeMs - a.mtimeMs);
-  return pdfs.length ? pdfs[0].name : null;
 }
 
 async function detectPaperDirs() {
@@ -397,7 +372,6 @@ async function detectPaperDirs() {
 async function generateMirrorForPaper(paperDir) {
   const texPath = path.join(paperDir, "main.tex");
   const versionPath = path.join(paperDir, "VERSION");
-  const latestPdfPath = path.join(paperDir, "latest.pdf");
   const changelogPath = path.join(paperDir, "CHANGELOG.md");
 
   const tex = await readText(texPath);
@@ -430,12 +404,6 @@ async function generateMirrorForPaper(paperDir) {
   md = dropLeadingTitleBlock(md);
   md = dropDuplicateTitleHeading(md, title);
 
-  const chosenPdf = await pickBestPdf(paperDir);
-  const hasLatest = await exists(latestPdfPath);
-  const pdfTarget = hasLatest ? "latest.pdf" : chosenPdf;
-  const pdfLine = pdfTarget
-    ? `${mdLink("open PDF", `./${pdfTarget}`)}${hasLatest ? "" : " *(latest.pdf missing)*"}`
-    : "(not found)";
   const changelogLine = (await exists(changelogPath))
     ? mdLink("CHANGELOG.md", "./CHANGELOG.md")
     : "(not found)";
@@ -444,11 +412,10 @@ async function generateMirrorForPaper(paperDir) {
     `# ${title}`,
     "",
     `**Version:** v${version}  `,
-    `**PDF:** ${pdfLine}  `,
     `**Source:** ${mdLink("./", "./")}  `,
     `**Changelog:** ${changelogLine}`,
     "",
-    "> Markdown mirror: best-effort GitHub rendering. Canonical artifact is the PDF.",
+    "> Markdown mirror: best-effort GitHub rendering.",
     "",
   ].join("\n");
 
@@ -475,9 +442,8 @@ async function generateMirrorForPaper(paperDir) {
   auditLines.push(`# Audit — ${title} (v${version})`);
   auditLines.push("");
   auditLines.push(`- Mirror: ./mirror.md`);
-  auditLines.push(`- PDF: ${pdfTarget ? `./${pdfTarget}` : "(not found)"}`);
   auditLines.push("");
-  auditLines.push("This audit lists items that may render differently on GitHub vs the PDF.");
+  auditLines.push("This audit lists items that may render differently on GitHub math rendering.");
   auditLines.push("");
 
   if (!leakedDefs.length && !unknown.length && !missingImages.length) {
@@ -507,56 +473,11 @@ async function generateMirrorForPaper(paperDir) {
   const auditPath = path.join(paperDir, "mirror.audit.md");
   await writeText(auditPath, `${auditLines.join("\n")}\n`);
 
-  const releasesDir = path.join(paperDir, "releases");
-  await fs.mkdir(releasesDir, { recursive: true });
-
-  const versionedMd = path.join(releasesDir, `${dirSlug}-v${version}.md`);
-  const versionedPdf = path.join(releasesDir, `${dirSlug}-v${version}.pdf`);
-
-  await copyFileIfMissing(mirrorPath, versionedMd);
-
-  let versionedPdfStatus = "skipped (latest.pdf missing)";
-  if (hasLatest) {
-    const copied = await copyFileIfMissing(latestPdfPath, versionedPdf);
-    versionedPdfStatus = copied.skipped ? "exists" : "created";
-  }
-
-  const releaseIndexPath = path.join(releasesDir, "README.md");
-  if (!(await exists(releaseIndexPath))) {
-    const index = [
-      `# Releases — ${title}`,
-      "",
-      "This folder contains immutable, versioned artifacts for easy download.",
-      "",
-      "- Current (stable):",
-      "  - ../latest.pdf",
-      "  - ../mirror.md",
-      "",
-      "- Versioned:",
-      `  - ${path.basename(versionedMd)}`,
-      `  - ${path.basename(versionedPdf)} (only when latest.pdf exists)`,
-      "",
-      "Do not overwrite existing files in this folder unless explicitly instructed.",
-      "",
-    ].join("\n");
-    await writeText(releaseIndexPath, index);
-  }
-
-  let pdfInfo = "missing latest.pdf";
-  if (hasLatest) {
-    const buf = await fs.readFile(latestPdfPath);
-    pdfInfo = `latest.pdf sha256=${sha256(buf).slice(0, 12)}`;
-  } else if (chosenPdf) {
-    pdfInfo = `using fallback pdf: ${chosenPdf}`;
-  }
-
   return {
     slug: dirSlug,
     dir: path.relative(REPO_ROOT, paperDir),
     version,
     title,
-    pdfInfo,
-    versionedPdfStatus,
   };
 }
 
@@ -577,11 +498,11 @@ async function main() {
 
   console.log("\nSummary:");
   for (const r of results) {
-    console.log(`- ${r.dir} | v${r.version} | ${r.pdfInfo} | releases pdf: ${r.versionedPdfStatus}`);
+    console.log(`- ${r.dir} | v${r.version}`);
   }
 
   console.log("\nReview each <paper>/mirror.audit.md for rendering risks.");
-  console.log("If latest.pdf is missing for any paper, export from Prism, save as latest.pdf, then re-run.");
+  console.log("This script only updates markdown mirrors and audits.");
 }
 
 main().catch((err) => {

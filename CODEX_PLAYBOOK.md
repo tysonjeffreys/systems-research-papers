@@ -20,13 +20,9 @@ baseline-papers/
       VERSION
       figures/ (optional)
       refs.bib (optional)
-      latest.pdf                # stable convenience artifact (committed)
+      latest.pdf                # manual convenience artifact (user-managed)
       mirror.md                 # stable GitHub-readable mirror (best-effort)
       mirror.audit.md           # mirror rendering audit (best-effort)
-      releases/
-        <paper-slug>-vX.Y.Z.pdf # immutable versioned artifact (copy of latest.pdf)
-        <paper-slug>-vX.Y.Z.md  # immutable versioned artifact (copy of mirror.md)
-        README.md               # optional index for releases/
   release-notes/
     <tag>.md                    # e.g. why-energy-v1.1.0.md
   CHANGELOG.md                  # repo-level, links to per-paper entries
@@ -53,7 +49,7 @@ baseline-papers/
   - `git checkout -b chore/repo-restructure`
 
 ### 1) Add .gitignore to stop build-junk churn
-Create/update `.gitignore` to ignore LaTeX/Prism outputs but NOT ignore `latest.pdf`.
+Create/update `.gitignore` to ignore LaTeX/Prism outputs.
 
 Recommended patterns:
 - LaTeX aux:
@@ -77,11 +73,12 @@ Recommended patterns:
   build/
   out/
   dist/
-- Keep committed convenience PDF:
+- Optional manual convenience PDF:
   !**/latest.pdf
 
 NOTE:
 - If your paper folders currently contain `main.pdf` or `source.pdf`, those should generally be treated as build output and ignored/removed from tracking.
+- Codex should not copy/rename/version PDFs unless explicitly instructed.
 
 ### 2) Untrack build junk already committed
 If any ignored files are currently tracked:
@@ -111,7 +108,7 @@ For each paper folder moved:
   - `README.md` (create if missing)
   - `VERSION` (create if missing)
   - `CHANGELOG.md` (create if missing)
-  - `latest.pdf` (create via copy from an existing exported PDF if present)
+  - `latest.pdf` (optional, user-managed)
 
 ### 5) Create VERSION + CHANGELOG.md per paper
 Inside each `papers/<slug>/`:
@@ -127,30 +124,19 @@ Template (per paper CHANGELOG.md):
 - ## vX.Y.Z — YYYY-MM-DD
   - Bullet changes…
 
-### 6) Standardize latest.pdf
-Inside each `papers/<slug>/`:
-- Identify the most recent exported PDF currently present (often named with version + title).
-- Copy it to `latest.pdf`.
-- Do not keep multiple PDFs tracked in git. Only commit `latest.pdf`.
-  (Older version PDFs should live in GitHub Releases, not the repo.)
-
-### 7) Build Markdown mirrors inside each paper folder
+### 6) Build Markdown mirrors inside each paper folder
 For each paper:
 - Create `papers/<paper-slug>/mirror.md` (best-effort, preserves math as LaTeX)
 - Create `papers/<paper-slug>/mirror.audit.md` (flags macro/command risks for GitHub rendering)
-- Create `papers/<paper-slug>/releases/` and place immutable, versioned copies:
-  - `<paper-slug>-vX.Y.Z.md`
-  - `<paper-slug>-vX.Y.Z.pdf` (requires latest.pdf to exist)
 Preferred method:
-- Run `node tools/generate-paper-mirrors.mjs`
+- Run `node --experimental-modules tools/generate-paper-mirrors.mjs`
 
-### 8) Repo-level README index + CHANGELOG
+### 7) Repo-level README index + CHANGELOG
 - `README.md` should list each paper:
   - Title
   - Current version (read from VERSION file)
   - Links:
     - Prism source folder
-    - latest.pdf
     - mirror.md
     - per-paper CHANGELOG.md
 
@@ -158,7 +144,7 @@ Preferred method:
   - Release/date entries
   - For each entry: list papers changed and link to the relevant per-paper changelog section.
 
-### 9) Relocate harness/gates writeups
+### 8) Relocate harness/gates writeups
 If this repo currently contains folders like `regulated-agent-replay-suite/` or `regulated-retrieval-gates/` that are only markdown notes:
 - Move those notes to the appropriate code repos (preferred), OR
 - Replace them here with minimal “pointer docs” under `docs/` that link to the code repos.
@@ -168,7 +154,7 @@ In this papers repo, keep only:
 - index/changelogs
 - lightweight references/links
 
-### 10) Commit the migration
+### 9) Commit the migration
 - `git add -A`
 - `git commit -m "Restructure repo: stable paper slugs, VERSION/CHANGELOG, md mirrors, ignore build junk"`
 - Open PR / merge into main only when verified.
@@ -199,29 +185,21 @@ In repo-level `CHANGELOG.md`:
 - Do not remove sections or functionality unless explicitly instructed.
 - Keep formatting consistent with existing paper style.
 
-### 4) Generate/update mirror.md + audit + versioned release artifacts
+### 4) Generate/update mirror.md + audit
 Run:
-- `node tools/generate-paper-mirrors.mjs`
+- `node --experimental-modules tools/generate-paper-mirrors.mjs`
 
 This will:
 - write `papers/<slug>/mirror.md`
 - write `papers/<slug>/mirror.audit.md`
-- create immutable `papers/<slug>/releases/<slug>-vX.Y.Z.md` if missing
-- create immutable `papers/<slug>/releases/<slug>-vX.Y.Z.pdf` if `latest.pdf` exists and versioned PDF is missing
 
-### 5) Human-in-the-loop: export PDF from Prism
-STOP and ask the user to:
-- Open Prism project at `papers/<paper-slug>/`
-- Export PDF
-- Save/overwrite: `papers/<paper-slug>/latest.pdf`
-
-After the user exports:
-- Verify `latest.pdf` file timestamp changed (or file hash changed).
-- Re-run `node tools/generate-paper-mirrors.mjs` so the versioned PDF copy is created in `papers/<slug>/releases/`.
+### 5) PDF handling is manual and out of scope for Codex
+- Codex does not copy, rename, verify, or version PDFs.
+- If the user updates `latest.pdf`, that is a manual action outside this workflow.
 
 ### 6) Cleanliness check
 - `git status` should show only meaningful changes:
-  - main.tex, VERSION, CHANGELOG.md, mirror.md, mirror.audit.md, latest.pdf, and new `releases/<slug>-vX.Y.Z.*` files
+  - main.tex, VERSION, CHANGELOG.md, mirror.md, mirror.audit.md
 - There should be no build junk tracked. If present, add ignore rules or remove from tracking.
 
 ### 7) Commit
@@ -249,16 +227,14 @@ Create a GitHub Release for the tag with:
 - Release notes copied from:
   - `release-notes/<tag>.md` (create/update this file)
 - Assets:
-  - `papers/<paper-slug>/releases/<paper-slug>-vX.Y.Z.pdf`
-  - `papers/<paper-slug>/releases/<paper-slug>-vX.Y.Z.md`
-  - (optional) `papers/<paper-slug>/latest.pdf`
+  - `papers/<paper-slug>/mirror.md` (optional)
 
 ---
 
 ## Mirror policy
-- PDF is canonical; `mirror.md` is best-effort for GitHub readability.
+- `main.tex` is the source artifact; `mirror.md` is best-effort for GitHub readability.
 - `mirror.audit.md` lists math commands and rendering-risk signals that may differ from PDF output.
-- Never overwrite existing files in `papers/<slug>/releases/` unless explicitly instructed.
+- Codex does not copy, rename, verify, or version PDFs by default. PDF placement is user-managed.
 
 ---
 
@@ -280,11 +256,6 @@ If batch branch is used:
   - updated per-paper CHANGELOG
   - updated mirror.md
   - updated mirror.audit.md
-  - versioned artifacts exist in `releases/` for the bumped version:
-    - `<slug>-vX.Y.Z.pdf`
-    - `<slug>-vX.Y.Z.md`
-  - updated latest.pdf
   - updated repo CHANGELOG
 - Tag exists and points at `main`.
-- GitHub Release exists with PDF attached and release notes.
-- Never overwrite existing files in `papers/<slug>/releases/` unless explicitly instructed.
+- GitHub Release exists with release notes.
