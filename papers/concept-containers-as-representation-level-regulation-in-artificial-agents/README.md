@@ -15,4 +15,4 @@ Core focus:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`
+- PDF (named): [Concept Containers as Representation-Level Regulation in Artificial Agents - v1.3.pdf](./Concept Containers as Representation-Level Regulation in Artificial Agents - v1.3.pdf)

@@ -15,4 +15,4 @@ Core focus:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`
+- PDF (named): [Toward A Coherent Human Baseline - v1.0.pdf](./Toward A Coherent Human Baseline - v1.0.pdf)

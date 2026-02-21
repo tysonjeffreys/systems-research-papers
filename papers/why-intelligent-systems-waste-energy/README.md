@@ -15,4 +15,4 @@ Core contributions:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`
+- PDF (named): [Why Intelligent Systems Waste Energy - v1.0.pdf](./Why Intelligent Systems Waste Energy - v1.0.pdf)

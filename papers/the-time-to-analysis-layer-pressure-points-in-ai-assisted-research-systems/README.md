@@ -15,4 +15,4 @@ Core focus:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - PDF (stable): [latest.pdf](./latest.pdf)
-- PDF (manual named copy): `<paper-title> - vX.Y.Z.pdf`
+- PDF (named): [The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems - v1.2.pdf](./The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems - v1.2.pdf)
