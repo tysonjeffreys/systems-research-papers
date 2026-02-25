@@ -1,7 +1,5 @@
 # baseline-papers
 
-Prism-first papers repository with markdown mirrors for GitHub readability.
-
 ## Series Overview
 
 This library focuses on regulated intelligence systems: how agents should reason, select, and commit under uncertainty without drifting into unsafe or high-cost behavior.
@@ -15,16 +13,27 @@ This library focuses on regulated intelligence systems: how agents should reason
 ## Paper Summaries
 
 - **Baseline Regulation and Global Constraint Signals in Embodied Control Systems**: introduces baseline-aware control and global constraint signaling to keep distributed subsystems aligned under stress.
+
 - **Concept Containers as Representation-Level Regulation in Artificial Agents**: defines containerized representation updates as regulated commits with provenance, falsifiers, and persistence checks.
+
 - **Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery**: formalizes critics as telemetry (not authorities) and uses abstention-gated bounded selection for verifier-free tasks.
+  
 - **Phase Discipline for Regulated Agents**: adds runtime phase control (restore, transition, act) to enforce state-action alignment and safer commit timing.
+  
 - **Regulated Agent Replay Suite: A Minimal CI Gate for Verifier-Free Discovery**: specifies a practical replay and gating harness that enforces commit discipline and stability checks.
+  
 - **Regulatory Ground for Agentic AI**: provides the core architecture and governance model for band-limited optimization, posture control, and safe discovery loops.
+  
 - **The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems**: argues for analysis artifacts over summary output and defines metrics for intervention-ready reasoning speed.
+  
 - **The Verifier Gap: Regulation for Non-Verifiable Reasoning**: names the regime where selection exists without verification and introduces the Verifier Gap Layer.
+  
 - **Toward a Coherent Human Baseline**: proposes a human baseline framing for coherent regulation targets and longitudinal adaptation.
+  
 - **Toward a Lower Human Metabolic Baseline**: explores reduced energetic baseline as a systems objective and its implications for stable intelligence.
+  
 - **Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems**: models intelligent behavior as a shift between efficient latent coordination and costly compensation.
+  
 - **Why Intelligent Systems Waste Energy**: explains energy waste as a control and representation pathology rather than a purely hardware or scale issue.
 
 ## Artifacts By Paper
