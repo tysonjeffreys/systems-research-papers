@@ -1,5 +1,3 @@
-# baseline-papers
-
 ## Series Overview
 
 This library focuses on regulated intelligence systems: how agents should reason, select, and commit under uncertainty without drifting into unsafe or high-cost behavior.
