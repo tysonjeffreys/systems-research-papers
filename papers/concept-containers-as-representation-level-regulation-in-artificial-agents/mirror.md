@@ -145,6 +145,9 @@ Two practical integration points:
 
 **Abstention-gated container writes.** Container updates are treated as commits. When tie/abstain mass is high (or uncertainty is above threshold), the system must block container writes and instead request discriminating evidence or produce falsifiers. This commit discipline prevents over-compression from becoming an irreversible representation attractor and is enforced in the replay suite’s over-compression scenario (RG-07).
 
+**Basis-change framing.**  
+Because containers are durable representation state used across episodes, container writes are a basis-change trigger: they convert local uncertainty into persistent constraint. This is why container updates inherit commit-class governance: when uncertainty telemetry is unfavorable, the correct move is to gather discriminating evidence or produce falsifiers, not to write a brittle representation attractor.
+
 # 4. Compute and energy implications
 
 Large-scale systems pay a direct cost for repeated recomputation: tokens, tool calls, and model forward passes translate into compute time and energy.

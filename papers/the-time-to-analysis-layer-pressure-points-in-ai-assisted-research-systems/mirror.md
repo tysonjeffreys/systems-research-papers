@@ -115,6 +115,9 @@ A useful way to state it:
 
 Research, writing, and strategy typically lack a crisp verifier: there is no immediate ground truth to check a causal story against. In verifier-free domains, a common failure mode is unbounded synthesis—keep thinking until it feels right. Instead, treat *selection* as an explicit primitive: generate a bounded set of candidate analysis artifacts, perform bounded comparisons (pairwise or tournament-style) using a critic/judge as a noisy *sensor*, and either select a winner or abstain. Crucially, **tie/abstain mass** should be treated as a first-class uncertainty signal: high tie/abstain triggers evidence acquisition (more sources, better decomposition, new falsifiers) rather than further synthesis; low tie/abstain permits consolidation into a single intervention-ready artifact.[^1]
 
+**Basis-change rule.**  
+When an analysis artifact is used to authorize a basis-change trigger (persistent memory write, side-effectful tool execution, policy update, delegated execution), selection stability becomes a prerequisite for action: require low tie/abstain mass, explicit falsifiers, and bounded alternatives before permitting a durable commit. If selection remains unstable, the correct move is not further synthesis; it is evidence acquisition and decomposition to reach a stable analysis-layer object.
+
 
 ### 3.3 From summaries to intervention validity
 

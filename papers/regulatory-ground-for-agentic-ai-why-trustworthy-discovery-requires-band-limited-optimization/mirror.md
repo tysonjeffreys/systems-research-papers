@@ -300,6 +300,14 @@ Learned critics (reward models, LLM-as-judge evaluators, relativistic critics) a
 
 - **Govern the critic like the mapping.** Critics drift and can be gamed; version the judge model/prompt and monitor calibration and tie-rate drift, with explicit rollback criteria .
 
+#### Scope closure and basis-change triggers.
+
+Within the base model scope (distribution → decoding → constraint transforms), apparent “interiority” is not a reliable primitive: self-reports are behavioral outputs and must not be treated as authorities. *Closure holds within scope.*
+
+The basis changes when we introduce a causally independent primitive: persistent state (cross-episode memory writes), tool execution with real-world side effects, policy/config updates that alter future behavior, or delegated execution authority. These **basis-change triggers** convert “answering” into *agency*: errors can compound through durable commits.
+
+Operationally, basis-change triggers should tighten posture by default: treat persistent writes and side-effectful actions as commit-class events, require favorable uncertainty telemetry before permitting them, and ensure rollback/recovery semantics exist for every authorized trigger.
+
 The regulator computes effective budgets and thresholds as functions of $g(t)$, for example:
 ```math
 \begin{align}
