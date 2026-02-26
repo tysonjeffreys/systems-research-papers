@@ -2,6 +2,19 @@
 
 All notable paper updates are documented here.
 
+## 2026-02-26 (Scope Closure + Basis-Change Framing)
+
+- Added a coordinated framing update across six Prism papers: scope closure within LM mapping and basis-change triggers at the agentification boundary.
+- Updated papers and versions:
+  - Regulatory Ground (`v1.4.2`)
+  - Phase Discipline (`v0.1.1`)
+  - Critics-as-Sensors (`v0.1.1`)
+  - Time-to-Analysis Layer (`v1.2.1`)
+  - Verifier Gap (`v0.1.1`)
+  - Concept Containers (`v1.3.1`)
+- For each paper, updated both `main.tex` and `mirror.md` with additive insertions only, plus patch `VERSION` and per-paper `CHANGELOG.md` entries.
+- Added release note: `release-notes/scope-closure-basis-change-2026-02-26.md`.
+
 ## 2026-02-21 (Companion Docs Sync)
 
 - Updated companion notes for regulated-agent-replay-suite and regulated-retrieval-gates to reflect the v0.4.0 governance framing.
