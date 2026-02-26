@@ -297,6 +297,12 @@ A \textbf{commit} is any irreversible or persistent change:
 \item long-lived analysis artifacts used as downstream inputs.
 \end{itemize}
 
+\noindent\textbf{Basis-change triggers (agentification boundary).}
+Within-scope, a model is a mapping from context to next-token distributions (plus decoding and constraints). The failure mode changes when the system is allowed to \emph{persist} or \emph{act}:
+persistent memory writes, side-effectful tool calls, policy/config updates, or delegated execution authority.
+These are \textbf{basis-change triggers} because they turn local uncertainty into durable compounding error.
+Phase discipline therefore treats commit rights as the boundary surface: basis-change actions inherit the strictest gating and are reserved for stable Transition windows (or explicitly declared Override with bounded budgets and recovery).
+
 \subsection{7.2 Commit gating in the transition window}
 Phase discipline proposes a simple rule:
 \begin{quote}

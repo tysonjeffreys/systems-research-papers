@@ -236,6 +236,11 @@ A **commit** is any irreversible or persistent change:
 
 - long-lived analysis artifacts used as downstream inputs.
 
+**Basis-change triggers (agentification boundary).**  
+Within-scope, a model is a mapping from context to next-token distributions (plus decoding and constraints). The failure mode changes when the system is allowed to *persist* or *act*: persistent memory writes, side-effectful tool calls, policy/config updates, or delegated execution authority.
+
+These are **basis-change triggers** because they turn local uncertainty into durable compounding error. Phase discipline treats commit rights as the boundary surface: basis-change actions inherit the strictest gating and are reserved for stable Transition windows (or explicitly declared Override with bounded budgets and recovery).
+
 ## 7.2 Commit gating in the transition window
 
 Phase discipline proposes a simple rule:

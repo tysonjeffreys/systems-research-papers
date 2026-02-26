@@ -5,6 +5,7 @@
 - `main` is **published-only**. All work happens on branches and is merged only when ready to release.
 - Folder names are **stable identifiers** (no version numbers in folder names).
 - Versions live in: git tags + per-paper VERSION file + changelogs + release notes.
+- Every paper update must also update release metadata at repo scope: `CHANGELOG.md` + a `release-notes/*.md` entry for that change set.
 - Keep Prism/LaTeX sources clean: do NOT commit build junk.
 - If editing any code repos (e.g., regulated-agent-replay-suite / regulated-retrieval-gates), read and follow `DEV_RULES_FOR_CHATGPT.md` first. Do not refactor or remove functionality unless explicitly instructed.
 
@@ -181,6 +182,10 @@ In `papers/<paper-slug>/CHANGELOG.md`:
 In repo-level `CHANGELOG.md`:
 - add an entry referencing the paper + linking to per-paper changelog
 
+In `release-notes/`:
+- create/update a release note markdown file for the current change set (required, even for docs-only paper updates)
+- include: scope summary, papers/versions changed, and related repo notes (if applicable)
+
 ### 3) Edit paper sources (Prism/LaTeX)
 - Modify `papers/<paper-slug>/main.tex` and related assets as instructed.
 - Do not remove sections or functionality unless explicitly instructed.
@@ -201,7 +206,7 @@ This will:
 
 ### 6) Cleanliness check
 - `git status` should show only meaningful changes:
-  - main.tex, VERSION, CHANGELOG.md, mirror.md, mirror.audit.md
+  - main.tex, VERSION, CHANGELOG.md, mirror.md, mirror.audit.md, repo `CHANGELOG.md`, and `release-notes/*.md`
 - There should be no build junk tracked. If present, add ignore rules or remove from tracking.
 
 ### 7) Commit
@@ -260,5 +265,6 @@ If batch branch is used:
   - updated mirror.md
   - updated mirror.audit.md
   - updated repo CHANGELOG
+  - updated/added `release-notes/*.md` entry for the change set
 - Tag exists and points at `main`.
 - GitHub Release exists with release notes.

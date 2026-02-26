@@ -233,6 +233,9 @@ Verifier-free discovery is not solved by “more reasoning.” It requires a reg
 
 This note proposes a concrete missing layer that completes the trilogy’s arc: baseline posture control, reusable structure, and regulated synthesis are not sufficient unless verifier-free selection itself is operationalized and governed. **Implementation pointer.** A small replayable CI gate accompanies this note to operationalize tournament selection + abstention gating as a concrete harness. The goal is not to “prove correctness,” but to enforce commit discipline, injection resistance, and stability under perturbation as minimal requirements for verifier-free discovery systems. **Retrieval-gate analogue.** The same discipline applies to retrieval systems: deterministic scoring where needed, tie-mass telemetry as uncertainty, and abstention-gated commit policy for downstream writes. The target is not identical prose on every run, but stable commit/withhold decisions, explicit rationale, and bounded variation under replay.
 
+**Scope closure and basis-change.**  
+Within the base model scope (distribution → decoding → constraints), apparent self-knowledge is not a reliable primitive: critics and self-reports must be treated as sensors, not authorities. The basis changes when the system can persist or act (memory writes, side-effectful tools, policy updates, delegated execution). In that regime, abstention/tie telemetry is not optional—it is the control surface that prevents verifier-free cascades by withholding commit rights until discriminating evidence exists.
+
 
 ------------------------------------------------------------------------
 

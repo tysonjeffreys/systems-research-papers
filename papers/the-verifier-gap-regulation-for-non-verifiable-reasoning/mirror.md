@@ -37,6 +37,9 @@ This paper separates two concepts:
 
 The **verifier gap** is the regime where *selection exists but verification does not*. The core claim is architectural: in this regime, selection signals must be treated as telemetry and wrapped in band-limited governance.
 
+**Scope closure and basis-change triggers.**  
+Within the base model scope (distribution → decoding → constraint transforms), the system may produce fluent self-descriptions of goals, beliefs, or certainty, but these are not verifiers and must not be treated as authorities. The basis changes when we introduce persistent state or execution authority (memory writes, side-effectful tools, policy updates, delegated action). In that regime, verifier-free failure shifts from “wrong answer” to *compounding cascades*—and commit gating becomes the primary safety question: *when is a durable action permitted?*
+
 # 2. The Verifier Gap
 
 ## 2.1 Why the verifier gap is the default
