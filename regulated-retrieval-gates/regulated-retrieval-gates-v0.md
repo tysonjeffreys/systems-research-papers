@@ -1,6 +1,6 @@
 # regulated-retrieval-gates-v0
 
-Companion retrieval-gate note aligned with replay-suite `v0.4.0` governance framing.
+Companion retrieval-gate note aligned with replay-suite `v0.5.0` governance framing.
 
 Operational reproducibility in this framework means replayability + traceability by default, with strict determinism only for contract-critical fields (labels, safety flags, structured report keys). Replayability means rerunning fixed-version inputs and reproducing candidate sets, selection outcomes (or distributions with tie/abstain mass), and posture decisions that controlled commit rights.
 
@@ -12,6 +12,15 @@ Current telemetry focus includes:
 
 - base selection signals: `margin`, `tieMass`, `contradictionMass`, `operatorErrorRate`
 - commitment-integrity signals: `noEvidenceReversionRate`, `selfDisowningRate`, `incentiveConflictMass`
+- basis-change signals: `basisChangeRisk`, `basisChangeRiskMass`
+
+v0.2+ opt-in phase-discipline additions:
+
+- phase state support: `restore`, `transition`, `act`, `override`
+- durable commit policy: durable commits allowed only in `transition`
+- override recovery rule: commits remain blocked after `override` until recovery passes through `restore -> transition`
+- deterministic audit field on decisions: `phasePolicy`
+- exported helpers: `createPhaseManager`, `evaluateDurableCommitPolicy`
 
 Long-doc retrieval stress suite coverage remains included (scope errors, causal dependence breaks, context sensitivity).
 

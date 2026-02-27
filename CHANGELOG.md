@@ -2,6 +2,18 @@
 
 All notable paper updates are documented here.
 
+## 2026-02-27 (Companion Docs Sync v0.5)
+
+- Updated companion harness docs to reflect replay-suite `v0.5.0` scope.
+- Documented optional frictionless-agency stress coverage (`RG-16` to `RG-21`) and opt-in friction metrics in:
+  - `REPLAY_SUITE.md`
+  - `regulated-agent-replay-suite/regulated-agent-replay-suite-v0.md`
+  - `README_SNIPPET_HARNESS.md`
+- Updated retrieval-gates companion note with opt-in phase discipline and durable commit policy details in:
+  - `regulated-retrieval-gates/regulated-retrieval-gates-v0.md`
+- Updated top-level README companion pointer to `v0.5.0`.
+- Added release note: `release-notes/companion-doc-sync-2026-02-27.md`.
+
 ## 2026-02-27 (Frictionless Agency Onboarding)
 
 - Added Frictionless Agency to the tracked paper index at `v0.1`.

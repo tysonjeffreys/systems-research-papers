@@ -55,7 +55,7 @@ This library focuses on regulated intelligence systems: how agents should reason
 | Why Intelligent Systems Waste Energy | v1.0 | [dir](./papers/why-intelligent-systems-waste-energy/) | [mirror](./papers/why-intelligent-systems-waste-energy/mirror.md) | [audit](./papers/why-intelligent-systems-waste-energy/mirror.audit.md) | [latest.pdf](./papers/why-intelligent-systems-waste-energy/latest.pdf) | [CHANGELOG](./papers/why-intelligent-systems-waste-energy/CHANGELOG.md) |
 
 - Harness repo: [regulated-agent-replay-suite](https://github.com/tysonjeffreys/regulated-agent-replay-suite)
-- Current harness release target: v0.4.0 (integrity + cross-domain extended batteries)
+- Current harness release target: v0.5.0 (adds frictionless-agency stress RG-16 to RG-21 + opt-in friction metrics)
 - Retrieval gates repo: [regulated-retrieval-gates](https://github.com/tysonjeffreys/regulated-retrieval-gates)
 - Harness note (local): [regulated-agent-replay-suite-v0.md](./regulated-agent-replay-suite/regulated-agent-replay-suite-v0.md)
 - Retrieval note (local): [regulated-retrieval-gates-v0.md](./regulated-retrieval-gates/regulated-retrieval-gates-v0.md)
