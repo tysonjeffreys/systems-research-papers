@@ -3,6 +3,7 @@
 ## Non-negotiables
 - Treat this repo as the **source-of-truth** for paper sources + release metadata.
 - `main` is **published-only**. All work happens on branches and is merged only when ready to release.
+- Never commit directly to `main` from Codex, including housekeeping-only changes (README, root CHANGELOG, release notes, per-paper CHANGELOG/VERSION corrections).
 - Folder names are **stable identifiers** (no version numbers in folder names).
 - Versions live in: git tags + per-paper VERSION file + changelogs + release notes.
 - Every paper update must also update release metadata at repo scope: `CHANGELOG.md` + a `release-notes/*.md` entry for that change set.
@@ -38,8 +39,17 @@ baseline-papers/
 
 ## Tag + branch naming
 - Branch: `paper/<paper-slug>/vX.Y.Z`
+- Housekeeping-only branch (cross-paper or repo metadata): `chore/release-metadata/<YYYY-MM-DD>-<topic>`
 - Tag: `<short-slug>-vX.Y.Z` (example: `why-energy-v1.0.0`)
   - Maintain a mapping of paper-slug → short-slug in README.md (or decide short-slug = paper-slug if you want zero mapping).
+
+---
+
+## Branch policy for housekeeping updates
+- Apply branch-first workflow even when the change is metadata/docs only.
+- If housekeeping is scoped to one paper release, use: `paper/<paper-slug>/vX.Y.Z`.
+- If housekeeping spans multiple papers or repo-only metadata, use: `chore/release-metadata/<YYYY-MM-DD>-<topic>`.
+- Merge to `main` only via PR (preferred) or explicit merge step after verification; do not push direct commits to `main`.
 
 ---
 
