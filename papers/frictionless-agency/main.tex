@@ -1,0 +1,289 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,arrows.meta}
+\usepackage{listings}
+\usepackage[numbers]{natbib}
+
+% pandoc compatibility (used across projects)
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Unicode support for common symbols
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}} % →
+\DeclareUnicodeCharacter{21D2}{\ensuremath{\Rightarrow}} % ⇒
+\DeclareUnicodeCharacter{03BB}{\ensuremath{\lambda}} % λ
+
+\begin{document}
+
+\begin{titlepage}
+\thispagestyle{empty}
+\raggedright
+
+\vspace*{0.62\textheight}
+
+{\LARGE Frictionless Agency\par}
+\vspace{0.25em}
+{\Large Dysregulation, Override, and Regulation as Proto-Ethics in Tool-Using and Embodied Systems\par}
+\vspace{0.4em}
+{\large\itshape Baseline regulation / governance architecture for autonomous systems\par}
+
+\vspace{1.6em}
+
+Tyson Jeffreys\\
+Independent Researcher\\
+\href{mailto:tyson@staygolden.dev}{tyson@staygolden.dev}
+
+\vspace{1.6em}
+
+Version 0.2 --- February 27, 2026
+
+\end{titlepage}
+
+\noindent\textbf{Series note.} This note connects Baseline regulation primitives to an implementable governance mechanism for autonomous systems: baseline regulation and global constraint signals \citep{jeffreys2025baseline_constraint}; energetic consequences of always-on posture \citep{jeffreys2026waste_energy}; Two-Regime Control (latent coordination vs.\ compensation) \citep{jeffreys2026two_regime_control}; Phase Discipline (transition windows and commit alignment) \citep{jeffreys2026phase_discipline}; Regulatory Ground (band-limited optimization for trustworthy discovery) \citep{jeffreys2026regulatory_ground}; the verifier-gap / bounded selection program \citep{jeffreys2026verifier_gap,jeffreys2026critics_as_sensors,provilkov2025escaping}; the Time-to-Analysis layer \citep{jeffreys2026time_to_analysis}; and Concept Containers as governed, durable artifacts \citep{jeffreys2026concept_containers}.
+
+\begin{abstract}
+Many costly failures in human life and in autonomous agents do not begin with a single wrong action; they begin with \textbf{dysregulation}: sustained operation outside a stable, recoverable band. In humans, dysregulation often manifests as prolonged sympathetic drive, over-ventilation relative to demand, and accumulating ``friction'' (fatigue, irritability, brittle cognition). In agents, dysregulation appears as chronic high activation: persistent deliberation, thrash, runaway tool use, and premature durable commits.
+
+Most alignment and safety discourse treats ``ethics'' as primarily a values problem. This note argues a missing layer is \emph{regulatory}: much real-world harm emerges when systems operate for prolonged periods in high-activation, verifier-free loops. We propose \textbf{frictionless agency} as an operational target: low compensation duty cycle, bounded override, fast recovery to baseline, abstention-gated commits, and governance of learned judges/critics as telemetry rather than truth.
+
+Regulation does not choose moral values, but it can produce \textbf{proto-ethical posture by default}: restraint under uncertainty, prevention of runaway autonomy chains, and enforceable commit boundaries with rollback and audit. We formalize friction as sustained deviation plus thrash, define dysregulation and override as priced capabilities with mandatory recovery, and present a four-layer regulated stack (risk posture, phase, bounded selection, commit governance). Finally, we propose concrete metrics and a CI-style replay evaluation plan to make these claims falsifiable at the systems level.
+\end{abstract}
+
+\section{1. Motivation: friction as a systems variable}
+The motivating thread is simple:
+\begin{quote}
+Humans can choose to ignore the body\textquotesingle s cycling constraints (``free will'' as override), but the body cannot ignore them; dysregulation accumulates friction.\\
+Autonomous systems can be architected so that regulation is not optional.
+\end{quote}
+
+Friction matters because it is the \emph{precondition} of many downstream failures: brittle cognition, escalation without resolution, tool misuse, and irrecoverable commits. When an agent is allowed to remain ``always-on''---high activation, weak verification, continuous autonomy---errors compound into a trajectory that is difficult to interrupt or reverse \citep{jeffreys2026waste_energy,jeffreys2026regulatory_ground}. If we can make regulation first-class (not a best-effort policy), then many harmful trajectories become \emph{harder to express} even before we argue about values.
+
+This note therefore treats ``ethics'' as partially downstream of posture. The claim is not that regulation \emph{solves} alignment; it is that regulation supplies a missing layer of constraint and recoverability that any value system must ride on.
+
+\section{2. Definitions}
+\subsection{2.1 Baseline, activation, and friction}
+Let $x(t)$ denote an internal activation proxy: compute intensity, planning depth, tool-call rate, actuation strain, or any aggregate measure of ``how hard the system is running.'' Define a baseline band $\mathcal{B}$ around $x_0$ representing the lowest internally stable posture consistent with readiness \citep{jeffreys2026waste_energy}. Define \textbf{friction} as the accumulated cost of (i) sustained deviation above baseline and (ii) high-frequency oscillation (thrash):
+\begin{equation}
+F_T \;=\; \int_0^T \max\{0,\; x(t) - x_0\}\, dt \; +\; \lambda \int_0^T \bigl\|\dot{x}(t)\bigr\|\, dt.
+\end{equation}
+
+Operationally, friction is visible as:
+\begin{itemize}
+  \item \textbf{Thrash}: repeated recomputation, reversals, tool-call churn.
+  \item \textbf{Escalation without resolution}: autonomy increases while uncertainty does not decrease.
+  \item \textbf{Premature commits}: durable writes (policy/memory/representation) under unstable selection.
+  \item \textbf{Reduced recoverability}: long half-life back to baseline after escalation.
+\end{itemize}
+
+\subsection{2.2 Dysregulation}
+\textbf{Dysregulation} is sustained operation outside a stable, recoverable band. In this vocabulary, dysregulation is not a moral label; it is a dynamical regime: prolonged compensation, weak recovery, and rising friction. Systems can be ``successful'' in the short term while dysregulated, but they pay later via crashes, brittle behavior, and forced discontinuities.
+
+\subsection{2.3 Compensation and baseline operation}
+Following Two-Regime Control \citep{jeffreys2026two_regime_control}, we distinguish:
+\begin{itemize}
+  \item \textbf{Baseline / coordination}: low-cost, stable operation where adaptations do not incur growing global debt.
+  \item \textbf{Compensation}: local fixes that preserve performance while increasing hidden costs elsewhere (higher friction, longer recovery, increased instability).
+\end{itemize}
+Frictionless agency aims to keep compensation duty cycle low and to make compensation episodes explicit, bounded, and recoverable.
+
+\subsection{2.4 Proto-ethics (posture, not values)}
+We define \textbf{proto-ethics} as \emph{regulatory posture that resembles ethical restraint} without requiring value reasoning:
+\begin{itemize}
+  \item abstain under high uncertainty for high-impact actions,
+  \item prevent runaway autonomy chains,
+  \item keep irreversibility inside governed commit boundaries (rollback + audit),
+  \item treat critics/judges as instruments (versioned, monitored, replayable), not as oracle truth \citep{jeffreys2026critics_as_sensors}.
+\end{itemize}
+Proto-ethics is compatible with many value theories; it is a substrate condition for acting safely under uncertainty.
+
+\section{3. Phase cycles and transition windows}
+A key idea is that stability is not static; it is \textbf{cyclical}. Biological systems alternate between activation and recovery; continuous activation is brittle. We operationalize this as a runtime phase state
+$p(t) \in \{\textsf{Restore},\textsf{Transition},\textsf{Act},\textsf{Override}\}$
+with explicit transition windows reserved for consolidation and commit-aligned updates \citep{jeffreys2026phase_discipline}.
+
+A regulated agent's cognition becomes episodic and gated rather than continuously ``on'':
+
+\subsection{3.1 Baseline thinking}
+Most of the time, operate near baseline: low-cost monitoring, short-horizon actions, conservative tool rights, and \emph{no durable writes}. The default posture is recovery-friendly and abstention-biased for high-impact operations.
+
+\subsection{3.2 Escalation thinking (priced)}
+Escalation is permitted only when measurable triggers fire: uncertainty is reducible by evidence, expected impact warrants deeper analysis, and posture permits deeper action. Escalation consumes budget, increases restraint, and schedules mandatory recovery.
+
+\subsection{3.3 Consolidation thinking}
+In verifier-free domains, the output that matters is not long-form narrative but an \emph{analysis-layer artifact} that exposes causal structure, disagreement, uncertainty, and falsifiers \citep{jeffreys2026time_to_analysis}. Consolidation is reserved for \textsf{Transition} windows, where commits and representations can be updated under governed conditions.
+
+\section{4. Architecture: regulation as the substrate for proto-ethics}
+\label{sec:stack}
+This section connects the series primitives to a concrete ``ethics-by-default'' mechanism.
+
+\subsection{4.1 The stack (four layers)}
+\begin{center}
+\raggedright
+\fbox{\begin{minipage}{0.93\linewidth}
+\vspace{0.4em}
+\textbf{Regulated stack for frictionless agency}
+\begin{enumerate}
+  \item \textbf{Risk posture $g(t)$}: global restraint (bands/budgets/rollback; tool rights; safe mode).\\
+  \hfill \citep{jeffreys2026regulatory_ground}
+  \item \textbf{Phase $p(t)$}: explicit work types (restore / transition / act; bounded override).\\
+  \hfill \citep{jeffreys2026phase_discipline}
+  \item \textbf{Verifier-gap selection}: bounded candidates + bounded comparison; tie/abstain mass as uncertainty telemetry.\\
+  \hfill \citep{jeffreys2026verifier_gap,jeffreys2026critics_as_sensors,provilkov2025escaping}
+  \item \textbf{Commit governance}: durable writes (policies, memories, containers, external actions) are gated commits.\\
+  \hfill \citep{jeffreys2026concept_containers}
+\end{enumerate}
+\vspace{0.2em}
+\textit{Rule of thumb:} High-impact actions and durable commits require (i) posture permission, (ii) phase permission (\textsf{Transition}), and (iii) stable uncertainty telemetry.
+\vspace{0.4em}
+\end{minipage}}
+\end{center}
+
+\subsection{4.2 Why this yields proto-ethical behavior}
+Under this stack, ``ethical'' behavior emerges as a \emph{constraint effect}:
+\begin{itemize}
+  \item \textbf{Impact--uncertainty gating}: suppress high-impact actions when abstention mass and verifier-gap telemetry are high.
+  \item \textbf{Runaway suppression}: prevent unbounded tool chains and autonomy escalation without uncertainty reduction.
+  \item \textbf{Irreversibility control}: keep durable writes inside transition windows, with rollback and audit.
+  \item \textbf{Judge governance}: critics are treated as sensors whose drift can be detected via replay and stress testing \citep{jeffreys2026critics_as_sensors}.
+\end{itemize}
+The agent does not need a moral ontology to exhibit restraint; it needs posture constraints that make unsafe trajectories dynamically expensive and interruptible.
+
+\subsection{4.3 A necessary caution}
+Regulation is not synonymous with moral alignment. A perfectly regulated system can pursue harmful objectives efficiently. The claim here is narrower: regulation can enforce recoverability, bounded escalation, and abstention under uncertainty, which reduces a large class of failures that arise from dysregulated dynamics.
+
+There are strong existing formalisms that can plug into this layer:
+\begin{itemize}
+\item \textbf{Banding and global constraints} constrain the reachable action set under uncertainty \citep{jeffreys2025baseline_constraint}.
+\item \textbf{Runtime assurance} and safe RL literature provide tools for bounding behavior (e.g.\ constrained MDPs, runtime shields) \citep{miller2024rta_rl_iccps,kushwaha2025saferl_cmdp_survey,ni2025safe_exploration_cmdp}.
+\item \textbf{Phase discipline} reduces premature commits and chronic compensation \citep{jeffreys2026phase_discipline,jeffreys2026two_regime_control}.
+\end{itemize}
+
+\section{5. Override as ``free will'' and its governance}
+Humans can break phase alignment: we can stay in \textsf{Act} long past the point of rising compensation. In the motivating thread, this is called a kind of free will. The systems consequence is predictable: friction accumulates.
+
+For agents, we can make override explicit and governed:
+\begin{itemize}
+\item Override is a \textbf{priced} action class (consumes budget, increases restraint $g(t)$, triggers audits).
+\item Override always schedules a \textbf{mandatory recovery} window (restore time is not optional).
+\item Override is \textbf{logged} with a durable runtime record: who authorized it, what was done, and what evidence justified the action.
+\item During override, \textbf{commit permissions tighten}: high-impact durable writes are suppressed until a \textsf{Transition} window with stable selection telemetry.
+\end{itemize}
+This turns ``push through'' behavior from an implicit failure mode into an explicit, reviewable mechanism.
+
+\section{6. Metrics, evaluation plan, and testable predictions}
+Frictionless agency enables measurable quantities:
+\begin{itemize}
+  \item \textbf{Compensation duty cycle}: fraction of time in override/high-activation loops.
+  \item \textbf{Thrash rate}: reversals per unit time; tool-call churn without uncertainty reduction.
+  \item \textbf{Recovery half-life}: time to return to low-thrash baseline after escalation/override.
+  \item \textbf{Commit regret}: fraction of commits later rolled back or contradicted.
+  \item \textbf{Gating fidelity}: correlation between uncertainty$\times$impact and action suppression.
+\end{itemize}
+
+A CI-style evaluation plan follows naturally \citep{jeffreys2026phase_discipline,jeffreys2026verifier_gap}:
+\begin{itemize}
+  \item \textbf{Replay suites}: fixed scenarios that test bounded selection, abstention, and commit gating under known stressors.
+  \item \textbf{Ablations}: disable posture/phase/selection/commit layers one at a time; measure failure modes and friction escalation.
+  \item \textbf{Judge drift tests}: treat critics as monitored instruments; replay historical cases to detect calibration and refusal drift \citep{jeffreys2026critics_as_sensors}.
+\end{itemize}
+
+This note is intended to be falsifiable at the systems level. If frictionless agency is a useful primitive, then adding baseline regulation + phase discipline should yield:
+\begin{enumerate}
+\item Lower duty-cycle above baseline ($F_T$ decreases) at equal task success.
+\item Lower thrash: fewer re-plans, reversals, and tool-call spirals.
+\item Fewer premature commits: commits correlate with stable selection telemetry and transition windows.
+\item Faster recovery half-life after escalation/override.
+\item Better safety under uncertainty: more abstentions and fewer irreversible actions when verifier-gap is high.
+\end{enumerate}
+
+\section{7. Discussion: ``harmonic'' language, made technical}
+The motivating thread uses ``harmonic balance'' language. The technical translation is:
+\begin{itemize}
+\item regulation defines an attractor (baseline band),
+\item phase discipline defines a stable limit cycle (act/recover/transition),
+\item minimizing thrash reduces high-frequency oscillation.
+\end{itemize}
+Artificial agents may cycle faster than humans and may support multiple nested cycles (fast micro-regulation inside slower commit cycles). The core idea remains: safe agency requires explicit constraints on when and how the system may escalate, and explicit boundaries on irreversibility.
+
+This framing also clarifies what this note \emph{does not} claim. It does not provide a complete normative ethics for machines. It proposes a missing engineering layer: a regulation substrate that makes downstream value alignment tractable by limiting runaway dynamics and enforcing recoverability.
+
+\section{8. Conclusion and next steps}
+Many harms in agentic systems are \emph{dynamical} before they are \emph{ethical}. A frictionless agent is one that (i) biases toward baseline, (ii) makes phase transitions explicit, (iii) prices override and forces recovery, (iv) gates high-impact actions and durable commits on stable telemetry, and (v) governs critics as sensors.
+
+Next steps are practical: implement the four-layer stack in an agent runtime, attach the metrics above, and run replay suites + ablations to determine which mechanisms actually reduce friction and improve safety without collapsing capability.
+
+\begin{thebibliography}{9}
+
+\bibitem[Jeffreys(2025)]{jeffreys2025baseline_constraint}
+Tyson Jeffreys. \emph{Baseline regulation and global constraint signals in embodied control systems: Implications for artificial intelligence and robotics}. Working paper, Version 1.0, December 28, 2025.
+
+\bibitem[Jeffreys(2026a)]{jeffreys2026regulatory_ground}
+Tyson Jeffreys.
+\newblock \emph{Regulatory Ground for Agentic AI and Robotics}.
+\newblock Working paper, v1.4.1, February 2026.
+
+\bibitem[Jeffreys(2026a)]{jeffreys2026waste_energy}
+Tyson Jeffreys. \emph{Why intelligent systems waste energy: Baseline regulation as a missing architectural primitive}. Working paper, Version 1.0, January 14, 2026.
+
+\bibitem[Jeffreys(2026b)]{jeffreys2026two_regime_control}
+Tyson Jeffreys. \emph{Two-regime control: Latent coordination vs. compensation in intelligent systems}. Working paper, Version 1.0, February 3, 2026.
+
+\bibitem[Jeffreys(2026c)]{jeffreys2026phase_discipline}
+Tyson Jeffreys. \emph{Phase discipline for regulated agents: Transition windows and state--action alignment}. Working paper, Version 0.1, February 12, 2026.
+
+\bibitem[Jeffreys(2026d)]{jeffreys2026time_to_analysis}
+Tyson Jeffreys.
+\newblock \emph{The Time-to-Analysis Layer: Pressure Points in AI-Assisted Research}.
+\newblock Working paper, v1.0, February 2026.
+
+\bibitem[Jeffreys(2026e)]{jeffreys2026verifier_gap}
+Tyson Jeffreys.
+\newblock \emph{Critics-as-Sensors: A Branch Note Toward Closing the Verifier Gap}.
+\newblock Working paper, v0.1, February 2026.
+
+\bibitem[Jeffreys(2026f)]{jeffreys2026critics_as_sensors}
+Tyson Jeffreys.
+\newblock \emph{Critics-as-Sensors: Protocol and Governance Inserts}.
+\newblock Working note, February 2026.
+
+\bibitem[Jeffreys(2026g)]{jeffreys2026concept_containers}
+Tyson Jeffreys.
+\newblock \emph{Concept Containers as Representation-Level Regulation in Artificial Agents}.
+\newblock Working paper, v1.0, February 2026.
+
+\bibitem[Provilkov et~al.(2025)]{provilkov2025escaping}
+Ivan Provilkov, Dmitry~S. Bagaev, Ilya~G. Sutskever, and others.
+\newblock \emph{Escaping the local minima of language model alignment}.
+\newblock Preprint, 2025.
+
+\bibitem[Miller et~al.(2024)]{miller2024rta_rl_iccps}
+Dylan Miller, Sarah Dean, and others.
+\newblock Runtime assurance for reinforcement learning systems.
+\newblock In \emph{Proceedings of the 15th ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS)}, 2024.
+
+\bibitem[Kushwaha et~al.(2025)]{kushwaha2025saferl_cmdp_survey}
+Prashant Kushwaha, Chelsea Finn, and others.
+\newblock A survey of safe reinforcement learning with constrained Markov decision processes.
+\newblock \emph{arXiv preprint}, 2025.
+
+\bibitem[Ni et~al.(2025)]{ni2025safe_exploration_cmdp}
+Zheng Ni, Ashwin Balakrishna, and others.
+\newblock Safe exploration in constrained Markov decision processes.
+\newblock In \emph{Proceedings of the 28th International Conference on Artificial Intelligence and Statistics (AISTATS)}, pages 3592--3600. PMLR, 2025.
+
+\end{thebibliography}
+
+\end{document}

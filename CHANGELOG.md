@@ -2,6 +2,13 @@
 
 All notable paper updates are documented here.
 
+## 2026-02-27 (Frictionless Agency Onboarding)
+
+- Added Frictionless Agency to the tracked paper index at `v0.2`.
+- Added per-paper changelog entry: `papers/frictionless-agency/CHANGELOG.md` (`v0.2 - 2026-02-27`).
+- Updated `README.md` paper summaries and artifacts table to include `papers/frictionless-agency/`.
+- Added release note: `release-notes/frictionless-agency-v0.2-2026-02-27.md`.
+
 ## 2026-02-26 (Scope Closure + Basis-Change Framing)
 
 - Added a coordinated framing update across six Prism papers: scope closure within LM mapping and basis-change triggers at the agentification boundary.
