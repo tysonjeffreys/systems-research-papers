@@ -1,4 +1,4 @@
-# Frictionless Agency (v0.2)
+# Frictionless Agency (v0.1)
 
 This paper frames dysregulation and override as governable system behaviors, positioning regulation as a proto-ethical substrate for safer autonomous action.
 

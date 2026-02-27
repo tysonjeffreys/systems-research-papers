@@ -1,7 +1,7 @@
-# Frictionless Agency (v0.2)
+# Frictionless Agency (v0.1)
 
 **Dysregulation, Override, and Regulation as Proto-Ethics in Tool-Using and Embodied Systems**  
-Version 0.2 — February 27, 2026
+Version 0.1 — February 27, 2026
 
 ## Abstract (short)
 Many costly failures in humans and agents begin with **dysregulation**: sustained operation outside a stable, recoverable band.

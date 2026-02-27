@@ -1,4 +1,4 @@
-# Frictionless Agency v0.2 - 2026-02-27
+# Frictionless Agency v0.1 - 2026-02-27
 
 This release note captures onboarding of the Frictionless Agency paper into the tracked repository workflow.
 
@@ -10,7 +10,7 @@ This release note captures onboarding of the Frictionless Agency paper into the 
 
 ## Papers and versions
 
-- Frictionless Agency: `v0.2`
+- Frictionless Agency: `v0.1`
 
 ## Related repo notes
 
