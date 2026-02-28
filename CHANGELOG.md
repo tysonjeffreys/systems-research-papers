@@ -2,6 +2,20 @@
 
 All notable paper updates are documented here.
 
+## 2026-02-28 (Support-Invariant Cross-Paper Tightening)
+
+- Added concise "coherence requires support" framing where it was still implicit, with additive edits only.
+- Updated paper sources + mirrors:
+  - `papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/`
+  - `papers/why-intelligent-systems-waste-energy/`
+  - `papers/toward-a-coherent-human-baseline/`
+  - `papers/the-time-to-analysis-layer-pressure-points-in-ai-assisted-research-systems/`
+- Updated companion docs:
+  - `regulated-agent-replay-suite/regulated-agent-replay-suite-v0.md`
+  - `regulated-retrieval-gates/regulated-retrieval-gates-v0.md`
+  - `REPLAY_SUITE.md`
+- Added release note: `release-notes/support-invariant-cross-paper-2026-02-28.md`.
+
 ## 2026-02-27 (Companion Docs Sync v0.5)
 
 - Updated companion harness docs to reflect replay-suite `v0.5.0` scope.

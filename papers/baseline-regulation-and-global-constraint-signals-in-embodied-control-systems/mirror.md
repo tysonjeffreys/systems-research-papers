@@ -16,6 +16,7 @@ Biological systems operate across multiple interacting timescales. Fast neural r
 # Global Constraint Signals
 
 A defining feature of biological regulation is the use of global constraint signals—variables that simultaneously affect all subsystems and therefore synchronize distributed control without centralized coordination. Respiratory gas balance provides a canonical example. Oxygen availability and carbon dioxide concentration influence cellular metabolism, neural excitability, vascular tone, and autonomic state across the entire organism. Because every metabolically active tissue depends on these variables, changes in respiratory gas balance impose system-wide constraints rather than localized signals. These constraints do not function as commands. Instead, they establish boundary conditions within which local regulatory mechanisms operate. When global constraints are stable, distributed subsystems naturally align; when they are perturbed, regulatory effort increases across the system. This form of control contrasts with architectures that rely on explicit top-down correction. Global constraint signals bias behavior continuously, reducing the need for high-frequency intervention.
+Coherence in this framing is therefore a supported regime, not a willful state. Global constraints provide support rather than command: they keep distributed subsystems inside mutually compatible operating ranges. When that support weakens, behavior can still be preserved, but only through higher-cost compensation.
 
 # Predictive Coupling and Regulatory Cost
 
@@ -36,6 +37,7 @@ This paper presents a conceptual framework rather than an experimental validatio
 # Conclusion
 
 Biological systems maintain coherence not through centralized control or constant correction, but through baseline regulation enforced by global constraints and predictive coupling. Embodied artificial systems that lack this regulatory layer remain vulnerable to instability and inefficiency despite advances in computation and learning. By reframing stability as an emergent property of distributed regulation rather than explicit command, this paper outlines a path toward more robust, adaptive, and energy-efficient embodied AI and robotics systems.
+Cross-cutting principle: coherence requires support; regulation specifies and maintains that support across physiological, representational, and agentic layers.
 
 
 Author’s Note

@@ -12,6 +12,7 @@ Most contemporary discussions of meditation and contemplative practice emphasize
 In prior work, I proposed that modern humans exhibit chronically elevated metabolic and ventilatory activity relative to functional demand. This elevated baseline introduces persistent internal noise—physiological, emotional, and cognitive—that shapes perception and behavior. The present paper focuses on what occurs when that noise is systematically reduced.
 
 Specifically, this paper documents a stable physiological state characterized by reduced ventilation, efficient gas exchange, and parasympathetic dominance. Importantly, this state is reachable without meditation through sustained breath regulation and diaphragm-led breathing. Meditation, when added, appears to further quiet neural activity and reinforce the stability of this baseline rather than create it.
+Coherence in this setting is a supported regime rather than a heroic state. Breath mechanics, CO$_2$ tolerance, and autonomic regulation form the support layer that makes low-noise cognition stable; meditation is most useful once those supports are in place.
 
 # The Coherent Baseline State
 
@@ -92,6 +93,7 @@ No claims are made regarding universal outcomes, exceptional abilities, or broad
 A coherent human baseline characterized by reduced metabolic and ventilatory activity appears accessible through breath regulation alone. This state reduces internal physiological and cognitive noise, promotes parasympathetic dominance, and alters subjective experience in predictable ways.
 
 Meditation, when layered onto this baseline, further quiets neural activity and stabilizes the condition but does not appear necessary to establish it. Recognizing this distinction clarifies the relationship between physiological regulation and contemplative practice.
+Cross-cutting principle: coherence requires support; in humans that support is primarily mechanical and autonomic before it is cognitive.
 
 Rather than representing an extraordinary achievement, this state may reflect a physiologically available baseline that has become uncommon in modern environments.
 

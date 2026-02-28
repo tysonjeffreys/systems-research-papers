@@ -175,6 +175,7 @@ A key claim of this paper is that analysis-layer systems can reduce CTA by preve
 
 
 Define a **reversal** as a change in the selected decision or causal model after incorporating additional evidence. A well-formed analysis layer should reduce reversals because disagreements and falsifiers are made explicit early.
+Decision stability can therefore be treated as a function of support density: explicit uncertainty boundaries, tracked disagreements, and falsifiers that are strong enough to absorb new evidence without collapsing into ad hoc recomputation.
 
 
 ------------------------------------------------------------------------
@@ -423,6 +424,7 @@ Negative test:
 We proposed the time-to-analysis layer as a target for AI-assisted research systems and argued that research is a strategic pressure point where improvements compound across downstream decisions. An analysis layer is defined by intervention-ready structure: causal skeletons, disagreements, levers, falsifiers, and uncertainty boundaries.
 
 The architectural claim is practical and falsifiable: **systems that produce reusable analysis artifacts and regulate heavy synthesis as episodic bursts should reduce compute-to-analysis, reduce decision reversals, and improve time-to-decision at comparable accuracy**.
+Cross-cutting principle: coherence requires support; at the analysis layer, support is the explicit structure that keeps decisions stable under perturbation.
 
 
 ------------------------------------------------------------------------
