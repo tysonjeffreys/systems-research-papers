@@ -209,6 +209,12 @@ This will:
 - write `papers/<slug>/mirror.md`
 - write `papers/<slug>/mirror.audit.md`
 
+Before committing, verify mirror completeness + math pass-through:
+- Confirm the mirror includes the full paper body (not a short stub/truncated export) by checking that major section headings from `main.tex` appear in `mirror.md`.
+- Confirm equations survived conversion as inline math (`$...$`) and/or display math code blocks.
+- If Pandoc drops content from complex LaTeX constructs (`fbox`, `minipage`, `tikz`, etc.), manually restore the missing paper content in `mirror.md` from `main.tex`.
+- Ensure `mirror.audit.md` has no unresolved unknown math commands; if any remain, fix them in `mirror.md` or explicitly document the rendering risk.
+
 ### 5) PDF handling is manual and out of scope for Codex
 - Codex does not copy, rename, verify, or version PDFs.
 - If the user updates `latest.pdf`, that is a manual action outside this workflow.
