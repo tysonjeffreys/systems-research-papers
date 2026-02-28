@@ -1,6 +1,6 @@
 # Why Intelligent Systems Waste Energy
 
-**Version:** v1.0  
+**Version:** v1.0.1  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -12,6 +12,7 @@ Energy efficiency has become a central concern across biological, computational,
 **This paper challenges that assumption.**
 
 We propose that a significant source of energy inefficiency arises not from the *cost of intelligence itself*, but from the absence of explicit **baseline regulation**—an internal architectural mechanism that maintains a low-energy reference state and governs transitions into and out of active modes. In biological organisms, such regulation is fundamental: metabolism, attention, and action are continuously modulated relative to a regulated baseline rather than driven at constant high activation. Artificial systems, by contrast, are typically designed to operate in a perpetually “engaged” state, even when task demands are minimal or absent.
+In this framing, baseline is the support condition that makes coherence cheap. Continuous activation is often compensatory behavior under support deficit: the system spends energy to preserve output that a better-regulated architecture could maintain near baseline.
 
 The result is chronic internal activity: persistent inference, monitoring, optimization, and state updates that incur energy cost regardless of necessity. This pattern scales poorly—from individual agents to large model deployments—particularly as system complexity increases.
 
@@ -427,6 +428,7 @@ What is missing across these approaches is an explicit unifying concept of **bas
 This paper argues that a significant source of energy inefficiency in intelligent systems arises not from poor optimization, but from missing architectural structure. Specifically, the absence of explicit baseline regulation leads to chronic internal activity, unnecessary energy expenditure, and reduced robustness at scale.
 
 By introducing baseline regulation as a first-class architectural primitive, we offer a lens through which energy efficiency, stability, and scalability can be jointly addressed. The proposal is intentionally conservative: it does not demand new objectives, new learning paradigms, or new hardware. It suggests only that intelligent systems, like biological ones, benefit from knowing how to rest.
+Cross-cutting principle: coherence requires support; baseline regulation specifies and maintains that support so stable behavior does not require constant compensation.
 
 If validated experimentally, baseline regulation represents a low-level design principle with wide-ranging implications—from individual agents to global AI infrastructure. At a time when energy constraints are becoming central to the future of intelligent systems, such structural considerations may prove as important as algorithmic advances.
 

@@ -6,6 +6,10 @@ Reference implementation (Replay Suite v0). To make the regulator spec operation
 
 Executable harness. The Verifier Gap layer is implemented as a minimal, versioned test battery that ingests candidate outputs, applies abstention-gated rules for commits, and emits PASS/FAIL plus stability metrics. The goal is not to prove correctness, but to enforce discipline under uncertainty.
 
+Coherence in commit behavior is a supported regime. In this harness, support means evidence sufficiency, stable selection margins, and replay-stable abstention/tie behavior under perturbation.
+
+Operationally: low support -> abstain -> gather evidence -> rerun. Commit rights are restored only when support recovers.
+
 As of `v0.5.0`, extended batteries include:
 
 - long-doc retrieval stress (`RG-08` to `RG-10`)

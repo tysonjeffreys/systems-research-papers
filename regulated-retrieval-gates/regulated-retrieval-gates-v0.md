@@ -8,11 +8,19 @@ Traceability means every commit/withhold decision is inspectable: what evidence 
 
 Implementation companion: `regulated-retrieval-gates` provides deterministic scoring modules, telemetry, and abstention-gated commit decisions (`COMMIT_OK`, `COMMIT_CAUTION`, `ABSTAIN_GATHER`) with replayable benchmark reports.
 
+Coherence in retrieval selection is a supported regime, not a forced choice. Stable selection requires sufficient evidence density, clear operator interpretation, adequate margins, and low contradiction mass.
+
 Current telemetry focus includes:
 
 - base selection signals: `margin`, `tieMass`, `contradictionMass`, `operatorErrorRate`
 - commitment-integrity signals: `noEvidenceReversionRate`, `selfDisowningRate`, `incentiveConflictMass`
 - basis-change signals: `basisChangeRisk`, `basisChangeRiskMass`
+
+Support-deficit interpretation:
+
+- high `tieMass` and/or low `margin` should be read as insufficient support, not model failure
+- elevated `contradictionMass` indicates unstable causal structure for commit
+- `ABSTAIN_GATHER` is the correct posture when support is insufficient: gather discriminating evidence, then rerun selection
 
 v0.2+ opt-in phase-discipline additions:
 

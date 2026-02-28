@@ -45,6 +45,7 @@ npm run ci:frictionless
 
 ## Why this exists
 The papers argue for regulation (bands, budgets, checkpoint/rollback, abstention gating, replayability, and governed commit rights). This harness makes those claims operational and testable.
+Commit coherence is treated as a supported regime: when telemetry indicates support deficit (unstable margins, high abstention/tie mass, replay volatility), the correct action is to withhold commit and gather more evidence.
 
 Replay suite governs downstream outputs; retrieval gates govern upstream selection signals.
 
