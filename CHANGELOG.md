@@ -6,10 +6,10 @@ All notable paper updates are documented here.
 
 - Added concise "coherence requires support" framing where it was still implicit, with additive edits only.
 - Updated paper sources + mirrors:
-  - `papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/`
-  - `papers/why-intelligent-systems-waste-energy/`
-  - `papers/toward-a-coherent-human-baseline/`
-  - `papers/the-time-to-analysis-layer-pressure-points-in-ai-assisted-research-systems/`
+  - Baseline Regulation and Global Constraint Signals in Embodied Control Systems (`v1.0.1`)
+  - Why Intelligent Systems Waste Energy (`v1.0.1`)
+  - Toward a Coherent Human Baseline (`v1.0.1`)
+  - The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems (`v1.2.2`)
 - Updated companion docs:
   - `regulated-agent-replay-suite/regulated-agent-replay-suite-v0.md`
   - `regulated-retrieval-gates/regulated-retrieval-gates-v0.md`

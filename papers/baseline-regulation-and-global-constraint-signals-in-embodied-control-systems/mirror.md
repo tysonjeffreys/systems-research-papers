@@ -1,6 +1,6 @@
 # Baseline Regulation and Global Constraint Signals in Embodied Control Systems
 
-**Version:** v1.0  
+**Version:** v1.0.1  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 

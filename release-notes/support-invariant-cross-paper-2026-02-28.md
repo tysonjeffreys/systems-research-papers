@@ -10,10 +10,10 @@ This release note captures a focused framing pass to make "coherence requires su
 
 ## Updated papers
 
-- `papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/main.tex`
-- `papers/why-intelligent-systems-waste-energy/main.tex`
-- `papers/toward-a-coherent-human-baseline/main.tex`
-- `papers/the-time-to-analysis-layer-pressure-points-in-ai-assisted-research-systems/main.tex`
+- Baseline Regulation and Global Constraint Signals in Embodied Control Systems (`v1.0.1`)
+- Why Intelligent Systems Waste Energy (`v1.0.1`)
+- Toward a Coherent Human Baseline (`v1.0.1`)
+- The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems (`v1.2.2`)
 
 Mirrors were updated in lockstep for each of the above.
 

@@ -1,6 +1,6 @@
 # Toward a Coherent Human Baseline
 
-**Version:** v1.0  
+**Version:** v1.0.1  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
