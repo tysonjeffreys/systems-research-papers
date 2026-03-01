@@ -1,4 +1,4 @@
-# Audit — Concept Containers as Representation-Level Regulation in Artificial Agents (v1.3)
+# Audit — Concept Containers as Representation-Level Regulation in Artificial Agents (v1.4)
 
 - Mirror: ./mirror.md
 

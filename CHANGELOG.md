@@ -2,6 +2,20 @@
 
 All notable paper updates are documented here.
 
+## 2026-03-01 (Reflection Without Thrash Hub + RSML Governor Inserts)
+
+- Added new hub/companion paper:
+  - Reflection Without Thrash (`v0.1`) at `papers/reflection-without-thrash/`
+- Applied surgical RSML governor inserts (1-3 paragraphs each) and version bumps:
+  - Two-Regime Control (`v1.3`)
+  - Concept Containers (`v1.4`)
+  - Time-to-Analysis Layer (`v1.3`)
+  - Regulatory Ground (`v1.5`)
+  - Why Intelligent Systems Waste Energy (`v1.1`)
+  - Critics-as-Sensors (`v0.2`)
+- Updated per-paper version surfaces (`VERSION`, `CHANGELOG.md`, `main.tex`, `mirror.md`, `mirror.audit.md`) plus repo index version references.
+- Added release note: `release-notes/reflection-without-thrash-rsml-governor-2026-03-01.md`.
+
 ## 2026-02-28 (Support-Invariant Cross-Paper Tightening)
 
 - Added concise "coherence requires support" framing where it was still implicit, with additive edits only.

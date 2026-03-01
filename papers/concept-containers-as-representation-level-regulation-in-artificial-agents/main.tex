@@ -31,7 +31,7 @@ Independent Researcher\\
 
 \vspace{1.6em}
 
-Version 1.3 --- February 16, 2026
+Version 1.4 --- March 1, 2026
 
 \end{titlepage}
 
@@ -180,6 +180,11 @@ Two practical integration points:
 \noindent\textbf{Basis-change framing.}
 Because containers are durable representation state used across episodes, container writes are a basis-change trigger: they convert local uncertainty into persistent constraint.
 This is why container updates inherit commit-class governance: when uncertainty telemetry is unfavorable, the correct move is to gather discriminating evidence or produce falsifiers, not to write a brittle representation attractor.
+
+\subsection*{3.5 Reflection without thrash for container revision}
+Container revision is a re-entrant self-monitoring loop (propose, critique, revise). If that loop is unbounded, the container bank becomes unstable: frequent rewrites, low-novelty retries, and silent reversions under unchanged evidence. In other words, representation updates become compensation rather than coordination.
+
+The practical rail is simple: durable container rewrites require evidence delta (or an explicit basis-change trigger), while no-delta revisions are annotate-only. Combined with bounded revision passes per phase, this keeps container commits convergent and auditable. See the companion hub note \emph{Reflection Without Thrash} (\texttt{papers/reflection-without-thrash/}) for the RSML governor template.
 
 
 \section*{4. Compute and energy implications}

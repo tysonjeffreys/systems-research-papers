@@ -1,11 +1,11 @@
 # Regulatory Ground for Agentic AI
 
-**Version:** v1.4.1  
+**Version:** v1.5  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
 > Markdown mirror: best-effort GitHub rendering.
-Regulatory Ground for Agentic AI Why Trustworthy Discovery Requires Band-Limited Optimization Robotics / Embodied AI Tyson Jeffreys Independent Researcher tyson@staygolden.dev Version 1.2 — February 7th, 2026
+Regulatory Ground for Agentic AI Why Trustworthy Discovery Requires Band-Limited Optimization Robotics / Embodied AI Tyson Jeffreys Independent Researcher tyson@staygolden.dev Version 1.5 — March 2026
 
 ## Abstract
 
@@ -302,11 +302,17 @@ Learned critics (reward models, LLM-as-judge evaluators, relativistic critics) a
 
 #### Scope closure and basis-change triggers.
 
-Within the base model scope (distribution → decoding → constraint transforms), apparent “interiority” is not a reliable primitive: self-reports are behavioral outputs and must not be treated as authorities. *Closure holds within scope.*
+Within the base model scope (distribution $\rightarrow$ decoding $\rightarrow$ constraint transforms), apparent “interiority” is not a reliable primitive: self-reports are behavioral outputs and must not be treated as authorities. *Closure holds within scope.*
 
 The basis changes when we introduce a causally independent primitive: persistent state (cross-episode memory writes), tool execution with real-world side effects, policy/config updates that alter future behavior, or delegated execution authority. These **basis-change triggers** convert “answering” into *agency*: errors can compound through durable commits.
 
 Operationally, basis-change triggers should tighten posture by default: treat persistent writes and side-effectful actions as commit-class events, require favorable uncertainty telemetry before permitting them, and ensure rollback/recovery semantics exist for every authorized trigger.
+
+#### Reflection-without-thrash governor rails.
+
+Re-entrant self-monitoring loops (propose $\rightarrow$ critique $\rightarrow$ revise) should be treated as a regulated subsystem, not as free-form synthesis. The same governance principle applies: if evidence delta is zero, durable commit rewrites are blocked or reduced to annotation; large edits require explicit basis-change triggers; and loop budgets are phase-scoped to prevent revision spirals.
+
+This aligns commit integrity with phase discipline: no durable rewrite in override, and no silent reversion under unchanged evidence. Companion framing: *Reflection Without Thrash* (`papers/reflection-without-thrash/`) defines RSML failure signatures and the minimal governor rails.
 
 The regulator computes effective budgets and thresholds as functions of $g(t)$, for example:
 ```math

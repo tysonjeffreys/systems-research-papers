@@ -1,0 +1,1 @@
+Drop figures here (e.g., rsml_governor_diagram.pdf/png/svg) and include via \includegraphics in main.tex.

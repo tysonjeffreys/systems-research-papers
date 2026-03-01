@@ -40,7 +40,7 @@ Independent Researcher\\
 
 \vspace{1.6em}
 
-Version 1.2.2 --- February 11, 2026
+Version 1.3 --- March 1, 2026
 
 \end{titlepage}
 
@@ -205,6 +205,13 @@ layer is judged by a different standard:
 \item
   Can I see what evidence would change the decision?
 \end{itemize}
+
+\hypertarget{reflection-termination-discipline}{%
+\subsubsection{3.4 Reflection without thrash: termination discipline}\label{reflection-termination-discipline}}
+
+Analysis loops are re-entrant by design: propose, critique, revise, and re-critique. Without explicit termination rails, this often degrades into revision spirals, tool thrash, and post-hoc justifications that increase compute without increasing decision stability.
+
+At the time-to-analysis layer, reflection should be treated as a bounded control loop. Durable analysis changes should require evidence delta, rewrite budgets should be phase-scoped, and loop exit should be mandatory (converge, abstain, or escalate). See the companion hub note \emph{Reflection Without Thrash} (\texttt{papers/reflection-without-thrash/}) for RSML failure signatures and the governor spec.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

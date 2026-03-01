@@ -1,4 +1,4 @@
-# Audit — Regulatory Ground for Agentic AI (v1.5)
+# Audit — Reflection Without Thrash (v0.1)
 
 - Mirror: ./mirror.md
 

@@ -1,6 +1,6 @@
 # Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems
 
-**Version:** v1.2  
+**Version:** v1.3  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -290,6 +290,14 @@ A minimal gating rule (illustrative):
 > if either persists past a time limit: switch to conservative safety controller / stop.
 
 Governance clause: learned critics can drift and can be gamed. They should be **versioned, monitored, and replay-tested** (a small fixed scenario suite) in the same way the telemetry$\rightarrow$posture mapping is monitored. When critic health is unknown, degrade to conservative heuristics and envelopes (fail closed). **Phase-discipline reproducibility hook.** Treat irreversible writes/actuation as transition-window events: commit only in low-compensation windows, cap override duration, and require rollbackable recovery when windows are missed. This “write when stable” discipline reduces irreproducible flailing and preserves auditability under perturbation. **Phase-discipline commitment-integrity hook.** If evidence is unchanged, posture must not silently revert. Any stance reversal in a commit window requires explicit change-basis logging (new evidence, discovered constraint, or explicit prior error), otherwise the regulator should withhold commit rights and route to gather/recenter. **Phase-discipline commit windows.** Commit windows require telemetry and should open only when strain and uncertainty signals are within bounded posture limits. The selection gate is the upstream posture controller: when telemetry degrades, it withholds commit rights and routes the system to evidence-gathering or recovery instead.
+
+
+### 5.6 Reflection without thrash: planning-layer governor
+
+
+Tool-using agents exhibit the same regime split at the planning layer. A propose$\rightarrow$critique$\rightarrow$revise loop can either stabilize into reflective coordination or destabilize into compensation (oscillatory plans, revision spirals, and tool thrash). The control variable is not “more reflection”; it is whether reflective revision is governed by bounded update and termination rules.
+
+A minimal planning-layer governor is additive: require evidence-delta for durable commitment rewrites, cap revise/retry loops per phase, and force a terminal outcome (converge, abstain, or escalate) when the budget is exhausted. See the companion hub note *Reflection Without Thrash* (`papers/reflection-without-thrash/`) for the RSML failure signatures and stress-test structure.
 
 
 ## 6. Why this improves energy and robustness

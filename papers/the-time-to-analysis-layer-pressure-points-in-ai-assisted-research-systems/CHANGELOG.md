@@ -1,5 +1,9 @@
 # The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems
-Current: v1.2.2
+Current: v1.3
+
+## v1.3 - 2026-03-01
+- Add Reflection Without Thrash insert: RSML termination discipline for bounded analysis loops.
+- Add companion cross-link to `papers/reflection-without-thrash/`.
 
 ## v1.2.2 - 2026-02-28
 - Add support-density framing to Decision Stability.

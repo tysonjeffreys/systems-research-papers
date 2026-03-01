@@ -1,4 +1,4 @@
-# Audit — Why Intelligent Systems Waste Energy (v1.0)
+# Audit — Why Intelligent Systems Waste Energy (v1.1)
 
 - Mirror: ./mirror.md
 
