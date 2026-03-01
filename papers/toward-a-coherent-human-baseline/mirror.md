@@ -12,7 +12,7 @@ Most contemporary discussions of meditation and contemplative practice emphasize
 In prior work, I proposed that modern humans exhibit chronically elevated metabolic and ventilatory activity relative to functional demand. This elevated baseline introduces persistent internal noise—physiological, emotional, and cognitive—that shapes perception and behavior. The present paper focuses on what occurs when that noise is systematically reduced.
 
 Specifically, this paper documents a stable physiological state characterized by reduced ventilation, efficient gas exchange, and parasympathetic dominance. Importantly, this state is reachable without meditation through sustained breath regulation and diaphragm-led breathing. Meditation, when added, appears to further quiet neural activity and reinforce the stability of this baseline rather than create it.
-Coherence in this setting is a supported regime rather than a heroic state. Breath mechanics, CO$_2$ tolerance, and autonomic regulation form the support layer that makes low-noise cognition stable; meditation is most useful once those supports are in place.
+Coherence in this setting is a supported regime rather than a heroic state. Breath mechanics, $CO_2$ tolerance, and autonomic regulation form the support layer that makes low-noise cognition stable; meditation is most useful once those supports are in place.
 
 # The Coherent Baseline State
 

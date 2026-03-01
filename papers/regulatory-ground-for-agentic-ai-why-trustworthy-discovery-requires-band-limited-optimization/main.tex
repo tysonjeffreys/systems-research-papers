@@ -66,7 +66,7 @@ Independent Researcher\\
 
 \vspace{1.6em}
 
-Version 1.4.1 --- February 11th, 2026
+Version 1.5 --- March 1st, 2026
 
 \end{titlepage}
 
@@ -81,7 +81,7 @@ Robotics / Embodied AI
 Tyson Jeffreys
 Independent Researcher
 tyson@staygolden.dev
-Version 1.2 — February 7th, 2026
+Version 1.5 — March 2026
 \subsection{Abstract}
 As foundation models become embedded in tool-using and robotic systems, the core question shifts
 from answering to discovering: can an artificial agent recognize the limits of its own model, actively
@@ -455,6 +455,11 @@ These \textbf{basis-change triggers} convert ``answering'' into \emph{agency}: e
 
 Operationally, basis-change triggers should tighten posture by default:
 treat persistent writes and side-effectful actions as commit-class events, require favorable uncertainty telemetry before permitting them, and ensure rollback/recovery semantics exist for every authorized trigger.
+
+\paragraph{Reflection-without-thrash governor rails.}
+Re-entrant self-monitoring loops (propose \(\rightarrow\) critique \(\rightarrow\) revise) should be treated as a regulated subsystem, not as free-form synthesis. The same governance principle applies: if evidence delta is zero, durable commit rewrites are blocked or reduced to annotation; large edits require explicit basis-change triggers; and loop budgets are phase-scoped to prevent revision spirals.
+
+This aligns commit integrity with phase discipline: no durable rewrite in override, and no silent reversion under unchanged evidence. Companion framing: \emph{Reflection Without Thrash} (\texttt{papers/reflection-without-thrash/}) defines RSML failure signatures and the minimal governor rails.
 
 The regulator computes effective budgets and thresholds as functions of $g(t)$, for example:
 \begin{align}

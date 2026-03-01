@@ -1,6 +1,6 @@
 # Concept Containers as Representation-Level Regulation in Artificial Agents
 
-**Version:** v1.3  
+**Version:** v1.4  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -145,8 +145,13 @@ Two practical integration points:
 
 **Abstention-gated container writes.** Container updates are treated as commits. When tie/abstain mass is high (or uncertainty is above threshold), the system must block container writes and instead request discriminating evidence or produce falsifiers. This commit discipline prevents over-compression from becoming an irreversible representation attractor and is enforced in the replay suite’s over-compression scenario (RG-07).
 
-**Basis-change framing.**  
-Because containers are durable representation state used across episodes, container writes are a basis-change trigger: they convert local uncertainty into persistent constraint. This is why container updates inherit commit-class governance: when uncertainty telemetry is unfavorable, the correct move is to gather discriminating evidence or produce falsifiers, not to write a brittle representation attractor.
+**Basis-change framing.** Because containers are durable representation state used across episodes, container writes are a basis-change trigger: they convert local uncertainty into persistent constraint. This is why container updates inherit commit-class governance: when uncertainty telemetry is unfavorable, the correct move is to gather discriminating evidence or produce falsifiers, not to write a brittle representation attractor.
+
+## 3.5 Reflection without thrash for container revision
+
+Container revision is a re-entrant self-monitoring loop (propose, critique, revise). If that loop is unbounded, the container bank becomes unstable: frequent rewrites, low-novelty retries, and silent reversions under unchanged evidence. In other words, representation updates become compensation rather than coordination.
+
+The practical rail is simple: durable container rewrites require evidence delta (or an explicit basis-change trigger), while no-delta revisions are annotate-only. Combined with bounded revision passes per phase, this keeps container commits convergent and auditable. See the companion hub note *Reflection Without Thrash* (`papers/reflection-without-thrash/`) for the RSML governor template.
 
 # 4. Compute and energy implications
 

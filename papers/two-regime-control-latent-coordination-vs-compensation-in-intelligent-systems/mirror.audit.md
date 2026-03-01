@@ -1,4 +1,4 @@
-# Audit — Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems (v1.2)
+# Audit — Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems (v1.3)
 
 - Mirror: ./mirror.md
 

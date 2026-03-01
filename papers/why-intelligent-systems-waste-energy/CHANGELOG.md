@@ -1,5 +1,9 @@
 # Why Intelligent Systems Waste Energy
-Current: v1.0.1
+Current: v1.1
+
+## v1.1 - 2026-03-01
+- Add Reflection Without Thrash insert: reflection-loop thrash as metabolic load and governor-rail mitigation.
+- Add companion cross-link to `papers/reflection-without-thrash/`.
 
 ## v1.0.1 - 2026-02-28
 - Add support-invariant bridge: baseline as the support condition for cheap coherence.

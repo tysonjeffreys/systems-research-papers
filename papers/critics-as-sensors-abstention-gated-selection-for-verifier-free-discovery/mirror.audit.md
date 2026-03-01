@@ -1,4 +1,4 @@
-# Audit — Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery (v0.1)
+# Audit — Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery (v0.2)
 
 - Mirror: ./mirror.md
 

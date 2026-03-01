@@ -1,6 +1,6 @@
 # Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems
 
-**Version:** v1.2  
+**Version:** v1.3  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -122,7 +122,7 @@ We define a scalar **compensation index** $C(t)$ as a weighted combination of me
 ```math
 C(t) = w_\tau\,\|\tau(t)\|^2
 + w_{\dot u}\,\|\dot u(t)\|^2
-+ w_{\Sigma}\,\operatorname{tr}(\Sigma(t))
++ w_{\Sigma}\,\mathrm{tr}(\Sigma(t))
 + w_{\text{plan}}\,r_{\text{plan}}(t)
 + w_{\text{slip}}\,r_{\text{slip}}(t)
 + w_{\text{sat}}\,r_{\text{sat}}(t)
@@ -176,19 +176,17 @@ with $\tau_c$ chosen to match “regime timescale” (e.g., 0.5–3 s).
 Define a binary compensation indicator with hysteresis:
 
 ```math
-H(t) = \begin{cases}
-1 & \bar C(t) > \theta_{\uparrow} \\
-0 & \bar C(t) < \theta_{\downarrow}
-\end{cases}
+H(t)=1 \quad \text{if } \bar C(t) > \theta_{\uparrow}, \qquad
+H(t)=0 \quad \text{if } \bar C(t) < \theta_{\downarrow}
 ```
 
 and the compensation duty cycle over a window $[t_0, t_1]$:
 
 ```math
-\operatorname{DC}(t_0,t_1) = \frac{1}{t_1-t_0}\int_{t_0}^{t_1} H(t)\,dt
+\mathrm{DC}(t_0,t_1) = \frac{1}{t_1-t_0}\int_{t_0}^{t_1} H(t)\,dt
 ```
 
-Interpretation: - $H(t)=1$ indicates the system is in compensation. - $\operatorname{DC}$ measures how long it stays there.
+Interpretation: - $H(t)=1$ indicates the system is in compensation. - $\mathrm{DC}$ measures how long it stays there.
 
 
 ## 5. The baseline regulator layer
@@ -289,7 +287,15 @@ A minimal gating rule (illustrative):
 > if $\bar C(t)$ is high *or* $\bar u_{J}(t)$ is high: tighten posture; prefer recenter/sense actions; add hysteresis.\
 > if either persists past a time limit: switch to conservative safety controller / stop.
 
-Governance clause: learned critics can drift and can be gamed. They should be **versioned, monitored, and replay-tested** (a small fixed scenario suite) in the same way the telemetry$\rightarrow$posture mapping is monitored. When critic health is unknown, degrade to conservative heuristics and envelopes (fail closed). **Phase-discipline reproducibility hook.** Treat irreversible writes/actuation as transition-window events: commit only in low-compensation windows, cap override duration, and require rollbackable recovery when windows are missed. This “write when stable” discipline reduces irreproducible flailing and preserves auditability under perturbation. **Phase-discipline commitment-integrity hook.** If evidence is unchanged, posture must not silently revert. Any stance reversal in a commit window requires explicit change-basis logging (new evidence, discovered constraint, or explicit prior error), otherwise the regulator should withhold commit rights and route to gather/recenter. **Phase-discipline commit windows.** Commit windows require telemetry and should open only when strain and uncertainty signals are within bounded posture limits. The selection gate is the upstream posture controller: when telemetry degrades, it withholds commit rights and routes the system to evidence-gathering or recovery instead.
+Governance clause: learned critics can drift and can be gamed. They should be **versioned, monitored, and replay-tested** (a small fixed scenario suite) in the same way the telemetry $\rightarrow$ posture mapping is monitored. When critic health is unknown, degrade to conservative heuristics and envelopes (fail closed). **Phase-discipline reproducibility hook.** Treat irreversible writes/actuation as transition-window events: commit only in low-compensation windows, cap override duration, and require rollbackable recovery when windows are missed. This “write when stable” discipline reduces irreproducible flailing and preserves auditability under perturbation. **Phase-discipline commitment-integrity hook.** If evidence is unchanged, posture must not silently revert. Any stance reversal in a commit window requires explicit change-basis logging (new evidence, discovered constraint, or explicit prior error), otherwise the regulator should withhold commit rights and route to gather/recenter. **Phase-discipline commit windows.** Commit windows require telemetry and should open only when strain and uncertainty signals are within bounded posture limits. The selection gate is the upstream posture controller: when telemetry degrades, it withholds commit rights and routes the system to evidence-gathering or recovery instead.
+
+
+### 5.6 Reflection without thrash: planning-layer governor
+
+
+Tool-using agents exhibit the same regime split at the planning layer. A propose $\rightarrow$ critique $\rightarrow$ revise loop can either stabilize into reflective coordination or destabilize into compensation (oscillatory plans, revision spirals, and tool thrash). The control variable is not “more reflection”; it is whether reflective revision is governed by bounded update and termination rules.
+
+A minimal planning-layer governor is additive: require evidence-delta for durable commitment rewrites, cap revise/retry loops per phase, and force a terminal outcome (converge, abstain, or escalate) when the budget is exhausted. See the companion hub note *Reflection Without Thrash* (`papers/reflection-without-thrash/`) for the RSML failure signatures and stress-test structure.
 
 
 ## 6. Why this improves energy and robustness
@@ -359,9 +365,9 @@ At comparable task success, adding a baseline regulator that reduces compensatio
 
 **Conditions**: - A1: baseline controller/planner only - A2: same controller + compensation index + baseline regulator
 
-**Metrics**: - Joules/meter, peak current, temperature rise - slip/fall rate under perturbation - recovery time to stable gait - compensation duty cycle $\operatorname{DC}$
+**Metrics**: - Joules/meter, peak current, temperature rise - slip/fall rate under perturbation - recovery time to stable gait - compensation duty cycle $\mathrm{DC}$
 
-**Negative test**: if $\operatorname{DC}$ decreases but energy does not, the claimed link between regime regulation and efficiency is weakened.
+**Negative test**: if $\mathrm{DC}$ decreases but energy does not, the claimed link between regime regulation and efficiency is weakened.
 
 
 ### 7.3 Experiment B: manipulation with contact uncertainty
@@ -473,7 +479,7 @@ If you already track an internal load $x(t)$ (activation/effort), treat $\bar C(
 
 2.  **Time-series plot**: $\bar C(t)$, $H(t)$, and energy proxy over a perturbation event (with/without regulator).
 
-3.  **Energy vs duty-cycle**: energy per task vs $\operatorname{DC}$ across trials.
+3.  **Energy vs duty-cycle**: energy per task vs $\mathrm{DC}$ across trials.
 
 **Note on authorship and tools:**\
 This work was developed through iterative reasoning, modeling, and synthesis. Large language models were used as a collaborative tool to assist with drafting, clarification, and cross-domain translation. All conceptual framing, structure, and final judgments remain the responsibility of the author.

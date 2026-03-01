@@ -1,6 +1,6 @@
 # The Time-to-Analysis Layer Pressure Points in AI-Assisted Research Systems
 
-**Version:** v1.2.2  
+**Version:** v1.3  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -115,8 +115,7 @@ A useful way to state it:
 
 Research, writing, and strategy typically lack a crisp verifier: there is no immediate ground truth to check a causal story against. In verifier-free domains, a common failure mode is unbounded synthesis—keep thinking until it feels right. Instead, treat *selection* as an explicit primitive: generate a bounded set of candidate analysis artifacts, perform bounded comparisons (pairwise or tournament-style) using a critic/judge as a noisy *sensor*, and either select a winner or abstain. Crucially, **tie/abstain mass** should be treated as a first-class uncertainty signal: high tie/abstain triggers evidence acquisition (more sources, better decomposition, new falsifiers) rather than further synthesis; low tie/abstain permits consolidation into a single intervention-ready artifact.[^1]
 
-**Basis-change rule.**  
-When an analysis artifact is used to authorize a basis-change trigger (persistent memory write, side-effectful tool execution, policy update, delegated execution), selection stability becomes a prerequisite for action: require low tie/abstain mass, explicit falsifiers, and bounded alternatives before permitting a durable commit. If selection remains unstable, the correct move is not further synthesis; it is evidence acquisition and decomposition to reach a stable analysis-layer object.
+**Basis-change rule.** When an analysis artifact is used to authorize a basis-change trigger (persistent memory write, side-effectful tool execution, policy update, delegated execution), the system must treat selection stability as a prerequisite for action: require low tie/abstain mass, explicit falsifiers, and bounded alternatives before permitting a durable commit. If selection remains unstable, the correct move is not further synthesis; it is evidence acquisition and decomposition to reach a stable analysis-layer object.
 
 
 ### 3.3 From summaries to intervention validity
@@ -129,6 +128,14 @@ A summary can be accurate and still useless for action. The analysis layer is ju
 - Can I predict what will happen if I intervene?
 
 - Can I see what evidence would change the decision?
+
+
+### 3.4 Reflection without thrash: termination discipline
+
+
+Analysis loops are re-entrant by design: propose, critique, revise, and re-critique. Without explicit termination rails, this often degrades into revision spirals, tool thrash, and post-hoc justifications that increase compute without increasing decision stability.
+
+At the time-to-analysis layer, reflection should be treated as a bounded control loop. Durable analysis changes should require evidence delta, rewrite budgets should be phase-scoped, and loop exit should be mandatory (converge, abstain, or escalate). See the companion hub note *Reflection Without Thrash* (`papers/reflection-without-thrash/`) for RSML failure signatures and the governor spec.
 
 
 ------------------------------------------------------------------------
@@ -174,8 +181,7 @@ A key claim of this paper is that analysis-layer systems can reduce CTA by preve
 ### 4.3 Decision stability
 
 
-Define a **reversal** as a change in the selected decision or causal model after incorporating additional evidence. A well-formed analysis layer should reduce reversals because disagreements and falsifiers are made explicit early.
-Decision stability can therefore be treated as a function of support density: explicit uncertainty boundaries, tracked disagreements, and falsifiers that are strong enough to absorb new evidence without collapsing into ad hoc recomputation.
+Define a **reversal** as a change in the selected decision or causal model after incorporating additional evidence. A well-formed analysis layer should reduce reversals because disagreements and falsifiers are made explicit early. Decision stability can therefore be treated as a function of support density: explicit uncertainty boundaries, tracked disagreements, and falsifiers that are strong enough to absorb new evidence without collapsing into ad hoc recomputation.
 
 
 ------------------------------------------------------------------------
@@ -423,8 +429,7 @@ Negative test:
 
 We proposed the time-to-analysis layer as a target for AI-assisted research systems and argued that research is a strategic pressure point where improvements compound across downstream decisions. An analysis layer is defined by intervention-ready structure: causal skeletons, disagreements, levers, falsifiers, and uncertainty boundaries.
 
-The architectural claim is practical and falsifiable: **systems that produce reusable analysis artifacts and regulate heavy synthesis as episodic bursts should reduce compute-to-analysis, reduce decision reversals, and improve time-to-decision at comparable accuracy**.
-Cross-cutting principle: coherence requires support; at the analysis layer, support is the explicit structure that keeps decisions stable under perturbation.
+The architectural claim is practical and falsifiable: **systems that produce reusable analysis artifacts and regulate heavy synthesis as episodic bursts should reduce compute-to-analysis, reduce decision reversals, and improve time-to-decision at comparable accuracy**. Cross-cutting principle: coherence requires support; at the analysis layer, support is the explicit structure that keeps decisions stable under perturbation.
 
 
 ------------------------------------------------------------------------

@@ -24,9 +24,7 @@ This note therefore treats “ethics” as partially downstream of posture. The 
 
 Let $x(t)$ denote an internal activation proxy: compute intensity, planning depth, tool-call rate, actuation strain, or any aggregate measure of “how hard the system is running.” Define a baseline band $\mathcal{B}$ around $x_0$ representing the lowest internally stable posture consistent with readiness . Define **friction** as the accumulated cost of (i) sustained deviation above baseline and (ii) high-frequency oscillation (thrash):
 ```math
-\begin{equation}
-F_T \;=\; \int_0^T \max\{0,\; x(t) - x_0\}\, dt \; +\; \lambda \int_0^T \left\|\dot{x}(t)\right\|\, dt.
-\end{equation}
+F_T = \int_0^T \max\{0,\; x(t) - x_0\}\,dt + \lambda \int_0^T \lVert\dot{x}(t)\rVert\,dt
 ```
 
 Operationally, friction is visible as:
