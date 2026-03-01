@@ -424,7 +424,7 @@ What is missing across these approaches is an explicit unifying concept of **bas
 
 # Reflection loops as regulated energy load
 
-In tool-using agents, reflection itself becomes a measurable energetic variable. Unbounded propose$\rightarrow$critique$\rightarrow$revise loops create high-frequency internal activation (revision churn, tool retries, plan oscillation) that behaves like compensation duty-cycle inflation. Energy waste then appears even when external task progress is flat.
+In tool-using agents, reflection itself becomes a measurable energetic variable. Unbounded propose $\rightarrow$ critique $\rightarrow$ revise loops create high-frequency internal activation (revision churn, tool retries, plan oscillation) that behaves like compensation duty-cycle inflation. Energy waste then appears even when external task progress is flat.
 
 The same architectural answer applies: governor rails that require evidence delta for durable rewrites, cap reflection passes per phase, and force converge/abstain/escalate termination. This turns reflective behavior from chronic activation into bounded episodic load. Companion reference: *Reflection Without Thrash* (`papers/reflection-without-thrash/`).
 

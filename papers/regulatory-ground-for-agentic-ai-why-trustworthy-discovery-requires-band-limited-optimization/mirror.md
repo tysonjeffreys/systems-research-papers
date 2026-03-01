@@ -182,9 +182,7 @@ The regulator maintains an operating band B ∈ Green,Yellow,Orange,Red.
 
 For each candidate action $a$, compute a risk score:
 ```math
-\begin{equation}
 R(a) = w_I I + w_U U + w_V V + w_A A + w_S S \in [0,1]
-\end{equation}
 ```
 where:
 
@@ -280,9 +278,7 @@ We separate policy-level parameters (owned, versioned, auditable) from runtime m
 
 In embodied control, biological regulation uses global constraint signals—variables that affect all subsystems and therefore synchronize distributed control without issuing explicit commands. These signals function as boundary conditions within which local controllers operate . The same pattern can be instantiated in agent stacks as a global restraint signal (GRS): a slow, shared scalar (or low-dimensional vector) that every component respects as a set of shared budgets . Let $g(t)\in[0,1]$ denote the global restraint state, where higher values imply tighter operating posture. A minimal deterministic definition is:
 ```math
-\begin{equation}
 g(t)=\mathrm{clip}\left(\alpha_1\,\rho_{\text{near-miss}}(t)+\alpha_2\,\rho_{\text{rollback}}(t)+\alpha_3\,U(t)+\alpha_4\,\rho_{\text{anomaly}}(t),\ 0,\ 1\right)
-\end{equation}
 ```
 where $\rho_{\text{near-miss}}$ and $\rho_{\text{rollback}}$ are event rates over a trailing window, $U(t)$ is an uncertainty proxy (e.g., predictive entropy, self-consistency, or disagreement), and $\rho_{\text{anomaly}}$ captures unexpected outcomes (timeouts, non-determinism, constraint pressure). In non-verifiable domains, $U(t)$ can also include *judge/critic abstention or tie mass* $u_{\text{tie}}(t)$: the rolling probability mass that learned critics assign to `tie`/`abstain` on recent evaluations .
 
@@ -316,10 +312,10 @@ This aligns commit integrity with phase discipline: no durable rewrite in overri
 
 The regulator computes effective budgets and thresholds as functions of $g(t)$, for example:
 ```math
-\begin{align}
-b_{\mathrm{eff}}(t) &= b_{\min} + (1-g(t))(b_0-b_{\min})\\
-\tau_{\mathrm{Yellow}}(t) &= \tau_{\mathrm{Yellow},0} - k\,g(t)
-\end{align}
+b_{\mathrm{eff}}(t) = b_{\min} + (1-g(t))(b_0-b_{\min})
+```
+```math
+\tau_{\mathrm{Yellow}}(t) = \tau_{\mathrm{Yellow},0} - k\,g(t)
 ```
 Thus, the system tightens exploration automatically when telemetry indicates rising constraint pressure. Importantly, $g(t)$ does not directly select actions; it biases the permissible operating region, keeping planner, router, and executor synchronized rather than letting each subsystem compensate locally (a common source of thrash).
 
@@ -343,9 +339,9 @@ A key implication is that contradiction-driven revision should be evaluated long
 
 - Reversal count: how often does the agent re-encounter and re-resolve the same contradiction (a proxy for thrash)? These measures distinguish “patching the last answer” from model or policy revision that shapes future behavior.
 
-## Validating and change-controlling the telemetry$\rightarrow$posture mapping
+## Validating and change-controlling the telemetry $\rightarrow$ posture mapping
 
-A key risk is that the telemetry$\rightarrow$posture mapping for $g(t)$ quietly becomes a new “implicit knob”. To prevent this, treat the mapping as a governed artifact with explicit tests, staged rollout, and rollback.
+A key risk is that the telemetry $\rightarrow$ posture mapping for $g(t)$ quietly becomes a new “implicit knob”. To prevent this, treat the mapping as a governed artifact with explicit tests, staged rollout, and rollback.
 
 **1) Freeze the mapping as a versioned policy artifact.** Represent the mapping as a small, auditable object: feature definitions, window sizes, weights/thresholds, saturation bounds, and rate limits (e.g., $\lvert \dot{g}(t)\rvert \le \gamma$). Changes to this artifact require the same change-control path as other policy commitments (invariants and budget ranges). **1a) If judges/critics feed posture, treat them as governed sensors.** If $g(t)$ depends on learned judges (reward models, LLM-as-judge prompts, relativistic critics), then the judge specification is part of the mapping: model/version identifiers, prompts/rubrics, sampling settings, and the definition of `tie`/`abstain` outputs. These components drift and can be exploited (cycling dynamics, degenerate “always tie” behavior), so they must be monitored and rolled back like any other telemetry feature .
 
@@ -381,10 +377,10 @@ Regulation should explicitly guard against lock-in to high-risk regimes. In the 
 
 - and downgrade capabilities (e.g., disable external WRITE/EXEC) until stabilization signals recover. Operationalization. Let $g(t)$ be the global restraint signal (Section 7). Define an activation/load proxy $L(t)$ (e.g., anomaly rate, rollback count, near-miss frequency, uncertainty spikes). Enforce duty-cycle bounds such as:
 ```math
-\begin{align}
-\sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Orange}] &\le T_{\mathrm{orange}} \\
-\sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Red}] &\le T_{\mathrm{red}}
-\end{align}
+\sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Orange}] \le T_{\mathrm{orange}}
+```
+```math
+\sum_{t \in \text{episode}} \mathbb{I}[B(t)=\mathrm{Red}] \le T_{\mathrm{red}}
 ```
   and require a recovery procedure when exceeded.
 
