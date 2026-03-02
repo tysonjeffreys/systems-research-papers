@@ -9,8 +9,8 @@ Core focus:
 - Connects the theory to implementation companions in `regulated-agent-replay-suite` and `regulated-retrieval-gates`.
 
 ## Companion note
-- Fork A: [Epistemic Load](../epistemic-load/) defines admissibility truth conditions for durable rewrites.
-- Fork B (this note) defines RSML governor rails that stabilize revision loops before commit.
+- [Epistemic Load](../epistemic-load/) defines admissibility truth conditions for durable rewrites.
+- Reflection Without Thrash (this note) defines RSML governor rails that stabilize revision loops before commit.
 
 ## Artifacts
 - Source: [main.tex](./main.tex)

@@ -8,10 +8,10 @@ This library focuses on regulated intelligence systems: how agents should reason
 - Embodied and systems grounding: compensation vs coordination regimes, energy pressure, and biologically inspired baseline control.
 - Operationalization: replay harnesses and retrieval gates that turn policy into executable governance checks.
 
-## Paired Release: Regulated Reflection (Fork A + Fork B)
+## Paired Release: Regulated Reflection Companion Pair
 
-- Fork A: **Epistemic Load** (`v1.0`) defines admissibility truth conditions for durable updates under epistemic load.
-- Fork B: **Reflection Without Thrash** (`v0.1.1`) defines RSML governor rails for revision-loop stability and bounded reflection.
+- **Epistemic Load** (`v1.0`) defines admissibility truth conditions for durable updates under epistemic load.
+- **Reflection Without Thrash** (`v0.1.1`) defines RSML governor rails for revision-loop stability and bounded reflection.
 
 ## Paper Summaries
 

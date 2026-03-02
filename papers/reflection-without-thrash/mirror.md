@@ -173,9 +173,9 @@ This hub note maps directly to two implementation companions:
 
 - `regulated-retrieval-gates` RSML governor rails for evidence-delta gating and phase-scoped durable commit control.
 
-# Companion note (Fork A)
+# Companion note
 
-Fork A, `papers/epistemic-load/`, defines admissibility truth conditions for introspective claims and durable rewrites under epistemic load. Fork B (this note) governs revision-loop stability. In operational terms: Fork B decides whether revision should continue; Fork A decides whether a self-claim can update durable state.
+`papers/epistemic-load/` defines admissibility truth conditions for introspective claims and durable rewrites under epistemic load. Reflection Without Thrash (this note) governs revision-loop stability. In operational terms: Reflection Without Thrash decides whether revision should continue; Epistemic Load decides whether a self-claim can update durable state.
 
 # Appendix A: Minimal RSML telemetry schema
 

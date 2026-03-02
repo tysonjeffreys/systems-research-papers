@@ -1,6 +1,6 @@
 # Prism Project — Epistemic Load (v1.0)
 
-This is a lightweight Prism/LaTeX bundle for the Fork A paper:
+This is a lightweight Prism/LaTeX bundle for:
 
 **Epistemic Load: Introspective Reliability as a Function of Compensation** (v1.0)
 
@@ -12,4 +12,4 @@ This is a lightweight Prism/LaTeX bundle for the Fork A paper:
 A single diagram showing:
 - signals pack → epistemic load L_e → reliability R_i
 - admissibility gate (by claim type + scope)
-- integration with RSML governor (Fork B)
+- integration with RSML governor (Reflection Without Thrash)
