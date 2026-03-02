@@ -1,20 +1,18 @@
-# Prism Project — Reflection Without Thrash
+# Reflection Without Thrash (v0.1)
 
-This zip is a lightweight Prism/LaTeX project bundle for the paper:
+This hub note frames reflection as a re-entrant self-monitoring loop (RSML) and defines the minimal governance rails needed to prevent oscillation, revision spirals, tool thrash, and silent reversion.
 
-**Reflection Without Thrash** (v0.1)  
-Re-entrant Self-Monitoring Loops as a Regulated Control Regime in Agents and Robots
+Core focus:
+- Defines RSML as a feedback-control regime with measurable stability limits.
+- Formalizes RSML failure signatures for replay and regression testing.
+- Specifies governor rails: evidence-delta gating, band limits, phase discipline, durable commit controls, and recovery half-life.
+- Connects the theory to implementation companions in `regulated-agent-replay-suite` and `regulated-retrieval-gates`.
 
-## Files
-- `main.tex` — LaTeX source
-- `mirror.md` — Markdown mirror
-- `mirror.audit.md` — audit checklist
-- `VERSION` — current version
-- `CHANGELOG.md` — release notes stub
-- `prism.project.json` — optional metadata (safe to ignore)
-
-## How to use
-- Open the folder in your Prism workflow (or your preferred LaTeX editor).
-- Build `main.tex`.
-- Add figures under `figures/` and reference them from LaTeX as needed.
-
+## Artifacts
+- Source: [main.tex](./main.tex)
+- Mirror: [mirror.md](./mirror.md)
+- Mirror audit: [mirror.audit.md](./mirror.audit.md)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Version: [VERSION](./VERSION)
+- Prism metadata: [prism.project.json](./prism.project.json)
+- Figures: [figures/](./figures/)
