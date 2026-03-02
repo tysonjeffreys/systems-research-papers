@@ -7,6 +7,7 @@
 - Folder names are **stable identifiers** (no version numbers in folder names).
 - Versions live in: git tags + per-paper VERSION file + changelogs + release notes.
 - Every paper update must also update release metadata at repo scope: `CHANGELOG.md` + a `release-notes/*.md` entry for that change set.
+- Paper `README.md` files must be public-facing paper overviews. Do not keep Prism template boilerplate (`Prism Project`, `How to use`, `Recommended figure`) in committed paper READMEs.
 - Keep Prism/LaTeX sources clean: do NOT commit build junk.
 - If editing any code repos (e.g., regulated-agent-replay-suite / regulated-retrieval-gates), read and follow `DEV_RULES_FOR_CHATGPT.md` first. Do not refactor or remove functionality unless explicitly instructed.
 
@@ -117,10 +118,18 @@ Rules for slugging:
 For each paper folder moved:
 - Ensure it contains:
   - `main.tex`
-  - `README.md` (create if missing)
+  - `README.md` (create if missing; replace Prism template text with repo-standard content)
   - `VERSION` (create if missing)
   - `CHANGELOG.md` (create if missing)
   - `latest.pdf` (optional, user-managed)
+
+README standard for papers:
+- Title + version header
+- 1-2 sentence summary of the paper's claim/scope
+- "Core focus" bullet list (3-6 bullets)
+- Optional "Companion note" links to related papers
+- "Artifacts" list linking `main.tex`, `mirror.md`, `mirror.audit.md`, `CHANGELOG.md`, `VERSION`, and optional assets
+- Avoid authoring/workflow instructions inside paper README content (those belong in repo playbooks, not paper summaries)
 
 ### 5) Create VERSION + CHANGELOG.md per paper
 Inside each `papers/<slug>/`:
@@ -201,6 +210,11 @@ In `release-notes/`:
 - Do not remove sections or functionality unless explicitly instructed.
 - Keep formatting consistent with existing paper style.
 
+### 3b) Ensure paper README is publication-quality
+- For any **new paper import** (including Prism zip/project imports), replace generated placeholder README text with the repo-standard paper README format before committing.
+- For existing papers, update README when scope/version framing changes so summary + artifact links stay accurate.
+- Do not commit Prism boilerplate headings/instructions in paper READMEs.
+
 ### 4) Generate/update mirror.md + audit
 Run:
 - `node --experimental-modules tools/generate-paper-mirrors.mjs`
@@ -222,7 +236,7 @@ Before committing, verify mirror completeness + math pass-through:
 
 ### 6) Cleanliness check
 - `git status` should show only meaningful changes:
-  - main.tex, VERSION, CHANGELOG.md, mirror.md, mirror.audit.md, repo `CHANGELOG.md`, and `release-notes/*.md`
+  - main.tex, README.md (if needed), VERSION, CHANGELOG.md, mirror.md, mirror.audit.md, repo `CHANGELOG.md`, and `release-notes/*.md`
 - There should be no build junk tracked. If present, add ignore rules or remove from tracking.
 
 ### 7) Commit
@@ -276,6 +290,7 @@ If batch branch is used:
 ## Definition of Done (DoD) for any release
 - `main` contains:
   - updated sources
+  - updated paper README(s) for new papers or scope changes
   - updated VERSION
   - updated per-paper CHANGELOG
   - updated mirror.md
