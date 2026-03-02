@@ -1,6 +1,6 @@
 # Reflection Without Thrash
 
-**Version:** v0.1  
+**Version:** v0.1.1  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -172,6 +172,10 @@ This hub note maps directly to two implementation companions:
 - `regulated-agent-replay-suite/replay-suite/v0/rsml-stability-stress.json` for RSML stress scenarios and replay checks.
 
 - `regulated-retrieval-gates` RSML governor rails for evidence-delta gating and phase-scoped durable commit control.
+
+# Companion note
+
+`papers/epistemic-load/` defines admissibility truth conditions for introspective claims and durable rewrites under epistemic load. Reflection Without Thrash (this note) governs revision-loop stability. In operational terms: Reflection Without Thrash decides whether revision should continue; Epistemic Load decides whether a self-claim can update durable state.
 
 # Appendix A: Minimal RSML telemetry schema
 

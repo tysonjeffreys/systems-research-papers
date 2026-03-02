@@ -2,6 +2,18 @@
 
 All notable paper updates are documented here.
 
+## 2026-03-02 (Regulated Reflection Companion Pair: Epistemic Load + Reflection Without Thrash)
+
+- Added new companion paper:
+  - Epistemic Load (`v1.0`) at `papers/epistemic-load/`
+- Updated Reflection Without Thrash with companion cross-link and patch bump:
+  - Reflection Without Thrash (`v0.1.1`) at `papers/reflection-without-thrash/`
+- Propagated version/index surfaces:
+  - Updated `papers/reflection-without-thrash/{VERSION,main.tex,mirror.md,mirror.audit.md,README.md,CHANGELOG.md}`
+  - Updated repo index in `README.md` with paired-release framing for Epistemic Load + Reflection Without Thrash.
+- Standardized public-facing naming in companion docs and release notes to use paper titles instead of internal aliases.
+- Added release note: `release-notes/regulated-reflection-companion-pair-2026-03-02.md`.
+
 ## 2026-03-01 (Reflection Without Thrash Hub + RSML Governor Inserts)
 
 - Added new hub/companion paper:

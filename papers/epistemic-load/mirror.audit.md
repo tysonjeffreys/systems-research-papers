@@ -1,4 +1,4 @@
-# Audit — Reflection Without Thrash (v0.1.1)
+# Audit — Epistemic Load Introspective Reliability as a Function of Compensation (v1.0)
 
 - Mirror: ./mirror.md
 

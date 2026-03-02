@@ -1,0 +1,11 @@
+{
+  "name": "Epistemic Load",
+  "slug": "epistemic-load",
+  "version": "1.0",
+  "author": "Tyson Jeffreys",
+  "email": "tyson@staygolden.dev",
+  "domain": "Robotics / Agentic AI",
+  "created": "2026-03-01",
+  "entrypoint": "main.tex",
+  "notes": "Companion note to Reflection Without Thrash."
+}
