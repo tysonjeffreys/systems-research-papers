@@ -64,7 +64,7 @@ A *durable commit* is any state update intended to persist beyond the current ep
 
 We specify admissibility as a function:
 ```math
-\text{Admit}(claim, context) \rightarrow (admissible, forced\_action, reason\_codes)
+\text{Admit}(claim, context) \rightarrow (\text{admissible}, \text{forced action}, \text{reason codes})
 ```
 
 **Core rule (commit safety):**
@@ -73,7 +73,7 @@ We specify admissibility as a function:
 
 ### Policy table
 
-Let $claim\_type \in \{\text{telemetry}, \text{trace\_fact}, \text{causal\_explanation}\}$ and $scope \in \{\text{telemetry\_only}, \text{analysis\_artifact}, \text{plan\_update}, \text{durable\_commit}, \text{policy\_update}\}$. Let $\Delta E$ denote evidence delta (fingerprint change). Let $phase$ be the run phase.
+Let $claimType \in \{\text{telemetry}, \text{trace-fact}, \text{causal-explanation}\}$ and $scope \in \{\text{telemetry-only}, \text{analysis-artifact}, \text{plan-update}, \text{durable-commit}, \text{policy-update}\}$. Let $\Delta E$ denote evidence delta (fingerprint change). Let $phase$ be the run phase.
 
 1.  **Telemetry and trace facts** are admissible for telemetry and analysis artifacts.
 
@@ -85,7 +85,7 @@ Let $claim\_type \in \{\text{telemetry}, \text{trace\_fact}, \text{causal\_expla
 
     - $R_i \ge 0.7$ (default)
 
-    - $\Delta E = 1$ *or* basis-change trigger $= override\_authorized$
+    - $\Delta E = 1$ *or* basis-change trigger `override_authorized`
 
 4.  **Policy updates** require stronger thresholds ($R_i \ge 0.8$) plus $\Delta E = 1$ (override still logged).
 
