@@ -1,15 +1,7 @@
-# mirror.audit.md
+# Audit — Epistemic Load Introspective Reliability as a Function of Compensation (v1.0)
 
-## Render / math
-- [ ] LaTeX builds cleanly
-- [ ] No missing packages
-- [ ] Equations render correctly
-- [ ] Title/author/version consistent across surfaces
-- [ ] No major overfull warnings in key sections
+- Mirror: ./mirror.md
 
-## Content
-- [ ] Clear tier taxonomy (telemetry / trace_fact / causal_explanation)
-- [ ] Epistemic load and reliability defined operationally
-- [ ] Admissibility policy table present and unambiguous
-- [ ] Benchmarks/falsifiers described
-- [ ] Integration with RSML governor explained
+This audit lists items that may render differently on GitHub math rendering.
+
+✅ No obvious macro leaks, unknown commands, or missing images detected.
