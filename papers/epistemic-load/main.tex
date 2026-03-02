@@ -19,7 +19,7 @@
 
 \title{Epistemic Load\\\large Introspective Reliability as a Function of Compensation}
 \author{Tyson Jeffreys\\Independent Researcher\\\href{mailto:tyson@staygolden.dev}{tyson@staygolden.dev}}
-\date{Version 1.0 \quad (March 2026)}
+\date{Version 1.0 \quad (March 2, 2026)}
 
 \begin{document}
 \maketitle
@@ -142,7 +142,7 @@ new evidence, new objective, risk band change, override authorization, or extern
 policy requires these triggers be logged, not implied.
 
 \section{Deterministic signals pack (summary)}
-This note assumes a deterministic signals pack v0.1 (Appendix B) which computes:
+This note assumes a deterministic signals pack v1.0 (Appendix B) which computes:
 thrash rate, plan edit distance, revision count, reflect passes, tool retry rate, tool novelty score, evidence
 fingerprint / delta, and durable commit reversions/regret. These are intentionally simple so they can be
 implemented consistently across stacks and replay harnesses.
@@ -193,7 +193,7 @@ and safe for durable updates. Together with RSML governance, this yields a pract
 reflection in agents and robots that minimizes silent reversion and ungrounded policy drift.
 
 \appendix
-\section{Appendix A: Minimal claim schema (v0.1)}
+\section{Appendix A: Minimal claim schema (v1.0)}
 An introspective claim must declare its type, scope, support, and action intent. A minimal JSON schema:
 \begin{quote}\small
 \texttt{\{ schema, id, ts, claim\_type, scope, statement, action\_intent, basis\_change\_trigger,}\\
@@ -201,7 +201,7 @@ An introspective claim must declare its type, scope, support, and action intent.
 \texttt{\quad confidence \}}
 \end{quote}
 
-\section{Appendix B: Deterministic signals pack (v0.1 overview)}
+\section{Appendix B: Deterministic signals pack (v1.0 overview)}
 This appendix summarizes the deterministic algorithms used to compute $L_e$ and related signals.
 
 \subsection{Plan extraction}

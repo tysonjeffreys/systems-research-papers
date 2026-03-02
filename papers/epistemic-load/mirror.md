@@ -1,6 +1,7 @@
 # Epistemic Load Introspective Reliability as a Function of Compensation
 
 **Version:** v1.0  
+**Date:** March 2, 2026  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -97,7 +98,7 @@ Basis-change triggers are explicit events that justify large revisions or durabl
 
 # Deterministic signals pack (summary)
 
-This note assumes a deterministic signals pack v0.1 (Appendix B) which computes: thrash rate, plan edit distance, revision count, reflect passes, tool retry rate, tool novelty score, evidence fingerprint / delta, and durable commit reversions/regret. These are intentionally simple so they can be implemented consistently across stacks and replay harnesses.
+This note assumes a deterministic signals pack v1.0 (Appendix B) which computes: thrash rate, plan edit distance, revision count, reflect passes, tool retry rate, tool novelty score, evidence fingerprint / delta, and durable commit reversions/regret. These are intentionally simple so they can be implemented consistently across stacks and replay harnesses.
 
 # Benchmarks and calibration
 
@@ -145,7 +146,7 @@ This note does not claim machine consciousness. “Self-awareness” is used onl
 
 Introspection becomes unsafe when treated as privileged evidence under compensation. By defining epistemic load and enforcing admissibility rules, we can make self-reports auditable, regression-testable, and safe for durable updates. Together with RSML governance, this yields a practical architecture for reflection in agents and robots that minimizes silent reversion and ungrounded policy drift.
 
-# Appendix A: Minimal claim schema (v0.1)
+# Appendix A: Minimal claim schema (v1.0)
 
 An introspective claim must declare its type, scope, support, and action intent. A minimal JSON schema:
 
@@ -153,7 +154,7 @@ An introspective claim must declare its type, scope, support, and action intent.
 > `support:{ evidence:{fingerprint, delta}, trace:{trace_id, refs}, signals:{...}},`\
 > `confidence }`
 
-# Appendix B: Deterministic signals pack (v0.1 overview)
+# Appendix B: Deterministic signals pack (v1.0 overview)
 
 This appendix summarizes the deterministic algorithms used to compute $L_e$ and related signals.
 
