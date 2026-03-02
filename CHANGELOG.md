@@ -11,6 +11,7 @@ All notable paper updates are documented here.
 - Propagated version/index surfaces:
   - Updated `papers/reflection-without-thrash/{VERSION,main.tex,mirror.md,mirror.audit.md,README.md,CHANGELOG.md}`
   - Updated repo index in `README.md` with paired-release framing for Epistemic Load + Reflection Without Thrash.
+- Standardized public-facing naming in companion docs and release notes to use paper titles instead of internal aliases.
 - Added release note: `release-notes/regulated-reflection-companion-pair-2026-03-02.md`.
 
 ## 2026-03-01 (Reflection Without Thrash Hub + RSML Governor Inserts)
