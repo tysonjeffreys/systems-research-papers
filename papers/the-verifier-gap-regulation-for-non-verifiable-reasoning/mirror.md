@@ -1,5 +1,4 @@
-# The Verifier Gap
-## Regulation for Non-Verifiable Reasoning
+# The Verifier Gap: Regulation for Non-Verifiable Reasoning
 
 **Version:** v0.1  
 **Source:** [./](./)  

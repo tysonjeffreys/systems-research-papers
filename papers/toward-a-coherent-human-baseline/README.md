@@ -1,5 +1,4 @@
-# Toward a Coherent Human Baseline
-## Metabolic Regulation, Autonomic Quieting, and the Role of Meditation
+# Toward a Coherent Human Baseline: Metabolic Regulation, Autonomic Quieting, and the Role of Meditation
 
 This paper characterizes a low-noise physiological baseline and argues that autonomic/respiratory coherence can be established through breath regulation, with meditation acting as an enhancement layer rather than the initial mechanism.
 

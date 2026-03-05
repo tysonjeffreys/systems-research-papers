@@ -1,5 +1,4 @@
-# Why Intelligent Systems Waste Energy
-## Baseline Regulation as a Missing Architectural Primitive
+# Why Intelligent Systems Waste Energy: Baseline Regulation as a Missing Architectural Primitive
 
 This paper argues that energy waste in intelligent systems is often architectural, not just implementation-level, and introduces baseline regulation as the missing control layer.
 
