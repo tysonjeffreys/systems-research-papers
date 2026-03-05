@@ -1,4 +1,4 @@
-# Phase Discipline for Regulated Agents
+# Phase Discipline for Regulated Agents: Transition Windows and State–Action Alignment
 
 **Version:** v0.1  
 **Source:** [./](./)  

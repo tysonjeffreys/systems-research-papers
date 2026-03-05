@@ -1,4 +1,4 @@
-# Reflection Without Thrash
+# Reflection Without Thrash: Re-entrant Self-Monitoring Loops as a Regulated Control Regime in Agents and Robots
 
 **Version:** v0.1.1  
 **Source:** [./](./)  

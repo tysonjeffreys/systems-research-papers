@@ -1,4 +1,4 @@
-# Epistemic Load (v1.0)
+# Epistemic Load: Introspective Reliability as a Function of Compensation (v1.0)
 
 This paper defines introspection as a measured channel whose reliability depends on regulatory state, not as a privileged source of truth.
 

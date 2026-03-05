@@ -1,4 +1,4 @@
-# Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery (v0.1)
+# Critics-as-Sensors: Abstention-Gated Selection for Verifier-Free Discovery (v0.1)
 
 This paper treats learned critics/judges as uncertainty sensors rather than authorities, using abstention/tie mass to govern bounded selection in verifier-free settings.
 

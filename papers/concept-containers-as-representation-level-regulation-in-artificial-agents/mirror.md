@@ -1,4 +1,4 @@
-# Concept Containers as Representation-Level Regulation in Artificial Agents
+# Concept Containers as Representation-Level Regulation in Artificial Agents: AI / agent architectures
 
 **Version:** v1.4  
 **Source:** [./](./)  

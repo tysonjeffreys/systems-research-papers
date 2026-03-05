@@ -1,4 +1,4 @@
-# Epistemic Load Introspective Reliability as a Function of Compensation
+# Epistemic Load: Introspective Reliability as a Function of Compensation
 
 **Version:** v1.0  
 **Date:** March 2, 2026  

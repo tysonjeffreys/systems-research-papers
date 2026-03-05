@@ -1,4 +1,4 @@
-# Concept Containers as Representation-Level Regulation in Artificial Agents (v1.3)
+# Concept Containers as Representation-Level Regulation in Artificial Agents: AI / agent architectures (v1.3)
 
 This paper defines concept containers as reusable, intervention-relevant representations and frames them as a regulation layer that reduces internal contention and compute waste.
 

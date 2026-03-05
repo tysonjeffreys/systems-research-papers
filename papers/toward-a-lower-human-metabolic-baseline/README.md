@@ -1,4 +1,4 @@
-# Toward a Lower Human Metabolic Baseline (v1.0)
+# Toward a Lower Human Metabolic Baseline: Micro-Ventilation, Diaphragm-Led Control, and Autonomic Coherence (v1.0)
 
 This paper proposes that humans can stabilize a lower metabolic/ventilatory baseline through diaphragm-led, mechanically constrained breathing that better matches true gas-exchange demand.
 

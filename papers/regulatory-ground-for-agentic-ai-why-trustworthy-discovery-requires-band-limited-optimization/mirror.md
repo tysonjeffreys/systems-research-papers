@@ -1,4 +1,4 @@
-# Regulatory Ground for Agentic AI
+# Regulatory Ground for Agentic AI: Why Trustworthy Discovery Requires Band-Limited Optimization
 
 **Version:** v1.5  
 **Source:** [./](./)  
