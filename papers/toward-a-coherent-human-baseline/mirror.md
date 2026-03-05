@@ -1,4 +1,5 @@
-# Toward a Coherent Human Baseline: Metabolic Regulation, Autonomic Quieting, and the Role of Meditation
+# Toward a Coherent Human Baseline
+## Metabolic Regulation, Autonomic Quieting, and the Role of Meditation
 
 **Version:** v1.0.1  
 **Source:** [./](./)  

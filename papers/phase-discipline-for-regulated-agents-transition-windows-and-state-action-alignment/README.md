@@ -1,4 +1,5 @@
-# Phase Discipline for Regulated Agents: Transition Windows and State–Action Alignment
+# Phase Discipline for Regulated Agents
+## Transition Windows and State–Action Alignment
 
 This paper introduces phase discipline as a runtime layer that schedules work classes (restore, transition, act) to reduce mismatch, thrash, and premature commits.
 

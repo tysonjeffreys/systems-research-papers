@@ -1,4 +1,5 @@
-# Why Intelligent Systems Waste Energy: Baseline Regulation as a Missing Architectural Primitive
+# Why Intelligent Systems Waste Energy
+## Baseline Regulation as a Missing Architectural Primitive
 
 **Version:** v1.1  
 **Source:** [./](./)  

@@ -1,4 +1,5 @@
-# Frictionless Agency: Dysregulation, Override, and Regulation as Proto-Ethics in Tool-Using and Embodied Systems
+# Frictionless Agency
+## Dysregulation, Override, and Regulation as Proto-Ethics in Tool-Using and Embodied Systems
 
 This paper frames dysregulation and override as governable system behaviors, positioning regulation as a proto-ethical substrate for safer autonomous action.
 

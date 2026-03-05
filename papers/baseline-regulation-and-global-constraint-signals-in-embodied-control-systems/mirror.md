@@ -1,4 +1,5 @@
-# Baseline Regulation and Global Constraint Signals in Embodied Control Systems: Implications for Artificial Intelligence and Robotics
+# Baseline Regulation and Global Constraint Signals in Embodied Control Systems
+## Implications for Artificial Intelligence and Robotics
 
 **Version:** v1.0.1  
 **Source:** [./](./)  

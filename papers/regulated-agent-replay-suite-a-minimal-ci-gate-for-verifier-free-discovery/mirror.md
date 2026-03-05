@@ -1,4 +1,5 @@
-# Regulated Agent Replay Suite v0: A Minimal CI Gate for Verifier-Free Discovery
+# Regulated Agent Replay Suite v0
+## A Minimal CI Gate for Verifier-Free Discovery
 
 **Version:** v0.1  
 **Source:** [./](./)  

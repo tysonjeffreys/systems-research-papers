@@ -1,4 +1,5 @@
-# Regulated Agent Replay Suite v0: A Minimal CI Gate for Verifier-Free Discovery
+# Regulated Agent Replay Suite v0
+## A Minimal CI Gate for Verifier-Free Discovery
 
 This paper specifies a minimal CI-style governance gate for verifier-free discovery systems, where commits are controlled by telemetry and rollback discipline rather than perfect verifiers.
 

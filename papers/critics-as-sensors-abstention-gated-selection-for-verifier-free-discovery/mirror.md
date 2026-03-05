@@ -1,4 +1,5 @@
-# Critics-as-Sensors: Abstention-Gated Selection for Verifier-Free Discovery
+# Critics-as-Sensors
+## Abstention-Gated Selection for Verifier-Free Discovery
 
 **Version:** v0.2  
 **Source:** [./](./)  

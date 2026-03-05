@@ -1,4 +1,5 @@
-# The Verifier Gap: Regulation for Non-Verifiable Reasoning
+# The Verifier Gap
+## Regulation for Non-Verifiable Reasoning
 
 This paper names the verifier gap regime and defines a minimal regulation layer for non-verifiable reasoning systems.
 

@@ -1,4 +1,5 @@
-# Toward a Lower Human Metabolic Baseline: Micro-Ventilation, Diaphragm-Led Control, and Autonomic Coherence
+# Toward a Lower Human Metabolic Baseline
+## Micro-Ventilation, Diaphragm-Led Control, and Autonomic Coherence
 
 **Version:** v1.0  
 **Source:** [./](./)  

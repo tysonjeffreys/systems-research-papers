@@ -1,4 +1,5 @@
-# The Time-to-Analysis Layer: Pressure Points in AI-Assisted Research Systems
+# The Time-to-Analysis Layer
+## Pressure Points in AI-Assisted Research Systems
 
 This paper analyzes why analysis-ready insight, not draft volume, is the bottleneck in AI-assisted research workflows and proposes controls that prioritize reusable analytical progress.
 
