@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 # Abstract
 
 Modern humans routinely ventilate far above immediate metabolic demand, a pattern associated with chronic sympathetic activation, elevated stress physiology, and metabolic inefficiency. While respiration is commonly modeled as a volumetric response to oxygen need, respiratory physiology demonstrates that ventilation is governed primarily by carbon dioxide ($CO_2$), airway resistance, and autonomic feedback loops.

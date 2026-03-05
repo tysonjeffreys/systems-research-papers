@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Series note (3/3).** This paper is Part 3 of a three-paper series on regime-level regulation in intelligent systems. Part 1 introduced two control regimes in embodied systems and a baseline regulator layer to reduce prolonged compensation. Part 2 proposed concept containers as representation-level regulation that stabilizes and reuses causal structure. Here we turn the same principle into a research-systems objective: reduce time-to-analysis with reusable analysis-layer artifacts and bursty synthesis.
 
 

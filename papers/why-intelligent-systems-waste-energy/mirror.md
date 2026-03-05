@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 # Introduction
 
 Energy efficiency has become a central concern across biological, computational, and engineered intelligent systems. In artificial intelligence, this concern is typically addressed through improvements in hardware efficiency, algorithmic optimization, model compression, or task-level performance tradeoffs. In biological systems, energy efficiency is often discussed in terms of metabolic cost, evolutionary pressure, and resource allocation. Despite progress in these domains, a shared assumption remains largely unexamined: that intelligent systems should operate continuously in an active, task-optimized mode whenever they are online.

@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 # Motivation
 
 In verifier-free settings (research, strategy, synthesis, planning), correctness cannot be reliably checked on demand. In these regimes, the primary failure mode is not a single wrong statement, but cascades: premature commits, tool misuse, injected instruction following, and compression that erases falsifiers.

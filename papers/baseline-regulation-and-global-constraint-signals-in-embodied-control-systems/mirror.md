@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 # Introduction
 
 Modern artificial intelligence and robotics systems have achieved impressive performance in constrained environments, yet they often fail abruptly when conditions deviate from those anticipated during training or design. These failures frequently arise not from a lack of computational power or sensory resolution, but from an inability to maintain internal coherence under perturbation. Small mismatches between prediction and reality can cascade into excessive correction, energy inefficiency, or control instability. Biological organisms face similar challenges, yet display markedly different behavior. Humans and animals maintain functional stability across variations in terrain, energy availability, sensory noise, and internal state. This suggests that biological robustness does not rely solely on fast feedback, centralized planning, or high-level cognition. Instead, it points to the existence of underlying regulatory mechanisms that stabilize behavior before complex control strategies are invoked. This paper examines such mechanisms through the lens of baseline regulation and proposes that embodied artificial systems currently under-model this layer of control.

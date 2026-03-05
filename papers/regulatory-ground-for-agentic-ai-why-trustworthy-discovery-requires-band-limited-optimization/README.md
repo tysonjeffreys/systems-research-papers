@@ -1,4 +1,4 @@
-# Regulatory Ground for Agentic AI: Why Trustworthy Discovery Requires Band-Limited Optimization (v1.5)
+# Regulatory Ground for Agentic AI: Why Trustworthy Discovery Requires Band-Limited Optimization
 
 This paper argues that trustworthy discovery in tool-using and embodied AI requires an explicit regulation layer. As agents move from answering to acting, regulation is treated as a ground condition for safe exploration, bounded optimization, and durable decision integrity under uncertainty.
 

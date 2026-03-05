@@ -1,4 +1,4 @@
-# Reflection Without Thrash: Re-entrant Self-Monitoring Loops as a Regulated Control Regime in Agents and Robots (v0.1.1)
+# Reflection Without Thrash: Re-entrant Self-Monitoring Loops as a Regulated Control Regime in Agents and Robots
 
 This hub note frames reflection as a re-entrant self-monitoring loop (RSML) and defines the minimal governance rails needed to prevent oscillation, revision spirals, tool thrash, and silent reversion.
 

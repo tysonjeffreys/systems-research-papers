@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 # Abstract
 
 As agents become tool-using, persistent, and increasingly autonomous, developers naturally attempt to add “reflection”: self-critique, self-evaluation, iterative plan revision, and policy editing. In practice, this often produces a familiar failure cluster—oscillatory planning, revision spirals, tool thrash, silent reversion, and self-disowning reasoning—especially under uncertainty and distribution shift.

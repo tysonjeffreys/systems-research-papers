@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Series note.** This note connects Baseline regulation primitives to an implementable governance mechanism for autonomous systems: baseline regulation and global constraint signals ; energetic consequences of always-on posture ; Two-Regime Control (latent coordination vs. compensation) ; Phase Discipline (transition windows and commit alignment) ; Regulatory Ground (band-limited optimization for trustworthy discovery) ; the verifier-gap / bounded selection program ; the Time-to-Analysis layer ; and Concept Containers as governed, durable artifacts .
 
 # 1. Motivation: friction as a systems variable

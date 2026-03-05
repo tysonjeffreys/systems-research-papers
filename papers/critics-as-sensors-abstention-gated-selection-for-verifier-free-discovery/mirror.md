@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Bridge note.** This short note operationalizes the “verifier gap” as a concrete selection-and-governance layer for non-verifiable tasks (research synthesis, strategy, writing, design tradeoffs). It connects three existing claims from the Prism series: (i) analysis-layer artifacts reduce time-to-analysis by exposing causal structure and falsifiers, (ii) concept containers regulate representation-level commitments as reusable compressed structure, and (iii) trustworthy discovery requires band-limited optimization with explicit posture control and rollback discipline.
 
 

@@ -4,8 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
-Regulatory Ground for Agentic AI Why Trustworthy Discovery Requires Band-Limited Optimization Robotics / Embodied AI Tyson Jeffreys Independent Researcher tyson@staygolden.dev Version 1.5 — March 2026
 
 ## Abstract
 

@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Series note (1/3).** This paper is Part 1 of a three-paper series on regime-level regulation in intelligent systems. Part 1 introduces a two-regime framing for embodied control (latent coordination vs. compensation) and proposes a measurable compensation index plus a slow baseline regulator layer. Part 2 extends the same regulation idea to representations via concept containers. Part 3 applies it to research systems via time-to-analysis and analysis-layer artifacts.
 
 

@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 # Introduction
 
 Most contemporary discussions of meditation and contemplative practice emphasize attention, cognition, or subjective experience. Less attention has been given to the baseline physiological conditions that precede and support these experiences.

@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Series extension.** This short paper names a missing layer in the Baseline / regulation series: what to do when *verification is unavailable* but the system still requires *selection signals* to learn, decide, and commit. It bridges: Two-Regime Control (regime dynamics), Concept Containers (representation commits), The Time-to-Analysis Layer (research objective), and Regulatory Ground (runtime governance).
 
 # Abstract

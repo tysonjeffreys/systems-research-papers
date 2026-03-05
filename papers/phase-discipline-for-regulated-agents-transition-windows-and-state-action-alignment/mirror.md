@@ -4,7 +4,6 @@
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Series note.** This paper extends the Baseline regulation series by naming a missing runtime layer: *phase discipline*. Prior papers specify (i) a regulator layer with bands, budgets, rollback, and a telemetry-driven global restraint signal $g(t)$ for trustworthy discovery ; (ii) representation-level commits via concept containers ; (iii) a research-systems objective centered on reusable analysis artifacts and bursty synthesis ; and (iv) verifier-gap governance where learned critics are treated as sensors, with abstention as uncertainty telemetry and commits gated under non-verifiable selection . Here we add a second runtime control variable alongside posture: a phase state $p(t)$ that schedules work types and reserves transition windows for consolidation and commits.
 
 # Abstract

@@ -1,4 +1,4 @@
-# Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems (v1.2)
+# Two-Regime Control: Latent Coordination vs Compensation in Intelligent Systems
 
 This paper formalizes a two-regime view of intelligent control and introduces measurable compensation metrics for regulating high-cost instability.
 

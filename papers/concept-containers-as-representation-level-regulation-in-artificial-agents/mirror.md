@@ -1,10 +1,10 @@
-# Concept Containers as Representation-Level Regulation in Artificial Agents: AI / agent architectures
+# Concept Containers as Representation-Level Regulation in Artificial Agents
 
 **Version:** v1.4  
+**Domain:** AI / agent architectures  
 **Source:** [./](./)  
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
-> Markdown mirror: best-effort GitHub rendering.
 **Series note (2/3).** This paper is Part 2 of a three-paper series on regime-level regulation in intelligent systems. Part 1 (Two-Regime Control) frames latent coordination vs. compensation in embodied control and introduces a baseline regulator layer. Here we generalize the framing to representation-level regulation via concept containers that amortize causal structure and reduce repeated recomputation. Part 3 translates the same principle into a product-facing objective for research systems: minimizing time-to-analysis.. Companion framing: *Regulatory Ground for Agentic AI* extends the same regulation view to runtime operating layers (budgets, uncertainty gating, rollback, and a global restraint signal). Concept containers fill the representation-level component of that stack.
 
 # Abstract
