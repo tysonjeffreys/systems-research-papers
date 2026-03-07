@@ -1,11 +1,11 @@
 {
   "name": "Awareness vs Thinking (Operational)",
   "slug": "awareness-vs-thinking-operational",
-  "version": "0.1",
+  "version": "1.0",
   "author": "Tyson Jeffreys",
   "email": "tyson@staygolden.dev",
   "domain": "Robotics / Agentic AI",
   "created": "2026-03-07",
-  "entrypoint": "paper.md",
-  "notes": "Clarification note: monitoring/gating awareness vs bounded analysis-burst thinking."
+  "entrypoint": "main.tex",
+  "notes": "Small operational note clarifying awareness as monitoring/gating and thinking as bounded activation bursts."
 }

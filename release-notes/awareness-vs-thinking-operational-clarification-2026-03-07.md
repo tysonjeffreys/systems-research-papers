@@ -2,11 +2,11 @@
 
 ## Scope
 
-This update adds a clarification note and light cross-links to make an existing control distinction explicit without changing core paper claims.
+This update adds a new paper and light cross-links to make an existing control distinction explicit without changing core companion-paper claims.
 
 ## Included
 
-- New note project: `notes/awareness-vs-thinking-operational/`
+- New paper project: `papers/awareness-vs-thinking-operational/`
 - Repo index discoverability updates in `README.md`
 - Cross-link insertions in:
   - `papers/reflection-without-thrash/main.tex`

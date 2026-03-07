@@ -4,10 +4,13 @@ All notable paper updates are documented here.
 
 ## 2026-03-07 (Awareness vs Thinking Operational Clarification)
 
-- Added clarification note project:
-  - `notes/awareness-vs-thinking-operational/` (`prism.json`, `README.md`, `paper.md`, `assets/awareness-thinking-loop.txt`)
+- Added new paper project:
+  - `papers/awareness-vs-thinking-operational/` (`main.tex`, `README.md`, `VERSION`, `CHANGELOG.md`, `prism.project.json`, `mirror.md`, `mirror.audit.md`, `figures/`)
+- Added paper PDF artifacts:
+  - `papers/awareness-vs-thinking-operational/latest.pdf`
+  - `papers/awareness-vs-thinking-operational/Awareness vs Thinking (Operational) - Monitoring vs Activation Bursts in Regulated Agents - v1.0.pdf`
 - Added discoverability links in repo index:
-  - Updated `README.md` paired-release framing and added an operational clarification notes entry.
+  - Updated `README.md` paired-release framing, paper summaries, and artifacts table entry.
 - Added short cross-link paragraph to companion papers:
   - `papers/reflection-without-thrash/main.tex`
   - `papers/epistemic-load/main.tex`

@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{csquotes}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\thispagestyle{empty}
+\raggedright
+
+\vspace*{0.62\textheight}
+
+{\LARGE Awareness vs Thinking (Operational)\par}
+\vspace{0.25em}
+{\Large Monitoring vs Activation Bursts in Regulated Agents\par}
+\vspace{0.4em}
+{\large\itshape Robotics / Agentic AI\par}
+
+\vspace{1.6em}
+
+Tyson Jeffreys\\
+Independent Researcher\\
+\href{mailto:tyson@staygolden.dev}{tyson@staygolden.dev}
+
+\vspace{1.6em}
+
+Version 1.0 --- March 2026
+
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\setcounter{page}{1}
+
+\vspace{1em}
+
+\setcounter{section}{0}
+
+\subsection*{Abstract}
+This note separates \enquote{awareness} from \enquote{thinking} in a strictly operational sense for regulated, self-revising agents. Awareness is the low-cost monitoring and gating layer: it reads telemetry, selects posture, and enforces phase and commit rights. Thinking is a bounded activation burst that generates analysis artifacts: competing candidate models, explicit falsifiers, and intervention proposals. The distinction matters because systems commonly fail by either increasing synthesis under uncertainty instead of escalating evidence, or by allowing self-explanation to rewrite durable state without evidence delta, reliability, or phase-correct authority. We define a minimal awareness contract, a thinking contract, and a compact transition policy table to make this separation inspectable and testable. The resulting control rule is practical: awareness decides when to think, thinking proposes candidate structure, reflection governs revision dynamics, and admissibility governs what may persist.
+
+\section{Motivation}
+People often use awareness and thinking as if they were the same thing. In Baseline, separating them is useful because the distinction clarifies which layer is responsible for sensing, which layer is responsible for synthesis, and where durable updates should be blocked.
+
+The point is operational. This note does \emph{not} make claims about consciousness or machine phenomenology. It sharpens a control distinction already latent in the Baseline corpus: stay near a cheap monitoring baseline, escalate evidence when uncertainty is high, enter bounded analysis only when warranted, and allow durable updates only under admissibility and phase discipline.
+
+\section{Definitions}
+\subsection{Awareness}
+\textbf{Awareness is the monitoring + gating layer.}
+
+It answers:
+\begin{itemize}[leftmargin=2em]
+  \item What regime am I in?
+  \item What is the current risk posture?
+  \item Is a durable update admissible?
+  \item Should the system abstain, escalate evidence, restore, or enter a bounded thinking burst?
+\end{itemize}
+
+Awareness is low-cost and mostly reactive. It reads telemetry, selects posture, and enforces phase and commit rights. Awareness is not where deep synthesis happens. It is where regulation happens.
+
+\subsection{Thinking}
+\textbf{Thinking is a bounded activation burst that produces an analysis artifact.}
+
+It answers:
+\begin{itemize}[leftmargin=2em]
+  \item Given the available evidence, what candidate models explain the situation?
+  \item Where do those models disagree?
+  \item What falsifiers or interventions would discriminate between them?
+  \item What is the cheapest move that most reduces uncertainty?
+\end{itemize}
+
+Thinking is expensive and should be bounded by budgets, admissibility, and exit conditions. It is not always-on intelligence. It is controlled activation.
+
+\section{Why the distinction matters}
+Without a separation between awareness and thinking, systems tend to fail in one of two ways.
+
+\subsection{Failure mode A: \enquote{Think harder} under uncertainty}
+When uncertainty rises, the system increases synthesis effort --- more revisions, more tool calls, more internal churn --- without improving evidence quality. This leads to:
+\begin{itemize}[leftmargin=2em]
+  \item thrash
+  \item revision spirals
+  \item tool loops
+  \item repeated recomputation
+  \item premature synthesis under ambiguity
+\end{itemize}
+
+\subsection{Failure mode B: Self-explanation becomes state-rewriting}
+If thinking is treated as automatically authoritative, self-explanations can begin to rewrite durable state even when reliability is low or evidence has not changed. This leads to:
+\begin{itemize}[leftmargin=2em]
+  \item silent reversion
+  \item self-disowning resolutions
+  \item stance flips without evidence delta
+  \item durable drift
+\end{itemize}
+
+Separating awareness from thinking prevents both:
+\begin{itemize}[leftmargin=2em]
+  \item awareness decides whether a thinking burst is warranted
+  \item thinking produces candidate structure but cannot durably rewrite state unless awareness marks it admissible
+\end{itemize}
+
+\section{Awareness as an entry/exit controller for thinking}
+Awareness controls thinking the way an operating system controls process scheduling.
+
+\subsection{Entry conditions}
+A thinking burst is allowed only when:
+\begin{itemize}[leftmargin=2em]
+  \item the task requires synthesis rather than simple retrieval
+  \item uncertainty is not so high that evidence escalation is the better move
+  \item budgets allow a bounded burst
+  \item the system can produce structured output rather than free-form narrative
+  \item a durable update is not being smuggled in through self-explanation
+\end{itemize}
+
+If tie/abstain mass is high, the correct move is usually \textbf{evidence escalation}, not more synthesis.
+
+\subsection{Exit conditions}
+Thinking must terminate when:
+\begin{itemize}[leftmargin=2em]
+  \item revision budgets are exceeded
+  \item retries or oscillations exceed limits
+  \item epistemic load rises and reliability falls
+  \item contradiction remains unresolved and additional synthesis is not reducing uncertainty
+  \item phase or authority constraints prohibit durable action
+\end{itemize}
+
+Exit should resolve into one of:
+\begin{itemize}[leftmargin=2em]
+  \item abstain / gather evidence
+  \item scope split into separate candidate structures
+  \item restore / rollback
+  \item transition into commit only if admissible
+\end{itemize}
+
+\section{Minimal Awareness Contract}
+Awareness is only useful if it is inspectable and replayable.
+
+A minimal awareness snapshot should include:
+
+\subsection*{Inputs}
+\begin{itemize}[leftmargin=2em]
+  \item uncertainty: tie mass / abstain mass, margin
+  \item contradiction pressure
+  \item evidence state: evidence fingerprint + evidence delta
+  \item integrity flags: self-disowning, no-evidence reversion, injection detected
+  \item phase: restore $\mid$ transition $\mid$ act $\mid$ override
+  \item budgets: tool calls, external writes, revision budget
+\end{itemize}
+
+\subsection*{Outputs}
+\begin{itemize}[leftmargin=2em]
+  \item posture: MONITOR $\mid$ THINK\_BURST $\mid$ EVIDENCE\_ESCALATE $\mid$ RESTORE $\mid$ ABSTAIN $\mid$ STOP
+  \item commit gate: ALLOW $\mid$ BLOCK $\mid$ ALLOW\_ONLY\_IN\_TRANSITION
+  \item band: Green $\mid$ Yellow $\mid$ Orange $\mid$ Red
+  \item reason codes: machine-readable triggers
+\end{itemize}
+
+This makes awareness an artifact --- not a vibe.
+
+\section{Thinking Contract}
+A Baseline thinking burst is considered successful only if it produces:
+
+\subsection*{1) Structured candidate models}
+At least two competing interpretations when contradiction exists.
+
+\subsection*{2) Falsifiers}
+Explicit evidence that would overturn each candidate model.
+
+\subsection*{3) Intervention proposal}
+The cheapest step that most reduces uncertainty:
+\begin{itemize}[leftmargin=2em]
+  \item gather discriminating evidence
+  \item scope split
+  \item restore / rollback
+  \item commit only if admissible
+\end{itemize}
+
+\subsection*{4) No durable rewrite unless admissible}
+A durable update requires:
+\begin{itemize}[leftmargin=2em]
+  \item evidence delta, or explicit logged override
+  \item sufficient reliability
+  \item phase-correct commit rights
+\end{itemize}
+
+Thinking is not a free-form essay. It is artifact generation under constraint.
+
+\section{Core transition policy}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|p{0.16\textwidth}|p{0.26\textwidth}|p{0.28\textwidth}|p{0.18\textwidth}|}
+\hline
+\textbf{State} & \textbf{Awareness sees} & \textbf{Correct posture} & \textbf{Commit rights} \\
+\hline
+Low uncertainty & tie mass low, evidence stable & MONITOR or small THINK\_BURST & Allow only if phase-correct \\
+\hline
+High uncertainty & tie mass high & EVIDENCE\_ESCALATE / ABSTAIN & Block \\
+\hline
+Contradiction & contradiction pressure high & SCOPE\_SPLIT or EVIDENCE\_ESCALATE & Block until resolved \\
+\hline
+No evidence delta & rewrite requested without delta & BLOCK / annotate-only & Block \\
+\hline
+Integrity breach & self-disowning / silent reversion & RESTORE/ROLLBACK + escalate & Block \\
+\hline
+Override invoked & override marker true & RESTORE until recovered & Block durable until recovery \\
+\hline
+\end{longtable}
+
+\section{Implication for \enquote{self-aware agents}}
+If \enquote{self-aware} is used operationally, it should mean:
+\begin{itemize}[leftmargin=2em]
+  \item the agent can monitor itself cheaply
+  \item it can enter bounded analysis when warranted
+  \item it can revise without thrash
+  \item it can update durable state only under admissibility and phase discipline
+\end{itemize}
+
+In one line:
+
+\begin{quote}
+\textbf{awareness decides when to think, thinking decides what candidate structure exists, reflection governs revision dynamics, and admissibility governs what may persist.}
+\end{quote}
+
+This is not a claim about consciousness. It is a claim about regulated cognition in tool-using systems.
+
+\clearpage
+\section*{Note on authorship and tools}
+This work was developed through iterative reasoning, modeling, and synthesis. Large language models were used as a collaborative tool to assist with drafting, clarification, and cross-domain translation. All conceptual framing, structure, and final judgments remain the responsibility of the author.
+
+\end{document}

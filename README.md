@@ -12,11 +12,7 @@ This library focuses on regulated intelligence systems: how agents should reason
 
 - **Epistemic Load** (`v1.0`) defines admissibility truth conditions for durable updates under epistemic load.
 - **Reflection Without Thrash** (`v0.1.1`) defines RSML governor rails for revision-loop stability and bounded reflection.
-- **Awareness vs Thinking (Operational)** (clarification note) sharpens the regulation-vs-synthesis control boundary used by both notes.
-
-## Operational Clarification Notes
-
-- **Awareness vs Thinking (Operational)** (`note`) lives at [notes/awareness-vs-thinking-operational/](./notes/awareness-vs-thinking-operational/).
+- **Awareness vs Thinking (Operational)** (`v1.0`) sharpens the regulation-vs-synthesis control boundary used by both notes.
 
 ## Paper Summaries
 
@@ -25,6 +21,8 @@ This library focuses on regulated intelligence systems: how agents should reason
 - **Concept Containers as Representation-Level Regulation in Artificial Agents**: defines containerized representation updates as regulated commits with provenance, falsifiers, and persistence checks.
 
 - **Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery**: formalizes critics as telemetry (not authorities) and uses abstention-gated bounded selection for verifier-free tasks.
+
+- **Awareness vs Thinking (Operational)**: separates awareness as monitoring/gating from thinking as bounded activation bursts that produce structured candidate models, falsifiers, and intervention proposals.
 
 - **Frictionless Agency**: frames dysregulation and override governance as proto-ethical posture, using baseline regulation, phase discipline, bounded selection, and commit governance to enforce restraint under uncertainty.
   
@@ -54,6 +52,7 @@ This library focuses on regulated intelligence systems: how agents should reason
 
 | Paper | Version | Source | Mirror | Audit | PDF (manual) | Changelog |
 | --- | --- | --- | --- | --- | --- | --- |
+| Awareness vs Thinking (Operational): Monitoring vs Activation Bursts in Regulated Agents | v1.0 | [dir](./papers/awareness-vs-thinking-operational/) | [mirror](./papers/awareness-vs-thinking-operational/mirror.md) | [audit](./papers/awareness-vs-thinking-operational/mirror.audit.md) | [latest.pdf](./papers/awareness-vs-thinking-operational/latest.pdf) | [CHANGELOG](./papers/awareness-vs-thinking-operational/CHANGELOG.md) |
 | Baseline Regulation and Global Constraint Signals in Embodied Control Systems | v1.0.1 | [dir](./papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/) | [mirror](./papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/mirror.md) | [audit](./papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/mirror.audit.md) | [latest.pdf](./papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/latest.pdf) | [CHANGELOG](./papers/baseline-regulation-and-global-constraint-signals-in-embodied-control-systems/CHANGELOG.md) |
 | Concept Containers as Representation-Level Regulation in Artificial Agents | v1.4 | [dir](./papers/concept-containers-as-representation-level-regulation-in-artificial-agents/) | [mirror](./papers/concept-containers-as-representation-level-regulation-in-artificial-agents/mirror.md) | [audit](./papers/concept-containers-as-representation-level-regulation-in-artificial-agents/mirror.audit.md) | [latest.pdf](./papers/concept-containers-as-representation-level-regulation-in-artificial-agents/latest.pdf) | [CHANGELOG](./papers/concept-containers-as-representation-level-regulation-in-artificial-agents/CHANGELOG.md) |
 | Critics-as-Sensors Abstention-Gated Selection for Verifier-Free Discovery | v0.2 | [dir](./papers/critics-as-sensors-abstention-gated-selection-for-verifier-free-discovery/) | [mirror](./papers/critics-as-sensors-abstention-gated-selection-for-verifier-free-discovery/mirror.md) | [audit](./papers/critics-as-sensors-abstention-gated-selection-for-verifier-free-discovery/mirror.audit.md) | [latest.pdf](./papers/critics-as-sensors-abstention-gated-selection-for-verifier-free-discovery/latest.pdf) | [CHANGELOG](./papers/critics-as-sensors-abstention-gated-selection-for-verifier-free-discovery/CHANGELOG.md) |
