@@ -1,16 +1,9 @@
-# mirror.audit.md
+# Audit — Awareness vs Thinking (Operational): Monitoring vs Activation Bursts in Regulated Agents (v1.0)
 
-## Render / math
-- [ ] LaTeX builds cleanly
-- [ ] No missing packages
-- [ ] Table renders cleanly
-- [ ] Title/author/version consistent across surfaces
-- [ ] No major overfull warnings in key sections
+- Mirror: ./mirror.md
 
-## Content
-- [ ] Awareness defined as monitoring + gating
-- [ ] Thinking defined as bounded activation burst
-- [ ] Non-claim about consciousness / theory of mind is explicit
-- [ ] Awareness contract fields are present and operational
-- [ ] Thinking contract requires structured candidates, falsifiers, and intervention proposals
-- [ ] Transition policy table is present and unambiguous
+This audit lists items that may render differently on GitHub math rendering.
+
+- Verify table formatting under "Core transition policy".
+- Verify inline math delimiters in posture/phase token lines.
+- No image dependencies expected for this paper.

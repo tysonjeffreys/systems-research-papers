@@ -20,5 +20,4 @@ Core focus:
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
 - Prism metadata: [prism.project.json](./prism.project.json)
-- Figures: [figures/](./figures/)
 - PDF (current): [latest.pdf](./latest.pdf)
