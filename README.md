@@ -12,6 +12,11 @@ This library focuses on regulated intelligence systems: how agents should reason
 
 - **Epistemic Load** (`v1.0`) defines admissibility truth conditions for durable updates under epistemic load.
 - **Reflection Without Thrash** (`v0.1.1`) defines RSML governor rails for revision-loop stability and bounded reflection.
+- **Awareness vs Thinking (Operational)** (clarification note) sharpens the regulation-vs-synthesis control boundary used by both notes.
+
+## Operational Clarification Notes
+
+- **Awareness vs Thinking (Operational)** (`note`) lives at [notes/awareness-vs-thinking-operational/](./notes/awareness-vs-thinking-operational/).
 
 ## Paper Summaries
 

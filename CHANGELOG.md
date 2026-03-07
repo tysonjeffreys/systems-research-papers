@@ -2,6 +2,17 @@
 
 All notable paper updates are documented here.
 
+## 2026-03-07 (Awareness vs Thinking Operational Clarification)
+
+- Added clarification note project:
+  - `notes/awareness-vs-thinking-operational/` (`prism.json`, `README.md`, `paper.md`, `assets/awareness-thinking-loop.txt`)
+- Added discoverability links in repo index:
+  - Updated `README.md` paired-release framing and added an operational clarification notes entry.
+- Added short cross-link paragraph to companion papers:
+  - `papers/reflection-without-thrash/main.tex`
+  - `papers/epistemic-load/main.tex`
+- Added release note: `release-notes/awareness-vs-thinking-operational-clarification-2026-03-07.md`.
+
 ## 2026-03-02 (Regulated Reflection Companion Pair: Epistemic Load + Reflection Without Thrash)
 
 - Added new companion paper:
