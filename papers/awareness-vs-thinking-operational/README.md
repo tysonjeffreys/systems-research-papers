@@ -19,5 +19,4 @@ Core focus:
 - Mirror audit: [mirror.audit.md](./mirror.audit.md)
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 - Version: [VERSION](./VERSION)
-- Prism metadata: [prism.project.json](./prism.project.json)
 - PDF (current): [latest.pdf](./latest.pdf)

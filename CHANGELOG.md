@@ -5,7 +5,7 @@ All notable paper updates are documented here.
 ## 2026-03-07 (Awareness vs Thinking Operational Clarification)
 
 - Added new paper project:
-  - `papers/awareness-vs-thinking-operational/` (`main.tex`, `README.md`, `VERSION`, `CHANGELOG.md`, `prism.project.json`, `mirror.md`, `mirror.audit.md`)
+  - `papers/awareness-vs-thinking-operational/` (`main.tex`, `README.md`, `VERSION`, `CHANGELOG.md`, `mirror.md`, `mirror.audit.md`, metadata file)
 - Added paper PDF artifacts:
   - `papers/awareness-vs-thinking-operational/latest.pdf`
   - `papers/awareness-vs-thinking-operational/Awareness vs Thinking (Operational) - Monitoring vs Activation Bursts in Regulated Agents - v1.0.pdf`
