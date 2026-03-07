@@ -135,6 +135,8 @@ Together:
 
 - Admissibility rules prevent low-reliability narratives from authorizing durable rewrites even when the loop runs.
 
+Related operational note: **Awareness vs Thinking (Operational)** clarifies a control distinction used implicitly here. In this framing, awareness is the monitoring/gating layer that decides whether bounded activation is warranted, while thinking is the bounded analysis burst that produces structured candidate models, falsifiers, and intervention proposals. This note does not introduce a new theory of mind; it sharpens the operational boundary between regulation and synthesis.
+
 This pairing yields a regulated reflection stack: bounded revision dynamics plus bounded self-evidence.
 
 # Scope and non-claims

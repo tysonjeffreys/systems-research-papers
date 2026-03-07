@@ -176,6 +176,8 @@ This hub note maps directly to two implementation companions:
 
 `papers/epistemic-load/` defines admissibility truth conditions for introspective claims and durable rewrites under epistemic load. Reflection Without Thrash (this note) governs revision-loop stability. In operational terms: Reflection Without Thrash decides whether revision should continue; Epistemic Load decides whether a self-claim can update durable state.
 
+Related operational note: **Awareness vs Thinking (Operational)** clarifies a control distinction used implicitly here. In this framing, awareness is the monitoring/gating layer that decides whether bounded activation is warranted, while thinking is the bounded analysis burst that produces structured candidate models, falsifiers, and intervention proposals. This note does not introduce a new theory of mind; it sharpens the operational boundary between regulation and synthesis.
+
 # Appendix A: Minimal RSML telemetry schema
 
 - `reflect_passes`

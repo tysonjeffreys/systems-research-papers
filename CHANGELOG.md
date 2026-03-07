@@ -14,6 +14,11 @@ All notable paper updates are documented here.
 - Added short cross-link paragraph to companion papers:
   - `papers/reflection-without-thrash/main.tex`
   - `papers/epistemic-load/main.tex`
+- Synchronized companion-paper publication surfaces for those cross-link inserts:
+  - added matching insertions in `papers/reflection-without-thrash/mirror.md` and `papers/epistemic-load/mirror.md`
+  - updated per-paper changelogs in `papers/reflection-without-thrash/CHANGELOG.md` and `papers/epistemic-load/CHANGELOG.md`
+- Added persistent Codex paper-sync rule:
+  - `CODEX_CONTEXT.md`
 - Added release note: `release-notes/awareness-vs-thinking-operational-clarification-2026-03-07.md`.
 
 ## 2026-03-02 (Regulated Reflection Companion Pair: Epistemic Load + Reflection Without Thrash)
